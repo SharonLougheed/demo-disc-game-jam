@@ -8,19 +8,12 @@ public class Player : MonoBehaviour
     public int Health;
     public PlayerDefaults defaults;
     public bool IsAlive;
+    public Puncher leftHand;
+    public Puncher rightHand;
 
     public void Awake()
     {
         Health = defaults.StartHealth;
-    }
-
-    private void Update()
-    {
-        // Debug damage, DELETE ME
-        if (Input.GetKeyDown(KeyCode.Q) && PlayerNumber == 2)
-        {
-            TakeDamage(15);
-        }
     }
 
     public void GiveHeath(int giveAmount)

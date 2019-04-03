@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public ControlSettings Settings;
 
 
+
     public float SpeedUpPercent = 0f;
 
 
@@ -18,7 +19,19 @@ public class PlayerController : MonoBehaviour
     {
         CheckTurnStrafe();
         CheckForwardBack();
+
+        if (Input.GetButtonDown("Left" + ControllerNumber))
+        {
+            var player = GetComponent<Player>();
+            player.leftHand.Punch();
+        }
+        if (Input.GetButtonDown("Right" + ControllerNumber))
+        {
+            var player = GetComponent<Player>();
+            player.rightHand.Punch();
+        }
     }
+
 
     private void CheckForwardBack()
     {
