@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public bool isGameOver;
+    public Player WinningPlayer;
 
-    private void Start()
+
+    private void Awake()
     {
         isGameOver = false;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         CheckForWinner();
     }
 
@@ -36,8 +43,8 @@ public class LevelManager : MonoBehaviour
 
     private void GameOver(Player lastPlayer)
     {
+        WinningPlayer = lastPlayer;
         isGameOver = true;
-        Debug.Log("Gameover, man!");
     }
 
 }

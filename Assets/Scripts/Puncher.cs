@@ -27,6 +27,16 @@ public class Puncher : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("col");
+        if (isPunching && other.gameObject.tag == "Player")
+        {
+            Player player = other.gameObject.GetComponent<Player>();
+            player.TakeDamage(stats.PunchDamage);
+        }
+    }
+
     private void Update()
     {
         if (isPunching && !isRecovering)
@@ -51,7 +61,5 @@ public class Puncher : MonoBehaviour
                 isPunching = false;
             }
         }
-
-
     }
 }

@@ -7,4 +7,6 @@ public class PlayerStats : ScriptableObject
 {
     public float PunchSpeed;
     public float PunchReach;
+    public int PunchDamage;
+    public int BottleDamage;
 }
