@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public int ControllerNumber = 1;
     public bool ControllerActive = true;
     public float SpeedUpPercent = 0f;
+    public float groundLevel = 0.5f;
 
     // Rotation Speed at 100f was the original setting
     // Movement Speed at 8f was the original setting
@@ -31,9 +32,9 @@ public class PlayerController : MonoBehaviour
     private void GroundPlayer()
     {
         // Do this differently
-        if (transform.position.y != 0.5f)
+        if (transform.position.y != groundLevel)
         {
-            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, groundLevel, transform.position.z);
         }
     }
 
