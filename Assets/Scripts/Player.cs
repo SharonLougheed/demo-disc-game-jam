@@ -5,37 +5,38 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int PlayerNumber = 1;
-    public int Health;
+    //public int Health;
     public PlayerDefaults defaults;
+    public IntHealthDict HealthData;
+    public Health health;
     public bool IsAlive;
+
     public Puncher leftHand;
     public Puncher rightHand;
 
     private Color originalColor;
 
+
     public void Awake()
     {
-        Health = defaults.StartHealth;
+        HealthData.AddEntry(PlayerNumber, health);
+
+        health.MaxValue = defaults.MaxHealth;
+        health.MinValue = defaults.MinHealth;
+        health.Value = defaults.StartHealth;
         originalColor = GetComponent<Renderer>().material.color;
     }
 
-    public void GiveHeath(int giveAmount)
-    {
-        Health += giveAmount;
-        if (Health > defaults.MaxHealth)
-        {
-            Health = defaults.MaxHealth;
-        }
-    }
+    public void GiveHeath(int amount) => health.Increase(amount);
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int amount)
     {
-        Debug.Log(damageAmount + " Damage done to " + PlayerNumber);
-        Health -= damageAmount;
-
+        health.Decrease(amount);
         StartCoroutine(FlashPlayer());
 
-        if (Health <= 0)
+        Debug.Log("Player " + PlayerNumber + " has health: " + HealthData.Entry[PlayerNumber].Value);
+
+        if (health.Value <= defaults.MinHealth)
         {
             Kill();
         }
@@ -52,8 +53,8 @@ public class Player : MonoBehaviour
 
     public void Kill()
     {
-        // Zero health here in case of insta-death
-        Health = 0;
+        // Take away all health here in case of insta-death
+        health.Value = health.MinValue;
         IsAlive = false;
 
         // Destroy for now : We will want to leave the corpses
