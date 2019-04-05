@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TempWin : MonoBehaviour
@@ -42,6 +43,6 @@ public class TempWin : MonoBehaviour
     private IEnumerator RestartGame(int seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
-        Application.LoadLevel("Scene-Ben");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
