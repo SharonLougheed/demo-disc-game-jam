@@ -81,7 +81,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2250085108500987293}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &2250085108596385965
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2250085108596385962}
   - component: {fileID: 2250085108596386006}
   - component: {fileID: 2250085108596386007}
+  - component: {fileID: 5423555260779540634}
   - component: {fileID: 2250085108596386004}
   m_Layer: 0
   m_Name: Player
@@ -211,11 +212,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerNumber: 1
-  Health: 0
   defaults: {fileID: 11400000, guid: 870edee79e26ff7498572b683719a3fa, type: 2}
+  HealthData: {fileID: 11400000, guid: e6135153a1388fa4188f28ac7bb38e82, type: 2}
+  health: {fileID: 5423555260779540634}
   IsAlive: 1
   leftHand: {fileID: 2250085108887142821}
   rightHand: {fileID: 2250085109946021413}
+--- !u!114 &5423555260779540634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250085108596385965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4236c4dc909ca4298cb335ea818222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxValue: 150
+  MinValue: 0
 --- !u!143 &2250085108596386004
 CharacterController:
   m_ObjectHideFlags: 0
