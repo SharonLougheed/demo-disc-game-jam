@@ -243,6 +243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameOver: 0
   WinningPlayer: {fileID: 0}
+  PlayerPrefab: {fileID: 2250085108596385965, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
+    type: 3}
+  NumberOfPlayers: 4
 --- !u!4 &516271005
 Transform:
   m_ObjectHideFlags: 0
@@ -471,6 +474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250085108596385965, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2250085108596386004, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
         type: 3}
@@ -1158,6 +1166,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2250085108596385965, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2250085108596386004, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
         type: 3}
       propertyPath: m_Radius
@@ -1380,6 +1393,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2250085108596385965, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2250085108596386004, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
         type: 3}
       propertyPath: m_Radius
@@ -1537,6 +1555,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250085108596385965, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2250085108596385961, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
         type: 3}

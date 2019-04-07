@@ -9,14 +9,8 @@ public class Health : MonoBehaviour
     private int value;
     public int Value
     {
-        get
-        {
-            return value;
-        }
-        set
-        {
-            this.value = VerifyValues(value);
-        }
+        get { return value; }
+        set { this.value = VerifyValues(value); }
     }
 
     public int MaxValue = 150;

@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int PlayerNumber = 1;
-    //public int Health;
+    private int playerNumber;
+    public int PlayerNumber
+    {
+        get { return playerNumber; }
+        set
+        {
+            playerNumber = value;
+            SetHealth();
+        }
+    }
+
     public PlayerDefaults defaults;
     public IntHealthDict HealthData;
     public Health health;
@@ -19,12 +28,16 @@ public class Player : MonoBehaviour
 
     public void Awake()
     {
+        originalColor = GetComponent<Renderer>().material.color;
+    }
+
+    public void SetHealth()
+    {
         HealthData.AddEntry(PlayerNumber, health);
 
         health.MaxValue = defaults.MaxHealth;
         health.MinValue = defaults.MinHealth;
         health.Value = defaults.StartHealth;
-        originalColor = GetComponent<Renderer>().material.color;
     }
 
     public void GiveHeath(int amount) => health.Increase(amount);
