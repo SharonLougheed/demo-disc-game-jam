@@ -10,11 +10,27 @@ public class LevelManager : MonoBehaviour
     public Player WinningPlayer;
     public GameObject PlayerPrefab;
     public int NumberOfPlayers;
+    private RectCollection rectCollection;
+    public RectCollection FourWaySplit;
+    public RectCollection TwoWaySplit;
+    public RectCollection NoSplit;
 
 
     private void Awake()
     {
         isGameOver = false;
+        switch (NumberOfPlayers)
+        {
+            case 1:
+                rectCollection = NoSplit;
+                break;
+            case 2:
+                rectCollection = TwoWaySplit;
+                break;
+            default:
+                rectCollection = FourWaySplit;
+                break;
+        }
         LoadPlayers(NumberOfPlayers);
     }
 
@@ -41,26 +57,9 @@ public class LevelManager : MonoBehaviour
             controller.ControllerNumber = i + 1;
 
             var cam = players[i].GetComponentInChildren<Camera>();
-            cam.rect = new Rect(GetCordFromPlayerNumber(player.PlayerNumber), GetSizeFromNumberOfPlayers(numberOfPlayers));
+            //cam.rect = new Rect(GetCordFromPlayerNumber(player.PlayerNumber), GetSizeFromNumberOfPlayers(numberOfPlayers));
+            cam.rect = rectCollection.Rects[i];
         }
-    }
-
-    private Vector2 GetSizeFromNumberOfPlayers(int playerNumber)
-    {
-        return playerNumber > 2 ? new Vector2(0.5f, 0.5f) : new Vector2(1f, 0.5f);
-    }
-
-    private Vector2 GetCordFromPlayerNumber(int playerNumber)
-    {
-        if (NumberOfPlayers == 2)
-        {
-            return playerNumber == 1 ? new Vector2(0f, 0.5f) : new Vector2(0f, 0f);
-        }
-
-        byte b = (byte)(playerNumber + 1);
-        float x = (b & (1 << 0)) != 0 ? 1 : 0;
-        float y = (b & (1 << 1)) != 0 ? 1 : 0;
-        return new Vector2(x / 2, y / 2);
     }
 
     private void CheckForWinner()

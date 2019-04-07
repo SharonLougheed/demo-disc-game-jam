@@ -246,6 +246,9 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 2250085108596385965, guid: 7c9cf7c3c0c558049ad15f9b557a874b,
     type: 3}
   NumberOfPlayers: 4
+  FourWaySplit: {fileID: 11400000, guid: 26f413375cae5574a88fdd1ad749d47c, type: 2}
+  TwoWaySplit: {fileID: 11400000, guid: 545f93eaae00f274a8c190e2fb1d75d8, type: 2}
+  NoSplit: {fileID: 11400000, guid: 77a5664825017304dbbf1c42eaddfa7c, type: 2}
 --- !u!4 &516271005
 Transform:
   m_ObjectHideFlags: 0
