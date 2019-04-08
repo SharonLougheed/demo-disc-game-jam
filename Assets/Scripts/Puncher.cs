@@ -29,7 +29,6 @@ public class Puncher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("col");
         if (isPunching && other.gameObject.tag == "Player")
         {
             Player player = other.gameObject.GetComponent<Player>();
