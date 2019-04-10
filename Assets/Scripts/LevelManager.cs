@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
     public RectCollection TwoWaySplit;
     public RectCollection NoSplit;
 
+    public GameObjectFactory SpawnPoints;
+
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class LevelManager : MonoBehaviour
                 rectCollection = FourWaySplit;
                 break;
         }
+        SpawnPoints.LoadGameObjects();
         LoadPlayers(NumberOfPlayers);
     }
 
@@ -59,6 +62,11 @@ public class LevelManager : MonoBehaviour
             var cam = players[i].GetComponentInChildren<Camera>();
             //cam.rect = new Rect(GetCordFromPlayerNumber(player.PlayerNumber), GetSizeFromNumberOfPlayers(numberOfPlayers));
             cam.rect = rectCollection.Rects[i];
+
+            var spawnPoint = SpawnPoints.GetNextObject();
+
+            player.gameObject.transform.position = spawnPoint.transform.position;
+            player.gameObject.transform.rotation = spawnPoint.transform.rotation;
         }
     }
 

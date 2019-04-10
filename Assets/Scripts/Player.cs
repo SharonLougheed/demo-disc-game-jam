@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
         health.Decrease(amount);
         StartCoroutine(FlashPlayer());
 
+        // Rock camera back
+
         Debug.Log("Player " + PlayerNumber + " has health: " + HealthData.Entry[PlayerNumber].Value);
 
         if (health.Value <= defaults.MinHealth)

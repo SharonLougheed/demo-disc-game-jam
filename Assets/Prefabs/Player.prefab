@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41586358b66e4ef4ba049c38c093aee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: 1
   defaults: {fileID: 11400000, guid: 870edee79e26ff7498572b683719a3fa, type: 2}
   HealthData: {fileID: 11400000, guid: e6135153a1388fa4188f28ac7bb38e82, type: 2}
   health: {fileID: 5423555260779540634}
