@@ -29,7 +29,7 @@ public class GameObjectFactory : ScriptableObject
         CurrentUnit++;
         if (CurrentUnit >= objects.Length)
         {
-            CurrentUnit = 0;
+            ResetCurrentUnit(0);
         }
         return objects[returnUnit];
     }
