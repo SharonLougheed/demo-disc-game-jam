@@ -22,5 +22,6 @@ public class SpawnPoint : MonoBehaviour
         Gizmos.matrix = this.transform.localToWorldMatrix;
         Gizmos.color = new Color(1, 0, 0, 0.75f);
         Gizmos.DrawCube(Vector3.zero, Vector3.one);
+        Gizmos.DrawSphere(new Vector3(0, 0, 0.6f), 0.3f);
     }
 }
