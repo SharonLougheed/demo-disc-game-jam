@@ -7,16 +7,16 @@ using UnityEngine;
 public class PlayerRenderer : MonoBehaviour
 {
 	public int playerNumber = 1; //Will be reduced by 1 to match indices of arrays
-	public GameObject[] allPlayers; //Must be in order! May leave this player blank.
+	public GameObject[] allPlayers; //Must be in order! May leave this player object blank.
 	public GameObject[] respectiveViewObjects; //Make sure the indices align with allPlayers. This is what they will see.
 												//Own player number will be ignored
 	public bool use4Directions = false; //If true, only uses N, S, E, W textures
-	public bool applyMaterialToTextures = true; //TODO: Change color depending on player number
+	public bool useColorFromParentMaterial = true; //If true, get parent's MeshRenderer's Material's color, overrides colorToApplyToSprites
+	public Color colorToApplyToSprites = Color.white; //If white, no change
 
 	private PlayerRenderer[] playerRenderers; //To change direction for this player
 	private Animator[] animators; //To change direction for other players
 	private Direction[] directionEachPlayerSees; //For efficiency, if hasn't changed
-	private SpriteRenderer[] spriteRenderers; //For color changing
 
 	enum Direction { NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST }
 
@@ -25,7 +25,7 @@ public class PlayerRenderer : MonoBehaviour
 	{
 		playerNumber = playerNumber - 1; //Reduce by 1 to match indices of arrays
 
-		//Initialize/find all private arrays
+		//Initialize all private arrays
 		playerRenderers = new PlayerRenderer[allPlayers.Length];
 		animators = new Animator[allPlayers.Length];
 		for (int i=0; i< allPlayers.Length; i++)
@@ -34,6 +34,20 @@ public class PlayerRenderer : MonoBehaviour
 			{
 				playerRenderers[i] = allPlayers[i].GetComponentInChildren<PlayerRenderer>();
 				animators[i] = respectiveViewObjects[i].GetComponent<Animator>();
+
+				if(useColorFromParentMaterial)
+				{
+					Material parentMaterial = GetComponentInParent<MeshRenderer>().material;
+					if (parentMaterial != null)
+					{
+						colorToApplyToSprites = parentMaterial.color;
+					}
+				}
+				//Apply color to each sprite renderer if set
+				if (!colorToApplyToSprites.Equals(Color.white))
+				{
+					respectiveViewObjects[i].GetComponent<SpriteRenderer>().color = colorToApplyToSprites;
+				}
 			}
 		}
 		directionEachPlayerSees = new Direction[allPlayers.Length];
@@ -56,7 +70,7 @@ public class PlayerRenderer : MonoBehaviour
 				//And rotate it by this player's direction to convert to this lil coordinate system
 				float convertedYRotation = NormalizeAngle(thatYRotation - thisYRotation);
 
-				//And change the sprite to match that direction
+				//Rotate and change the sprite to match that direction
 				playerRenderers[i].ChangeDirectionalSprite(playerNumber, convertedYRotation);
 			}
 		}
@@ -87,7 +101,6 @@ public class PlayerRenderer : MonoBehaviour
 		Direction relativeDirection = DegreesToDirection(rotation);
 		//Then rotate the corresponding sprite renderer/animator to face that player
 		respectiveViewObjects[otherPlayerNum].transform.LookAt(allPlayers[otherPlayerNum].transform.position, Vector3.up);
-		//TODO: Make a script that does just the above line, for non-moving sprites
 
 		if (directionEachPlayerSees[otherPlayerNum] == relativeDirection)
 			return; //an attempt to be slightly more efficient
