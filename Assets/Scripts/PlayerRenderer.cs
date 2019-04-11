@@ -6,34 +6,37 @@ using UnityEngine;
 //and changes the images this player sees
 public class PlayerRenderer : MonoBehaviour
 {
-	public Texture2D north; //0 degrees globally
-	public Texture2D northeast;
-	public Texture2D east;
-	public Texture2D southeast;
-	public Texture2D south;
-	public Texture2D southwest;
-	public Texture2D west;
-	public Texture2D northwest;
-	public GameObject[] players = new GameObject[4];
-	public GameObject[] otherPlayers;
-	public GameObject[] quads; //Make sure the indices align with otherPlayers. This is what they will see.
+	public int playerNumber = 1; //Will be reduced by 1 to match indices of arrays
+	public GameObject[] allPlayers; //Must be in order! May leave this player blank.
+	public GameObject[] respectiveViewObjects; //Make sure the indices align with allPlayers. This is what they will see.
+												//Own player number will be ignored
 	public bool use4Directions = false; //If true, only uses N, S, E, W textures
-	public bool applyMaterialToTextures = true;
+	public bool applyMaterialToTextures = true; //TODO: Change color depending on player number
 
-	private PlayerRenderer[] otherPlayerRenderers;
-	private Direction[] directionsOtherPlayersSee;
-	private enum Direction { NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST }
+	private PlayerRenderer[] playerRenderers; //To change direction for this player
+	private Animator[] animators; //To change direction for other players
+	private Direction[] directionEachPlayerSees; //For efficiency, if hasn't changed
+	private SpriteRenderer[] spriteRenderers; //For color changing
+
+	enum Direction { NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST }
 
     //Start is called before the first frame update 
     void Start()
 	{
-		//Find all other player renderers now to save time later
-		otherPlayerRenderers = new PlayerRenderer[otherPlayers.Length];
-		for (int i=0; i<otherPlayers.Length; i++)
+		playerNumber = playerNumber - 1; //Reduce by 1 to match indices of arrays
+
+		//Initialize/find all private arrays
+		playerRenderers = new PlayerRenderer[allPlayers.Length];
+		animators = new Animator[allPlayers.Length];
+		for (int i=0; i< allPlayers.Length; i++)
 		{
-			otherPlayerRenderers[i] = otherPlayers[i].GetComponent<PlayerRenderer>();
+			if(i != playerNumber)
+			{
+				playerRenderers[i] = allPlayers[i].GetComponentInChildren<PlayerRenderer>();
+				animators[i] = respectiveViewObjects[i].GetComponent<Animator>();
+			}
 		}
-		directionsOtherPlayersSee = new Direction[otherPlayers.Length];
+		directionEachPlayerSees = new Direction[allPlayers.Length];
 	}
 
     //Update is called once per frame
@@ -43,55 +46,84 @@ public class PlayerRenderer : MonoBehaviour
 		//Use the direction this player is facing as north in a lil coordinate system
 		float thisYRotation = transform.rotation.eulerAngles.y;
 		//Go through all other players
-		for (int i = 0; i < otherPlayers.Length; i++)
+		for (int i = 0; i < allPlayers.Length; i++)
 		{
-			//First, rotate the corresponding quad to face that player
+			if (i != playerNumber)
+			{
+				//Take the direction the other player is facing
+				float thatYRotation = allPlayers[i].transform.rotation.eulerAngles.y;
 
-			//Then take the direction the other player is facing
-			float thatYRotation = otherPlayers[i].transform.rotation.eulerAngles.y;
-			//And rotate it by this player's direction to convert to this lil coordinate system
-			float convertedYRotation = (thatYRotation + thisYRotation) % 360;
-			//This is the direction relative to this player
-			Direction relativeDirection = DegreesToDirection(convertedYRotation);
-			//Change the image the 
-			otherPlayerRenderers[i].RenderDirection(i, relativeDirection);
+				//And rotate it by this player's direction to convert to this lil coordinate system
+				float convertedYRotation = NormalizeAngle(thatYRotation - thisYRotation);
+
+				//And change the sprite to match that direction
+				playerRenderers[i].ChangeDirectionalSprite(playerNumber, convertedYRotation);
+			}
+		}
+	}
+
+	//Returns an angle between 0 and 360 degrees
+	float NormalizeAngle(float angleInDegrees)
+	{
+		if(angleInDegrees < 0)
+		{
+			//ex. -20 = 360 + (-20) = 340
+			//ex. -500 = 360 + (-140) = 220
+			return 360 + (angleInDegrees % 360);
+		}
+		else
+		{
+			//ex. 20 = 20
+			//ex. 500 = 140
+			return angleInDegrees % 360;
 		}
 	}
 
 	//Called by other PlayerRenderers
-	//Changes the texture of the quad corresponding to that player
-	void RenderDirection(int playerNumber, Direction relativeDirection)
+	//Changes the animation in the viewObject corresponding to that player
+	void ChangeDirectionalSprite(int otherPlayerNum, float rotation)
 	{
-		if (directionsOtherPlayersSee[playerNumber] == relativeDirection)
-			return; //an attempt to be slightly more efficient
+		//This is the direction relative to this player
+		Direction relativeDirection = DegreesToDirection(rotation);
+		//Then rotate the corresponding sprite renderer/animator to face that player
+		respectiveViewObjects[otherPlayerNum].transform.LookAt(allPlayers[otherPlayerNum].transform.position, Vector3.up);
+		//TODO: Make a script that does just the above line, for non-moving sprites
 
+		if (directionEachPlayerSees[otherPlayerNum] == relativeDirection)
+			return; //an attempt to be slightly more efficient
+		directionEachPlayerSees[otherPlayerNum] = relativeDirection;
+		
+		//dirNum is used by the animator controller
+		int dirNum = 0;
 		switch (relativeDirection)
 		{
 			case Direction.NORTH:
-
+				dirNum = 0;
 				break;
 			case Direction.NORTHEAST:
-
+				dirNum = 1;
 				break;
 			case Direction.EAST:
-
+				dirNum = 2;
 				break;
 			case Direction.SOUTHEAST:
-
+				dirNum = 3;
 				break;
 			case Direction.SOUTH:
-
+				dirNum = 4;
 				break;
 			case Direction.SOUTHWEST:
-
+				dirNum = 5;
 				break;
 			case Direction.WEST:
-
+				dirNum = 6;
 				break;
 			case Direction.NORTHWEST:
-
+				dirNum = 7;
 				break;
 		}
+		//Change to the animation (which can be a single frame, if no animation yet) for that direction
+		animators[otherPlayerNum].SetInteger("Direction", dirNum);
 	}
 
 	//Converts angle in degrees to Direction enum
