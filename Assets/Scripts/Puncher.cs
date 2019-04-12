@@ -33,6 +33,9 @@ public class Puncher : MonoBehaviour
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.TakeDamage(stats.PunchDamage);
+
+            var hitSound = GetComponent<AudioSource>();
+            hitSound.Play();
         }
     }
 
