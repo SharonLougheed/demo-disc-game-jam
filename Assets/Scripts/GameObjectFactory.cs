@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class GameObjectFactory : ScriptableObject
+public class GameObjectFactory : MonoBehaviour
 {
     public int CurrentUnit = 0;
     public GameObject[] objects = new GameObject[1];
 
-    // Player just to have a default
-    public string Tag = "Player";
+    // Respawn just to have a default
+    public string Tag = "Respawn";
 
     public int LoadGameObjects()
     {
@@ -34,4 +33,3 @@ public class GameObjectFactory : ScriptableObject
         return objects[returnUnit];
     }
 }
-
