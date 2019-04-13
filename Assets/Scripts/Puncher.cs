@@ -15,6 +15,8 @@ public class Puncher : MonoBehaviour
     private float startTime;
     private float punchLength;
 
+    private Player parent;
+
     public void Punch()
     {
         if (!isPunching)
@@ -31,11 +33,14 @@ public class Puncher : MonoBehaviour
     {
         if (isPunching && other.gameObject.tag == "Player")
         {
-            Player player = other.gameObject.GetComponent<Player>();
-            player.TakeDamage(stats.PunchDamage);
+            if (!gameObject.transform.parent.gameObject == other.gameObject)
+            {
+                Player player = other.gameObject.GetComponent<Player>();
+                player.TakeDamage(stats.PunchDamage);
+                var hitSound = GetComponent<AudioSource>();
+                hitSound.Play();
+            }
 
-            var hitSound = GetComponent<AudioSource>();
-            hitSound.Play();
         }
     }
 
