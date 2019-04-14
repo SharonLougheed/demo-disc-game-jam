@@ -8,6 +8,9 @@ public class Puncher : MonoBehaviour
     public PlayerStats stats;
     public Side side;
 
+    public AudioClip playerHitClip;
+    public AudioClip objectHitClip;
+
     private Vector3 startPosition;
     private Vector3 endPosition;
     private bool isPunching;
@@ -29,11 +32,22 @@ public class Puncher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("col");
-        if (isPunching && other.gameObject.tag == "Player")
+        if (isPunching && other.gameObject.tag.Equals("Player"))
         {
-            Player player = other.gameObject.GetComponent<Player>();
-            player.TakeDamage(stats.PunchDamage);
+            if (!gameObject.transform.parent.gameObject.Equals(other.gameObject))
+            {
+                Player player = other.gameObject.GetComponent<Player>();
+                player.TakeDamage(stats.PunchDamage);
+                var hitSound = GetComponent<AudioSource>();
+                hitSound.clip = playerHitClip;
+                hitSound.Play();
+            }
+        }
+        else
+        {
+            var hitSound = GetComponent<AudioSource>();
+            hitSound.clip = objectHitClip;
+            hitSound.Play();
         }
     }
 
