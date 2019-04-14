@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92445e2b242d98248a6cac51d561066e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 1
   allPlayers:
   - {fileID: 2250085108596385965}
   - {fileID: 2250085108596385965}
@@ -57,7 +58,8 @@ MonoBehaviour:
   - {fileID: 8959552932142143762}
   - {fileID: 5588635863306414870}
   use4Directions: 0
-  applyMaterialToTextures: 1
+  useColorFromParentMaterial: 1
+  colorToApplyToSprites: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2250085108500987293
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +158,7 @@ GameObject:
   - component: {fileID: 2250085108596386007}
   - component: {fileID: 2250085108596386004}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerSharon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -574,15 +576,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6c3b3dc6bce43fc4797ee00e24547007, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &2125051915149920627
@@ -673,7 +675,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ef6e53837594a9143a5ddca058eb7ee6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c3b3dc6bce43fc4797ee00e24547007, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -772,15 +774,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6c3b3dc6bce43fc4797ee00e24547007, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1748792859112556916
