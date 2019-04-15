@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 8577244}
   - component: {fileID: 8577243}
   - component: {fileID: 8577242}
+  - component: {fileID: 8577246}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Untagged
@@ -197,12 +198,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8577241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.05, y: 0.5, z: 5.9}
-  m_LocalScale: {x: 10.0917425, y: 1, z: 1}
+  m_LocalPosition: {x: -9.05, y: 1, z: 5.9}
+  m_LocalScale: {x: 10, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &8577246
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577241}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &464578870
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +232,7 @@ GameObject:
   - component: {fileID: 464578873}
   - component: {fileID: 464578872}
   - component: {fileID: 464578871}
+  - component: {fileID: 464578875}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
@@ -294,6 +312,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &464578875
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464578870}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &516271003
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +395,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a8d9cfa40ba858847b8edce79cfe8b16, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -488,6 +522,7 @@ GameObject:
   - component: {fileID: 518962675}
   - component: {fileID: 518962674}
   - component: {fileID: 518962673}
+  - component: {fileID: 518962677}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -567,6 +602,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &518962677
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518962672}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &533439933
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +630,7 @@ GameObject:
   - component: {fileID: 533439936}
   - component: {fileID: 533439935}
   - component: {fileID: 533439934}
+  - component: {fileID: 533439938}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -658,6 +710,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &533439938
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533439933}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &636670881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -739,6 +807,7 @@ GameObject:
   - component: {fileID: 746492190}
   - component: {fileID: 746492189}
   - component: {fileID: 746492188}
+  - component: {fileID: 746492192}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -818,6 +887,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &746492192
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746492187}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &786589414
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +915,7 @@ GameObject:
   - component: {fileID: 786589417}
   - component: {fileID: 786589416}
   - component: {fileID: 786589415}
+  - component: {fileID: 786589419}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -903,12 +989,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786589414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.68, y: 0.5, z: 5.83}
-  m_LocalScale: {x: 10.0917425, y: 1, z: 1}
+  m_LocalPosition: {x: 7.68, y: 1, z: 5.83}
+  m_LocalScale: {x: 10, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &786589419
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786589414}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &816306948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1141,6 +1243,7 @@ GameObject:
   - component: {fileID: 1163750584}
   - component: {fileID: 1163750583}
   - component: {fileID: 1163750582}
+  - component: {fileID: 1163750586}
   m_Layer: 0
   m_Name: Cube (8)
   m_TagString: Untagged
@@ -1214,12 +1317,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163750581}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.25, y: 0.5, z: -6.15}
-  m_LocalScale: {x: 10.0917425, y: 1, z: 1}
+  m_LocalPosition: {x: -0.25, y: 1, z: -6.15}
+  m_LocalScale: {x: 10, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!54 &1163750586
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163750581}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1300273396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1519,7 @@ GameObject:
   - component: {fileID: 1659785460}
   - component: {fileID: 1659785459}
   - component: {fileID: 1659785458}
+  - component: {fileID: 1659785462}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -1479,6 +1599,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1659785462
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659785457}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1680784553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1706,7 @@ GameObject:
   - component: {fileID: 1695208194}
   - component: {fileID: 1695208193}
   - component: {fileID: 1695208192}
+  - component: {fileID: 1695208196}
   m_Layer: 0
   m_Name: Cube (9)
   m_TagString: Untagged
@@ -1643,12 +1780,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695208191}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.39, y: 0.5, z: 15.8}
-  m_LocalScale: {x: 10.0917425, y: 1, z: 1}
+  m_LocalPosition: {x: -0.39, y: 1, z: 15.8}
+  m_LocalScale: {x: 10, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!54 &1695208196
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695208191}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1908405710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,6 +1814,7 @@ GameObject:
   - component: {fileID: 1908405713}
   - component: {fileID: 1908405712}
   - component: {fileID: 1908405711}
+  - component: {fileID: 1908405715}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
@@ -1740,6 +1894,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1908405715
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908405710}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2014179516
 PrefabInstance:
   m_ObjectHideFlags: 0
