@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 
     public Puncher leftHand;
     public Puncher rightHand;
+	public PlayerRenderer playerRenderer;
 
     private Color originalColor;
 
@@ -60,11 +61,18 @@ public class Player : MonoBehaviour
 
     public IEnumerator FlashPlayer()
     {
-        GetComponent<Renderer>().material.color = Color.magenta;
+		if (playerRenderer == null)
+		{
+			GetComponent<Renderer>().material.color = Color.magenta;
 
-        yield return new WaitForSecondsRealtime(0.1f);
+			yield return new WaitForSecondsRealtime(0.1f);
 
-        GetComponent<Renderer>().material.color = originalColor;
+			GetComponent<Renderer>().material.color = originalColor;
+		}
+		else
+		{
+			playerRenderer.FlashPlayer();
+		}
     }
 
     public void Kill()

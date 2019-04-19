@@ -20,8 +20,8 @@ public class PlayerRenderer : MonoBehaviour
 
 	enum Direction { NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST }
 
-    //Start is called before the first frame update 
-    void Start()
+	//Formerly Start function
+	public void Setup()
 	{
 		playerNumber = playerNumber - 1; //Reduce by 1 to match indices of arrays
 
@@ -30,7 +30,7 @@ public class PlayerRenderer : MonoBehaviour
 		animators = new Animator[allPlayers.Length];
 		for (int i=0; i< allPlayers.Length; i++)
 		{
-			if(i != playerNumber)
+			if(i != playerNumber && allPlayers[i] != null)
 			{
 				playerRenderers[i] = allPlayers[i].GetComponentInChildren<PlayerRenderer>();
 				animators[i] = respectiveViewObjects[i].GetComponent<Animator>();
@@ -62,7 +62,7 @@ public class PlayerRenderer : MonoBehaviour
 		//Go through all other players
 		for (int i = 0; i < allPlayers.Length; i++)
 		{
-			if (i != playerNumber)
+			if (i != playerNumber && allPlayers[i] != null)
 			{
 				//Take the direction the other player is facing
 				float thatYRotation = allPlayers[i].transform.rotation.eulerAngles.y;
@@ -204,6 +204,28 @@ public class PlayerRenderer : MonoBehaviour
 			else //292.5-337.5 = NORTHWEST
 			{
 				return Direction.NORTHWEST;
+			}
+		}
+	}
+
+	//Based on function from Player script
+	public IEnumerator FlashPlayer()
+	{
+		for (int i = 0; i < allPlayers.Length; i++)
+		{
+			if (i != playerNumber)
+			{
+				respectiveViewObjects[i].GetComponent<SpriteRenderer>().color = Color.magenta;
+			}
+		}
+
+		yield return new WaitForSecondsRealtime(0.1f);
+
+		for (int i = 0; i < allPlayers.Length; i++)
+		{
+			if (i != playerNumber)
+			{
+				respectiveViewObjects[i].GetComponent<SpriteRenderer>().color = colorToApplyToSprites;
 			}
 		}
 	}
