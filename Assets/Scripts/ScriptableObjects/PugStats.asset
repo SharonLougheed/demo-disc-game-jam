@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PunchSpeed: 10
   PunchReach: 1
-  PunchDamage: 15
-  BottleDamage: 25
+  PunchDamage: 10
+  BottleDamage: 18
+  BottleHits: 3

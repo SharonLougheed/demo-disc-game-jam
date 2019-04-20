@@ -17,9 +17,9 @@ public class LevelManager : MonoBehaviour
 
     public GameObjectFactory SpawnPoints;
 
-	public GameObject[] players;
+    public GameObject[] players;
 
-	private void Awake()
+    private void Awake()
     {
         isGameOver = false;
         switch (NumberOfPlayers)
@@ -70,48 +70,48 @@ public class LevelManager : MonoBehaviour
             player.gameObject.transform.rotation = spawnPoint.transform.rotation;
         }
 
-		SetupPlayerRenderers();
-	}
+        SetupPlayerRenderers();
+    }
 
-	private void SetupPlayerRenderers()
-	{
-		for (int i = 0; i < players.Length; i++)
-		{
-			//Tell each player renderer who they are and who everyone else is
-			var player = players[i].GetComponent<Player>();
-			var pRenderer = player.playerRenderer;
-			if (pRenderer == null) //old prefab
-			{
-				break;
-			}
-			pRenderer.playerNumber = player.PlayerNumber;
-			pRenderer.allPlayers = players; //This is why players is public, faster than passing in copies
+    private void SetupPlayerRenderers()
+    {
+        for (int i = 0; i < players.Length; i++)
+        {
+            //Tell each player renderer who they are and who everyone else is
+            var player = players[i].GetComponent<Player>();
+            var pRenderer = player.playerRenderer;
+            if (pRenderer == null) //old prefab
+            {
+                break;
+            }
+            pRenderer.playerNumber = player.PlayerNumber;
+            pRenderer.allPlayers = players; //This is why players is public, faster than passing in copies
 
-			//Disable mesh renderer if present
-			var meshRenderer = players[i].GetComponent<MeshRenderer>();
-			if (meshRenderer != null)
-			{
-				meshRenderer.enabled = false;
-			}
+            //Disable mesh renderer if present
+            var meshRenderer = players[i].GetComponent<MeshRenderer>();
+            if (meshRenderer != null)
+            {
+                meshRenderer.enabled = false;
+            }
 
-			//https://answers.unity.com/questions/348974/edit-camera-culling-mask.html
-			//Turn on the view layer for this player
-			var camera = players[i].GetComponentInChildren<Camera>();
-			camera.cullingMask = -1; //Show Everything
-			//Hide other player views
-			for (int j = 0; j < players.Length; j++)
-			{
-				//If not this player
-				if(j != i)
-				{
-					//Hide that view layer
-					camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Player" + (j+1) + "View"));
-				}
-			}
+            //https://answers.unity.com/questions/348974/edit-camera-culling-mask.html
+            //Turn on the view layer for this player
+            var camera = players[i].GetComponentInChildren<Camera>();
+            camera.cullingMask = -1; //Show Everything
+                                     //Hide other player views
+            for (int j = 0; j < players.Length; j++)
+            {
+                //If not this player
+                if (j != i)
+                {
+                    //Hide that view layer
+                    camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Player" + (j + 1) + "View"));
+                }
+            }
 
-			pRenderer.Setup(); //Stuff it woulda called in Start
-		}
-	}
+            pRenderer.Setup(); //Stuff it woulda called in Start
+        }
+    }
 
     private void CheckForWinner()
     {
@@ -134,6 +134,8 @@ public class LevelManager : MonoBehaviour
     private void GameOver(Player lastPlayer)
     {
         WinningPlayer = lastPlayer;
+        lastPlayer.transform.position = Vector3.zero;
+        Debug.Log("last player position: " + lastPlayer.transform.position);
         isGameOver = true;
     }
 }
