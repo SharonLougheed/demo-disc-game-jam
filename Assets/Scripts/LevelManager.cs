@@ -9,15 +9,21 @@ public class LevelManager : MonoBehaviour
     public bool isGameOver;
     public Player WinningPlayer;
     public GameObject PlayerPrefab;
+    public GameObject HealthPickupPrefab;
     public int NumberOfPlayers;
+    public int NumberOfHealths;
+
     private RectCollection rectCollection;
     public RectCollection FourWaySplit;
     public RectCollection TwoWaySplit;
     public RectCollection NoSplit;
 
-    public GameObjectFactory SpawnPoints;
+    public PlayerObjectFactory PlayerSpawnPoints;
+    public HealthObjectFactory HealthSpawnPoints;
+    public WeaponObjectFactory WeaponSpawnPoints;
 
     public GameObject[] players;
+    public GameObject[] healthPickups;
 
     private void Awake()
     {
@@ -34,8 +40,11 @@ public class LevelManager : MonoBehaviour
                 rectCollection = FourWaySplit;
                 break;
         }
-        SpawnPoints.LoadGameObjects();
+        PlayerSpawnPoints.LoadGameObjects();
+        HealthSpawnPoints.LoadGameObjects();
+        WeaponSpawnPoints.LoadGameObjects();
         LoadPlayers(NumberOfPlayers);
+        LoadHealth(NumberOfHealths);
     }
 
     private void Update()
@@ -46,6 +55,26 @@ public class LevelManager : MonoBehaviour
         }
         CheckForWinner();
     }
+
+    private void LoadHealth(int numberOfHealths)
+    {
+        healthPickups = new GameObject[numberOfHealths];
+        for (int i = 0; i < numberOfHealths; i++)
+        {
+            healthPickups[i] = Instantiate(HealthPickupPrefab, new Vector3(i * 2, 1, i), Quaternion.identity);
+
+            var healthPickup = healthPickups[i].GetComponent<HealthPickup>();
+
+            var spawnPoint = HealthSpawnPoints.GetNextObject();
+
+            healthPickup.gameObject.transform.position = spawnPoint.transform.position;
+            healthPickup.gameObject.transform.position += Vector3.up * 0.3f;
+            //healthPickup.gameObject.transform.rotation = spawnPoint.transform.rotation;
+        }
+
+        SetupPlayerRenderers();
+    }
+
 
     private void LoadPlayers(int numberOfPlayers)
     {
@@ -64,7 +93,7 @@ public class LevelManager : MonoBehaviour
             //cam.rect = new Rect(GetCordFromPlayerNumber(player.PlayerNumber), GetSizeFromNumberOfPlayers(numberOfPlayers));
             cam.rect = rectCollection.Rects[i];
 
-            var spawnPoint = SpawnPoints.GetNextObject();
+            var spawnPoint = PlayerSpawnPoints.GetNextObject();
 
             player.gameObject.transform.position = spawnPoint.transform.position;
             player.gameObject.transform.rotation = spawnPoint.transform.rotation;

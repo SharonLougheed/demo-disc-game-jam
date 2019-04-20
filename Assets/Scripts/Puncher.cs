@@ -18,6 +18,8 @@ public class Puncher : MonoBehaviour
     private float startTime;
     private float punchLength;
 
+    public WeaponType weaponType = WeaponType.BareFisted;
+
     public void Punch()
     {
         if (!isPunching)
@@ -25,7 +27,25 @@ public class Puncher : MonoBehaviour
             isPunching = true;
             startTime = Time.time;
             startPosition = transform.localPosition;
-            endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.PunchReach);
+            switch (weaponType)
+            {
+                case WeaponType.BareFisted:
+                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.PunchReach);
+                    break;
+                case WeaponType.Bottle:
+                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.BottleReach);
+                    break;
+                case WeaponType.Bone:
+                    // Temp
+                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.PunchReach);
+                    break;
+                case WeaponType.Cigar:
+                    // Temp
+                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.PunchReach);
+                    break;
+                default:
+                    break;
+            }
             punchLength = Vector3.Distance(startPosition, endPosition);
         }
     }

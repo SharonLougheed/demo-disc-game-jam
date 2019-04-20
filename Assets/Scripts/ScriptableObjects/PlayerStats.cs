@@ -9,4 +9,5 @@ public class PlayerStats : ScriptableObject
     public float PunchReach;
     public int PunchDamage;
     public int BottleDamage;
+    public float BottleReach;
 }

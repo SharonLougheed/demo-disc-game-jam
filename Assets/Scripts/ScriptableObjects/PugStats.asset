@@ -16,4 +16,4 @@ MonoBehaviour:
   PunchReach: 1
   PunchDamage: 10
   BottleDamage: 18
-  BottleHits: 3
+  BottleReach: 1.2
