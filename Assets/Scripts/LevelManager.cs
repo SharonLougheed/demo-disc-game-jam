@@ -29,6 +29,8 @@ public class LevelManager : MonoBehaviour
     public GameObject[] healthPickups;
     public GameObject[] weaponPickups;
 
+	public Sprite boneSprite, cigarSprite, bottleSprite;
+
     private void Awake()
     {
         isGameOver = false;
@@ -142,8 +144,25 @@ public class LevelManager : MonoBehaviour
 
             healthPickup.gameObject.transform.position = spawnPoint.transform.position;
             healthPickup.gameObject.transform.position += Vector3.up * 0.3f;
-            //healthPickup.gameObject.transform.rotation = spawnPoint.transform.rotation;
-        }
+			//healthPickup.gameObject.transform.rotation = spawnPoint.transform.rotation;
+
+			SpriteRotator spriteRotator = healthPickups[i].GetComponentInChildren<SpriteRotator>();
+			if(spriteRotator != null)
+			{
+				if (players != null && players.Length != 0)
+				{
+					spriteRotator.allPlayers = players;
+				}
+				else
+				{
+					Debug.Log("Health pickup missing players.");
+				}
+			}
+			else
+			{
+				Debug.Log("Health pickup missing a sprite rotator.");
+			}
+		}
     }
 
     private void LoadWeapon(int numberOfWeapons)
@@ -160,7 +179,36 @@ public class LevelManager : MonoBehaviour
             weaponPickup.weaponType = RandomWeaponType();
             weaponPickup.gameObject.transform.position = spawnPoint.transform.position;
             weaponPickup.gameObject.transform.position += Vector3.up * 0.3f;
-        }
+
+			SpriteRotator spriteRotator = weaponPickups[i].GetComponentInChildren<SpriteRotator>();
+			if (spriteRotator != null)
+			{
+				if (players != null && players.Length != 0)
+				{
+					spriteRotator.allPlayers = players;
+					if(weaponPickup.weaponType == WeaponType.Cigar)
+					{
+						spriteRotator.spriteToChangeTo = cigarSprite;
+					}
+					else if (weaponPickup.weaponType == WeaponType.Bottle)
+					{
+						spriteRotator.spriteToChangeTo = bottleSprite; //A bottle of Sprite TM
+					}
+					else //Bone
+					{
+						spriteRotator.spriteToChangeTo = boneSprite;
+					}
+				}
+				else
+				{
+					Debug.Log("Weapon pickup missing players.");
+				}
+			}
+			else
+			{
+				Debug.Log("Weapon pickup missing a sprite rotator.");
+			}
+		}
     }
 
     private WeaponType RandomWeaponType()
