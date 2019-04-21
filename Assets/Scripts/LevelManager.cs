@@ -10,8 +10,11 @@ public class LevelManager : MonoBehaviour
     public Player WinningPlayer;
     public GameObject PlayerPrefab;
     public GameObject HealthPickupPrefab;
+    public GameObject WeaponPickupPrefab;
+
     public int NumberOfPlayers;
     public int NumberOfHealths;
+    public int NumberOfWeapons;
 
     private RectCollection rectCollection;
     public RectCollection FourWaySplit;
@@ -24,6 +27,7 @@ public class LevelManager : MonoBehaviour
 
     public GameObject[] players;
     public GameObject[] healthPickups;
+    public GameObject[] weaponPickups;
 
     private void Awake()
     {
@@ -45,6 +49,7 @@ public class LevelManager : MonoBehaviour
         WeaponSpawnPoints.LoadGameObjects();
         LoadPlayers(NumberOfPlayers);
         LoadHealth(NumberOfHealths);
+        LoadWeapon(NumberOfWeapons);
     }
 
     private void Update()
@@ -55,26 +60,6 @@ public class LevelManager : MonoBehaviour
         }
         CheckForWinner();
     }
-
-    private void LoadHealth(int numberOfHealths)
-    {
-        healthPickups = new GameObject[numberOfHealths];
-        for (int i = 0; i < numberOfHealths; i++)
-        {
-            healthPickups[i] = Instantiate(HealthPickupPrefab, new Vector3(i * 2, 1, i), Quaternion.identity);
-
-            var healthPickup = healthPickups[i].GetComponent<HealthPickup>();
-
-            var spawnPoint = HealthSpawnPoints.GetNextObject();
-
-            healthPickup.gameObject.transform.position = spawnPoint.transform.position;
-            healthPickup.gameObject.transform.position += Vector3.up * 0.3f;
-            //healthPickup.gameObject.transform.rotation = spawnPoint.transform.rotation;
-        }
-
-        SetupPlayerRenderers();
-    }
-
 
     private void LoadPlayers(int numberOfPlayers)
     {
@@ -139,6 +124,40 @@ public class LevelManager : MonoBehaviour
             }
 
             pRenderer.Setup(); //Stuff it woulda called in Start
+        }
+    }
+
+    private void LoadHealth(int numberOfHealths)
+    {
+        healthPickups = new GameObject[numberOfHealths];
+        for (int i = 0; i < numberOfHealths; i++)
+        {
+            healthPickups[i] = Instantiate(HealthPickupPrefab, new Vector3(i * 2, 1, i), Quaternion.identity);
+
+            var healthPickup = healthPickups[i].GetComponent<HealthPickup>();
+
+            var spawnPoint = HealthSpawnPoints.GetNextObject();
+
+            healthPickup.gameObject.transform.position = spawnPoint.transform.position;
+            healthPickup.gameObject.transform.position += Vector3.up * 0.3f;
+            //healthPickup.gameObject.transform.rotation = spawnPoint.transform.rotation;
+        }
+    }
+
+    private void LoadWeapon(int numberOfWeapons)
+    {
+        weaponPickups = new GameObject[numberOfWeapons];
+        for (int i = 0; i < numberOfWeapons; i++)
+        {
+            weaponPickups[i] = Instantiate(WeaponPickupPrefab, new Vector3(i * 2, 1, i), Quaternion.identity);
+
+            var weaponPickup = weaponPickups[i].GetComponent<WeaponPickup>();
+
+            var spawnPoint = WeaponSpawnPoints.GetNextObject();
+
+            weaponPickup.weaponType = WeaponType.Bottle;
+            weaponPickup.gameObject.transform.position = spawnPoint.transform.position;
+            weaponPickup.gameObject.transform.position += Vector3.up * 0.3f;
         }
     }
 

@@ -6,8 +6,19 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject
 {
     public float PunchSpeed;
-    public float PunchReach;
+
     public int PunchDamage;
+    public float PunchReach;
+
     public int BottleDamage;
     public float BottleReach;
+    public int BottleStrikes;
+
+    public int BoneDamage;
+    public float BoneReach;
+    public int BoneStrikes;
+
+    public int CigarDamage;
+    public float CigarReach;
+    public int CigarStrikes;
 }

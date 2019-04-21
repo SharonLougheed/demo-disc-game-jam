@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: PugStats
   m_EditorClassIdentifier: 
   PunchSpeed: 10
-  PunchReach: 1
   PunchDamage: 10
-  BottleDamage: 18
-  BottleReach: 1.2
+  PunchReach: 1
+  BottleDamage: 22
+  BottleReach: 1.25
+  BottleStrikes: 3
+  BoneDamage: 15
+  BoneReach: 1.4
+  BoneStrikes: 10
+  CigarDamage: 30
+  CigarReach: 10
+  CigarFlings: 1

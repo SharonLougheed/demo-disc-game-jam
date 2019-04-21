@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Puncher : MonoBehaviour
 {
-
     public PlayerStats stats;
     public Side side;
 
@@ -19,6 +19,7 @@ public class Puncher : MonoBehaviour
     private float punchLength;
 
     public WeaponType weaponType = WeaponType.BareFisted;
+    public int StrikeCount = 0;
 
     public void Punch()
     {
@@ -36,12 +37,10 @@ public class Puncher : MonoBehaviour
                     endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.BottleReach);
                     break;
                 case WeaponType.Bone:
-                    // Temp
-                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.PunchReach);
+                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.BoneReach);
                     break;
                 case WeaponType.Cigar:
-                    // Temp
-                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.PunchReach);
+                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.CigarReach);
                     break;
                 default:
                     break;
@@ -50,16 +49,41 @@ public class Puncher : MonoBehaviour
         }
     }
 
+    public void PickupWeapon(WeaponType newWeapon)
+    {
+        weaponType = newWeapon;
+
+        //ChangeSprite Here
+        switch (weaponType)
+        {
+            case WeaponType.BareFisted:
+                StrikeCount = 1000000;
+                break;
+            case WeaponType.Bottle:
+                StrikeCount = stats.BottleStrikes;
+                break;
+            case WeaponType.Bone:
+                StrikeCount = stats.BoneStrikes;
+                break;
+            case WeaponType.Cigar:
+                StrikeCount = stats.CigarStrikes;
+                break;
+            default:
+                break;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Coll: " + other);
         if (isPunching)
         {
+            UseStrike();
             if (other.gameObject.tag.Equals("Player")
                 & !gameObject.transform.parent.gameObject.Equals(other.gameObject))
             {
                 Player player = other.gameObject.GetComponent<Player>();
-                player.TakeDamage(stats.PunchDamage);
+                DamagePlayer(player);
                 var hitSound = GetComponent<AudioSource>();
                 hitSound.clip = playerHitClip;
                 hitSound.Play();
@@ -70,6 +94,39 @@ public class Puncher : MonoBehaviour
                 hitSound.clip = objectHitClip;
                 hitSound.Play();
             }
+        }
+    }
+
+    private void UseStrike()
+    {
+        if (weaponType != WeaponType.BareFisted)
+        {
+            StrikeCount--;
+            if (StrikeCount <= 0)
+            {
+                PickupWeapon(WeaponType.BareFisted);
+            }
+        }
+    }
+
+    private void DamagePlayer(Player player)
+    {
+        switch (weaponType)
+        {
+            case WeaponType.BareFisted:
+                player.TakeDamage(stats.PunchDamage);
+                break;
+            case WeaponType.Bottle:
+                player.TakeDamage(stats.BottleDamage);
+                break;
+            case WeaponType.Bone:
+                player.TakeDamage(stats.BoneDamage);
+                break;
+            case WeaponType.Cigar:
+                player.TakeDamage(stats.CigarDamage);
+                break;
+            default:
+                break;
         }
     }
 

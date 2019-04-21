@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
-    //public IntValueCollection healthValues;
-    //public HealthSize healthSize = HealthSize.Small;
     public WeaponType weaponType;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
         {
-            Puncher[] punchers = other.gameObject.GetComponents<Puncher>();
+            Puncher[] punchers = other.gameObject.GetComponentsInChildren<Puncher>();
             foreach (Puncher puncher in punchers)
             {
                 if (puncher.side == Side.Right)
                 {
-                    puncher.weaponType = weaponType;
+                    puncher.PickupWeapon(weaponType);
                 }
             }
             Destroy(gameObject);
