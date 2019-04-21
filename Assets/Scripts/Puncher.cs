@@ -20,6 +20,33 @@ public class Puncher : MonoBehaviour
 
     public WeaponType weaponType = WeaponType.BareFisted;
     public int StrikeCount = 0;
+    public int FlingCount = 0;
+
+    private void Update()
+    {
+        if (isPunching && !isRecovering)
+        {
+            float travel = (Time.time - startTime) * stats.PunchSpeed;
+            float remainingTravel = travel / punchLength;
+            transform.localPosition = Vector3.Lerp(startPosition, endPosition, remainingTravel);
+            if (transform.localPosition == endPosition)
+            {
+                isRecovering = true;
+                startTime = Time.time;
+            }
+        }
+        else if (isRecovering)
+        {
+            float travel = (Time.time - startTime) * stats.PunchSpeed;
+            float remainingTravel = travel / punchLength;
+            transform.localPosition = Vector3.Lerp(endPosition, startPosition, remainingTravel);
+            if (transform.localPosition == startPosition)
+            {
+                isRecovering = false;
+                isPunching = false;
+            }
+        }
+    }
 
     public void Punch()
     {
@@ -46,6 +73,28 @@ public class Puncher : MonoBehaviour
                     break;
             }
             punchLength = Vector3.Distance(startPosition, endPosition);
+            UseFling();
+        }
+    }
+
+    private void DamagePlayer(Player player)
+    {
+        switch (weaponType)
+        {
+            case WeaponType.BareFisted:
+                player.TakeDamage(stats.PunchDamage);
+                break;
+            case WeaponType.Bottle:
+                player.TakeDamage(stats.BottleDamage);
+                break;
+            case WeaponType.Bone:
+                player.TakeDamage(stats.BoneDamage);
+                break;
+            case WeaponType.Cigar:
+                player.TakeDamage(stats.CigarDamage);
+                break;
+            default:
+                break;
         }
     }
 
@@ -66,7 +115,7 @@ public class Puncher : MonoBehaviour
                 StrikeCount = stats.BoneStrikes;
                 break;
             case WeaponType.Cigar:
-                StrikeCount = stats.CigarStrikes;
+                FlingCount = stats.CigarFlings;
                 break;
             default:
                 break;
@@ -104,54 +153,21 @@ public class Puncher : MonoBehaviour
             StrikeCount--;
             if (StrikeCount <= 0)
             {
+                StrikeCount = 0;
                 PickupWeapon(WeaponType.BareFisted);
             }
         }
     }
 
-    private void DamagePlayer(Player player)
+    private void UseFling()
     {
-        switch (weaponType)
+        if (weaponType == WeaponType.Cigar)
         {
-            case WeaponType.BareFisted:
-                player.TakeDamage(stats.PunchDamage);
-                break;
-            case WeaponType.Bottle:
-                player.TakeDamage(stats.BottleDamage);
-                break;
-            case WeaponType.Bone:
-                player.TakeDamage(stats.BoneDamage);
-                break;
-            case WeaponType.Cigar:
-                player.TakeDamage(stats.CigarDamage);
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void Update()
-    {
-        if (isPunching && !isRecovering)
-        {
-            float travel = (Time.time - startTime) * stats.PunchSpeed;
-            float remainingTravel = travel / punchLength;
-            transform.localPosition = Vector3.Lerp(startPosition, endPosition, remainingTravel);
-            if (transform.localPosition == endPosition)
+            FlingCount--;
+            if (FlingCount <= 0)
             {
-                isRecovering = true;
-                startTime = Time.time;
-            }
-        }
-        else if (isRecovering)
-        {
-            float travel = (Time.time - startTime) * stats.PunchSpeed;
-            float remainingTravel = travel / punchLength;
-            transform.localPosition = Vector3.Lerp(endPosition, startPosition, remainingTravel);
-            if (transform.localPosition == startPosition)
-            {
-                isRecovering = false;
-                isPunching = false;
+                FlingCount = 0;
+                PickupWeapon(WeaponType.BareFisted);
             }
         }
     }

@@ -20,5 +20,5 @@ public class PlayerStats : ScriptableObject
 
     public int CigarDamage;
     public float CigarReach;
-    public int CigarStrikes;
+    public int CigarFlings;
 }

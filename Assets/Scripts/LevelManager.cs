@@ -44,9 +44,11 @@ public class LevelManager : MonoBehaviour
                 rectCollection = FourWaySplit;
                 break;
         }
+
         PlayerSpawnPoints.LoadGameObjects();
         HealthSpawnPoints.LoadGameObjects();
         WeaponSpawnPoints.LoadGameObjects();
+
         LoadPlayers(NumberOfPlayers);
         LoadHealth(NumberOfHealths);
         LoadWeapon(NumberOfWeapons);
@@ -155,10 +157,16 @@ public class LevelManager : MonoBehaviour
 
             var spawnPoint = WeaponSpawnPoints.GetNextObject();
 
-            weaponPickup.weaponType = WeaponType.Bottle;
+            weaponPickup.weaponType = RandomWeaponType();
             weaponPickup.gameObject.transform.position = spawnPoint.transform.position;
             weaponPickup.gameObject.transform.position += Vector3.up * 0.3f;
         }
+    }
+
+    private WeaponType RandomWeaponType()
+    {
+        WeaponType result = WeaponType.Bone;
+        return result;
     }
 
     private void CheckForWinner()
