@@ -77,27 +77,6 @@ public class Puncher : MonoBehaviour
         }
     }
 
-    private void DamagePlayer(Player player)
-    {
-        switch (weaponType)
-        {
-            case WeaponType.BareFisted:
-                player.TakeDamage(stats.PunchDamage);
-                break;
-            case WeaponType.Bottle:
-                player.TakeDamage(stats.BottleDamage);
-                break;
-            case WeaponType.Bone:
-                player.TakeDamage(stats.BoneDamage);
-                break;
-            case WeaponType.Cigar:
-                player.TakeDamage(stats.CigarDamage);
-                break;
-            default:
-                break;
-        }
-    }
-
     public void PickupWeapon(WeaponType newWeapon)
     {
         weaponType = newWeapon;
@@ -106,7 +85,7 @@ public class Puncher : MonoBehaviour
         switch (weaponType)
         {
             case WeaponType.BareFisted:
-                StrikeCount = 1000000;
+                StrikeCount = 0;
                 break;
             case WeaponType.Bottle:
                 StrikeCount = stats.BottleStrikes;
@@ -125,7 +104,7 @@ public class Puncher : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Coll: " + other);
-        if (isPunching)
+        if (isPunching && !isRecovering)
         {
             UseStrike();
             if (other.gameObject.tag.Equals("Player")
@@ -143,6 +122,27 @@ public class Puncher : MonoBehaviour
                 hitSound.clip = objectHitClip;
                 hitSound.Play();
             }
+        }
+    }
+
+    private void DamagePlayer(Player player)
+    {
+        switch (weaponType)
+        {
+            case WeaponType.BareFisted:
+                player.TakeDamage(stats.PunchDamage);
+                break;
+            case WeaponType.Bottle:
+                player.TakeDamage(stats.BottleDamage);
+                break;
+            case WeaponType.Bone:
+                player.TakeDamage(stats.BoneDamage);
+                break;
+            case WeaponType.Cigar:
+                player.TakeDamage(stats.CigarDamage);
+                break;
+            default:
+                break;
         }
     }
 

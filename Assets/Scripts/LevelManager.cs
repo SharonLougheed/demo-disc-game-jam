@@ -29,7 +29,12 @@ public class LevelManager : MonoBehaviour
     public GameObject[] healthPickups;
     public GameObject[] weaponPickups;
 
-	public Sprite boneSprite, cigarSprite, bottleSprite;
+    public float timerNextWeapon;
+    public float timerNextHealth;
+    public float timeBetweenWeapons;
+    public float timeBetweenHealths;
+
+    public Sprite boneSprite, cigarSprite, bottleSprite;
 
     private void Awake()
     {
@@ -63,6 +68,30 @@ public class LevelManager : MonoBehaviour
             Application.Quit();
         }
         CheckForWinner();
+        CheckForHealthRespawn();
+        CheckForWeaponRespawn();
+    }
+
+    private void CheckForHealthRespawn()
+    {
+        if (Time.time >= timerNextHealth)
+        {
+            LoadHealth(NumberOfHealths);
+            timerNextHealth = Time.time + timeBetweenHealths;
+        }
+    }
+
+    private void CheckForWeaponRespawn()
+    {
+        if (Time.time >= timerNextWeapon)
+        {
+            foreach (GameObject weapon in weaponPickups)
+            {
+                Destroy(weapon);
+            }
+            LoadWeapon(NumberOfWeapons);
+            timerNextWeapon = Time.time + timeBetweenWeapons;
+        }
     }
 
     private void LoadPlayers(int numberOfPlayers)
@@ -144,25 +173,25 @@ public class LevelManager : MonoBehaviour
 
             healthPickup.gameObject.transform.position = spawnPoint.transform.position;
             healthPickup.gameObject.transform.position += Vector3.up * 0.3f;
-			//healthPickup.gameObject.transform.rotation = spawnPoint.transform.rotation;
+            //healthPickup.gameObject.transform.rotation = spawnPoint.transform.rotation;
 
-			SpriteRotator spriteRotator = healthPickups[i].GetComponentInChildren<SpriteRotator>();
-			if(spriteRotator != null)
-			{
-				if (players != null && players.Length != 0)
-				{
-					spriteRotator.allPlayers = players;
-				}
-				else
-				{
-					Debug.Log("Health pickup missing players.");
-				}
-			}
-			else
-			{
-				Debug.Log("Health pickup missing a sprite rotator.");
-			}
-		}
+            SpriteRotator spriteRotator = healthPickups[i].GetComponentInChildren<SpriteRotator>();
+            if (spriteRotator != null)
+            {
+                if (players != null && players.Length != 0)
+                {
+                    spriteRotator.allPlayers = players;
+                }
+                else
+                {
+                    Debug.Log("Health pickup missing players.");
+                }
+            }
+            else
+            {
+                Debug.Log("Health pickup missing a sprite rotator.");
+            }
+        }
     }
 
     private void LoadWeapon(int numberOfWeapons)
@@ -176,45 +205,47 @@ public class LevelManager : MonoBehaviour
 
             var spawnPoint = WeaponSpawnPoints.GetNextObject();
 
-            weaponPickup.weaponType = RandomWeaponType();
+            weaponPickup.weaponType = GetRandomEnum<WeaponType>();
             weaponPickup.gameObject.transform.position = spawnPoint.transform.position;
             weaponPickup.gameObject.transform.position += Vector3.up * 0.3f;
 
-			SpriteRotator spriteRotator = weaponPickups[i].GetComponentInChildren<SpriteRotator>();
-			if (spriteRotator != null)
-			{
-				if (players != null && players.Length != 0)
-				{
-					spriteRotator.allPlayers = players;
-					if(weaponPickup.weaponType == WeaponType.Cigar)
-					{
-						spriteRotator.spriteToChangeTo = cigarSprite;
-					}
-					else if (weaponPickup.weaponType == WeaponType.Bottle)
-					{
-						spriteRotator.spriteToChangeTo = bottleSprite; //A bottle of Sprite TM
-					}
-					else //Bone
-					{
-						spriteRotator.spriteToChangeTo = boneSprite;
-					}
-				}
-				else
-				{
-					Debug.Log("Weapon pickup missing players.");
-				}
-			}
-			else
-			{
-				Debug.Log("Weapon pickup missing a sprite rotator.");
-			}
-		}
+            SpriteRotator spriteRotator = weaponPickups[i].GetComponentInChildren<SpriteRotator>();
+            if (spriteRotator != null)
+            {
+                if (players != null && players.Length != 0)
+                {
+                    spriteRotator.allPlayers = players;
+                    if (weaponPickup.weaponType == WeaponType.Cigar)
+                    {
+                        spriteRotator.spriteToChangeTo = cigarSprite;
+                    }
+                    else if (weaponPickup.weaponType == WeaponType.Bottle)
+                    {
+                        spriteRotator.spriteToChangeTo = bottleSprite; //A bottle of Sprite TM
+                    }
+                    else //Bone
+                    {
+                        spriteRotator.spriteToChangeTo = boneSprite;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Weapon pickup missing players.");
+                }
+            }
+            else
+            {
+                Debug.Log("Weapon pickup missing a sprite rotator.");
+            }
+        }
     }
 
-    private WeaponType RandomWeaponType()
+    //https://forum.unity.com/threads/random-range-from-enum.121933/
+    static T GetRandomEnum<T>()
     {
-        WeaponType result = WeaponType.Bone;
-        return result;
+        System.Array A = System.Enum.GetValues(typeof(T));
+        T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
+        return V;
     }
 
     private void CheckForWinner()
@@ -239,7 +270,6 @@ public class LevelManager : MonoBehaviour
     {
         WinningPlayer = lastPlayer;
         lastPlayer.transform.position = Vector3.zero;
-        Debug.Log("last player position: " + lastPlayer.transform.position);
         isGameOver = true;
     }
 }
