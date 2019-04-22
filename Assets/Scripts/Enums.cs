@@ -7,3 +7,5 @@ public enum WeaponType { BareFisted, Bottle, Bone, Cigar }
 public enum SpawnType { Player, Health, Weapon }
 
 public enum SoundType { HealthPickup, WeaponPickup }
+
+public enum Controller { Normal = 0, DSOPArcade = 10 }

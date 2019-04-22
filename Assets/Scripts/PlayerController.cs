@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
         GroundPlayer();
     }
 
+    private int GetControllerNumber() => ControllerNumber + (int)Settings.ControllerGroup;
+
     private void GroundPlayer()
     {
         // Do this differently
@@ -41,11 +43,11 @@ public class PlayerController : MonoBehaviour
     private void CheckPunches()
     {
         var player = GetComponent<Player>();
-        if (Input.GetButtonDown("Left" + ControllerNumber))
+        if (Input.GetButtonDown("Left" + GetControllerNumber()))
         {
             player.leftHand.Punch();
         }
-        if (Input.GetButtonDown("Right" + ControllerNumber))
+        if (Input.GetButtonDown("Right" + GetControllerNumber()))
         {
             player.rightHand.Punch();
         }
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckForwardBack()
     {
-        float movementAmount = Input.GetAxis("Vertical" + ControllerNumber)
+        float movementAmount = Input.GetAxis("Vertical" + GetControllerNumber())
             * Settings.MovementSpeed
             * Time.deltaTime
             * (1 + (SpeedUpPercent / 100));
@@ -66,9 +68,9 @@ public class PlayerController : MonoBehaviour
 
     private void CheckTurnStrafe()
     {
-        if (Input.GetAxis("Strafe" + ControllerNumber) > 0)
+        if (Input.GetAxis("Strafe" + GetControllerNumber()) > 0)
         {
-            float strafeMovementAmount = Input.GetAxis("Horizontal" + ControllerNumber)
+            float strafeMovementAmount = Input.GetAxis("Horizontal" + GetControllerNumber())
                 * Settings.MovementSpeed
                 * Time.deltaTime
                 * (1 + (SpeedUpPercent / 100));
@@ -80,7 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            float rotationAmount = Input.GetAxis("Horizontal" + ControllerNumber)
+            float rotationAmount = Input.GetAxis("Horizontal" + GetControllerNumber())
                 * Settings.RotationSpeed
                 * Time.deltaTime
                 * (1 + (SpeedUpPercent / 100));
