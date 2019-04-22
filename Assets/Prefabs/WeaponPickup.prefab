@@ -344,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6923741345491490360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.38, y: 1, z: -2.36}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 7489545396124731109}
@@ -476,3 +476,4 @@ MonoBehaviour:
   - {fileID: 5358056941524548726}
   - {fileID: 637093332228974188}
   - {fileID: 4445082256375483049}
+  spriteToChangeTo: {fileID: 0}

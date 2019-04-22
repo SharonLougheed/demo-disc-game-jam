@@ -12,9 +12,12 @@ public class SpriteRotator : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		for(int i = 0; i < respectiveViewObjects.Length; i++)
+		if(spriteToChangeTo != null)
 		{
-			respectiveViewObjects[i].GetComponent<SpriteRenderer>().sprite = spriteToChangeTo;
+			for (int i = 0; i < respectiveViewObjects.Length; i++)
+			{
+				respectiveViewObjects[i].GetComponent<SpriteRenderer>().sprite = spriteToChangeTo;
+			}
 		}
 	}
 
