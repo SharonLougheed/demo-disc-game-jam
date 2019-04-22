@@ -6,13 +6,13 @@ public class Cigar : MonoBehaviour
 {
     public float speed;
     public PlayerStats stats;
+    private void Start()
+    {
+    }
+
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        if (transform.position.x > 500 || transform.position.y > 500 || transform.position.z > 500)
-        {
-            this.gameObject.SetActive(false);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,5 +32,6 @@ public class Cigar : MonoBehaviour
             //hitSound.Play();
         }
         this.gameObject.SetActive(false);
+        Destroy(this);
     }
 }

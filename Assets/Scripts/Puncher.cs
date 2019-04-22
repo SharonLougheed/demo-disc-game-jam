@@ -19,7 +19,8 @@ public class Puncher : MonoBehaviour
     private float punchLength;
 
     public WeaponType weaponType = WeaponType.BareFisted;
-    public Cigar cigarPrefab;
+    public GameObject cigar;
+    public GameObject cigarPrefab;
     public int StrikeCount = 0;
     public int FlingCount = 0;
 
@@ -69,7 +70,7 @@ public class Puncher : MonoBehaviour
                     break;
                 case WeaponType.Cigar:
                     //endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.CigarReach);
-                    cigarPrefab = Instantiate(cigarPrefab, transform.position, transform.rotation);
+                    cigar = Instantiate(cigarPrefab, transform.position, transform.rotation);
                     UseFling();
                     break;
                 default:

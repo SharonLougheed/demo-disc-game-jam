@@ -5,6 +5,12 @@ using UnityEngine;
 public class WeaponPickup : MonoBehaviour
 {
     public WeaponType weaponType;
+    public PickupSoundPlayer pickupSoundPlayer;
+
+    private void Awake()
+    {
+        pickupSoundPlayer = FindObjectOfType<PickupSoundPlayer>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,9 +22,14 @@ public class WeaponPickup : MonoBehaviour
                 if (puncher.side == Side.Right)
                 {
                     puncher.PickupWeapon(weaponType);
+
+                    if (pickupSoundPlayer != null)
+                    {
+                        pickupSoundPlayer.PlaySound(SoundType.WeaponPickup);
+                    }
                 }
             }
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 }
