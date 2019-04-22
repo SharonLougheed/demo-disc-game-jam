@@ -76,6 +76,10 @@ public class LevelManager : MonoBehaviour
     {
         if (Time.time >= timerNextHealth)
         {
+            foreach (GameObject health in healthPickups)
+            {
+                Destroy(health);
+            }
             LoadHealth(NumberOfHealths);
             timerNextHealth = Time.time + timeBetweenHealths;
         }
@@ -108,7 +112,6 @@ public class LevelManager : MonoBehaviour
             controller.ControllerNumber = i + 1;
 
             var cam = players[i].GetComponentInChildren<Camera>();
-            //cam.rect = new Rect(GetCordFromPlayerNumber(player.PlayerNumber), GetSizeFromNumberOfPlayers(numberOfPlayers));
             cam.rect = rectCollection.Rects[i];
 
             var spawnPoint = PlayerSpawnPoints.GetNextObject();
@@ -173,7 +176,6 @@ public class LevelManager : MonoBehaviour
 
             healthPickup.gameObject.transform.position = spawnPoint.transform.position;
             healthPickup.gameObject.transform.position += Vector3.up * 0.3f;
-            //healthPickup.gameObject.transform.rotation = spawnPoint.transform.rotation;
 
             SpriteRotator spriteRotator = healthPickups[i].GetComponentInChildren<SpriteRotator>();
             if (spriteRotator != null)
@@ -205,7 +207,7 @@ public class LevelManager : MonoBehaviour
 
             var spawnPoint = WeaponSpawnPoints.GetNextObject();
 
-            weaponPickup.weaponType = GetRandomEnum<WeaponType>();
+            weaponPickup.weaponType = GetRandomEnum<WeaponType>(1);
             weaponPickup.gameObject.transform.position = spawnPoint.transform.position;
             weaponPickup.gameObject.transform.position += Vector3.up * 0.3f;
 
@@ -241,10 +243,10 @@ public class LevelManager : MonoBehaviour
     }
 
     //https://forum.unity.com/threads/random-range-from-enum.121933/
-    static T GetRandomEnum<T>()
+    static T GetRandomEnum<T>(int startIndex = 0)
     {
         System.Array A = System.Enum.GetValues(typeof(T));
-        T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
+        T V = (T)A.GetValue(UnityEngine.Random.Range(startIndex, A.Length));
         return V;
     }
 

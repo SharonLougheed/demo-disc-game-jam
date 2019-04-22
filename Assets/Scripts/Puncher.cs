@@ -19,6 +19,7 @@ public class Puncher : MonoBehaviour
     private float punchLength;
 
     public WeaponType weaponType = WeaponType.BareFisted;
+    public Cigar cigarPrefab;
     public int StrikeCount = 0;
     public int FlingCount = 0;
 
@@ -67,13 +68,14 @@ public class Puncher : MonoBehaviour
                     endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.BoneReach);
                     break;
                 case WeaponType.Cigar:
-                    endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.CigarReach);
+                    //endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.CigarReach);
+                    cigarPrefab = Instantiate(cigarPrefab, transform.position, transform.rotation);
+                    UseFling();
                     break;
                 default:
                     break;
             }
             punchLength = Vector3.Distance(startPosition, endPosition);
-            UseFling();
         }
     }
 
@@ -103,7 +105,6 @@ public class Puncher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Coll: " + other);
         if (isPunching && !isRecovering)
         {
             UseStrike();

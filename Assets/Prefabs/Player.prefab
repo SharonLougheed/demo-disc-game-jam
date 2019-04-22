@@ -559,6 +559,11 @@ MonoBehaviour:
   side: 1
   playerHitClip: {fileID: 8300000, guid: f15ba63c4245aa14eb6356c37850a4ef, type: 3}
   objectHitClip: {fileID: 8300000, guid: 4ded8f82e55f54344bbf7109fced1a24, type: 3}
+  weaponType: 0
+  cigarPrefab: {fileID: 7188691559683149110, guid: 0c8f8019c51d2284192d3baa87d77677,
+    type: 3}
+  StrikeCount: 0
+  FlingCount: 0
 --- !u!82 &2760516749197796093
 AudioSource:
   m_ObjectHideFlags: 0
@@ -765,6 +770,11 @@ MonoBehaviour:
   side: 2
   playerHitClip: {fileID: 8300000, guid: 143f8f97a0e8c734ab31ddeaadf65b96, type: 3}
   objectHitClip: {fileID: 8300000, guid: d7cbdb53e741022439573b75c3926f25, type: 3}
+  weaponType: 0
+  cigarPrefab: {fileID: 7188691559683149110, guid: 0c8f8019c51d2284192d3baa87d77677,
+    type: 3}
+  StrikeCount: 0
+  FlingCount: 0
 --- !u!82 &8444562713011705052
 AudioSource:
   m_ObjectHideFlags: 0
