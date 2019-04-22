@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 517714573}
-  ToGame: 
+  ToGame: Main
   ToMainMenu: 
   ToTutorial: 
   Buttons: []
