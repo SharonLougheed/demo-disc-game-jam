@@ -25,7 +25,14 @@ public class WeaponPickup : MonoBehaviour
 
                     if (pickupSoundPlayer != null)
                     {
-                        pickupSoundPlayer.PlaySound(SoundType.WeaponPickup);
+						if (weaponType.Equals(WeaponType.Bottle))
+						{
+							pickupSoundPlayer.PlaySound(SoundType.BottlePickup);
+						}
+						else
+						{
+							pickupSoundPlayer.PlaySound(SoundType.WeaponPickup);
+						}
                     }
                 }
             }

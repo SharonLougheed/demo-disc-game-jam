@@ -7,8 +7,9 @@ public class PickupSoundPlayer : MonoBehaviour
     // Change to dictionary
     public AudioClip healthPickupClip;
     public AudioClip weaponPickupClip;
+	public AudioClip bottlePickupClip;
 
-    public void PlaySound(SoundType soundType)
+	public void PlaySound(SoundType soundType)
     {
         var sound = GetComponent<AudioSource>();
         switch (soundType)
@@ -19,7 +20,10 @@ public class PickupSoundPlayer : MonoBehaviour
             case SoundType.WeaponPickup:
                 sound.clip = weaponPickupClip;
                 break;
-            default:
+			case SoundType.BottlePickup:
+				sound.clip = bottlePickupClip;
+				break;
+			default:
                 //SILENCE!!
                 return;
         }
