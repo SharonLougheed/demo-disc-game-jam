@@ -24,6 +24,9 @@ public class Puncher : MonoBehaviour
     public int StrikeCount = 0;
     public int FlingCount = 0;
 
+	public UserInterface userInterface;
+	public GameObject[] players; //Set for cigar by player, probably a better way, but too tired
+
     private void Update()
     {
         if (isPunching && !isRecovering)
@@ -71,6 +74,7 @@ public class Puncher : MonoBehaviour
                 case WeaponType.Cigar:
                     //endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.CigarReach);
                     cigar = Instantiate(cigarPrefab, transform.position, transform.rotation);
+					cigar.GetComponentInChildren<SpriteRotator>().allPlayers = players;
                     UseFling();
                     break;
                 default:
@@ -102,6 +106,8 @@ public class Puncher : MonoBehaviour
             default:
                 break;
         }
+
+		userInterface.ChangeWeaponImage(weaponType);
     }
 
     private void OnTriggerEnter(Collider other)

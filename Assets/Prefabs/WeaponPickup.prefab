@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
+  pickupSoundPlayer: {fileID: 0}
 --- !u!1 &9004226470222862413
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +450,7 @@ Transform:
   m_GameObject: {fileID: 9004226470222862413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children:
   - {fileID: 6950116862569381636}
   - {fileID: 2418354596240276030}
