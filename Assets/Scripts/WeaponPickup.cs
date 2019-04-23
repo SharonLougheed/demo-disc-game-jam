@@ -14,7 +14,7 @@ public class WeaponPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Player"))
+        if (other.tag.Equals("Player") && !weaponType.Equals(WeaponType.BareFisted))
         {
             Puncher[] punchers = other.gameObject.GetComponentsInChildren<Puncher>();
             foreach (Puncher puncher in punchers)
@@ -25,18 +25,18 @@ public class WeaponPickup : MonoBehaviour
 
                     if (pickupSoundPlayer != null)
                     {
-						if (weaponType.Equals(WeaponType.Bottle))
-						{
-							pickupSoundPlayer.PlaySound(SoundType.BottlePickup);
-						}
-						else
-						{
-							pickupSoundPlayer.PlaySound(SoundType.WeaponPickup);
-						}
+                        if (weaponType.Equals(WeaponType.Bottle))
+                        {
+                            pickupSoundPlayer.PlaySound(SoundType.BottlePickup);
+                        }
+                        else
+                        {
+                            pickupSoundPlayer.PlaySound(SoundType.WeaponPickup);
+                        }
                     }
                 }
             }
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

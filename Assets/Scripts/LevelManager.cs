@@ -34,17 +34,17 @@ public class LevelManager : MonoBehaviour
     public float timeBetweenWeapons;
     public float timeBetweenHealths;
 
-	public Sprite boneSprite;
-	public Sprite cigarSprite;
-	public Sprite bottleSprite;
+    public Sprite boneSprite;
+    public Sprite cigarSprite;
+    public Sprite bottleSprite;
 
-	public Color[] playerColors;
+    public Color[] playerColors;
 
-	public GameObject uiCanvas;
-	public GameObject[] userInterfaces;
-	public GameObject uiPrefab;
+    public GameObject uiCanvas;
+    public GameObject[] userInterfaces;
+    public GameObject uiPrefab;
 
-	private void Awake()
+    private void Awake()
     {
         isGameOver = false;
         switch (NumberOfPlayers)
@@ -129,7 +129,7 @@ public class LevelManager : MonoBehaviour
         }
 
         SetupPlayerRenderers();
-		SetupUserInterfaces();
+        SetupUserInterfaces();
     }
 
     private void SetupPlayerRenderers()
@@ -147,15 +147,15 @@ public class LevelManager : MonoBehaviour
             pRenderer.allPlayers = players; //This is why players is public, faster than passing in copies
 
 
-			//Set color
-			if (playerColors != null)
-			{
-				pRenderer.useColorFromParentMaterial = false;
-				pRenderer.colorToApplyToSprites = playerColors[i];
-			}
+            //Set color
+            if (playerColors != null)
+            {
+                pRenderer.useColorFromParentMaterial = false;
+                pRenderer.colorToApplyToSprites = playerColors[i];
+            }
 
-			//Disable mesh renderer if present
-			var meshRenderer = players[i].GetComponent<MeshRenderer>();
+            //Disable mesh renderer if present
+            var meshRenderer = players[i].GetComponent<MeshRenderer>();
             if (meshRenderer != null)
             {
                 meshRenderer.enabled = false;
@@ -180,24 +180,24 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-	private void SetupUserInterfaces()
-	{
-		userInterfaces = new GameObject[players.Length];
-		for (int i = 0; i < players.Length; i++)
-		{
-			userInterfaces[i] = Instantiate(uiPrefab);
-			userInterfaces[i].transform.SetParent(uiCanvas.transform);
-			RectTransform rt = userInterfaces[i].GetComponent<RectTransform>();
-			rt.offsetMin = Vector2.zero;
-			rt.offsetMax = Vector2.zero;
-			rt.localScale = new Vector3(rectCollection.Rects[i].width, rectCollection.Rects[i].height, 1f);
-			rt.anchorMin = new Vector2(rectCollection.Rects[i].xMin, rectCollection.Rects[i].yMin);
-			rt.anchorMax = new Vector2(rectCollection.Rects[i].xMax, rectCollection.Rects[i].yMax);
-			Player p = players[i].GetComponent<Player>();
-			p.userInterface = userInterfaces[i].GetComponent<UserInterface>();
-			p.SetUserInterface();
-		}
-	}
+    private void SetupUserInterfaces()
+    {
+        userInterfaces = new GameObject[players.Length];
+        for (int i = 0; i < players.Length; i++)
+        {
+            userInterfaces[i] = Instantiate(uiPrefab);
+            userInterfaces[i].transform.SetParent(uiCanvas.transform);
+            RectTransform rt = userInterfaces[i].GetComponent<RectTransform>();
+            rt.offsetMin = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
+            rt.localScale = new Vector3(rectCollection.Rects[i].width, rectCollection.Rects[i].height, 1f);
+            rt.anchorMin = new Vector2(rectCollection.Rects[i].xMin, rectCollection.Rects[i].yMin);
+            rt.anchorMax = new Vector2(rectCollection.Rects[i].xMax, rectCollection.Rects[i].yMax);
+            Player p = players[i].GetComponent<Player>();
+            p.userInterface = userInterfaces[i].GetComponent<UserInterface>();
+            p.SetUserInterface();
+        }
+    }
 
     private void LoadHealth(int numberOfHealths)
     {
