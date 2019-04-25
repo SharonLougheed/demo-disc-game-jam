@@ -9,3 +9,5 @@ public enum SpawnType { Player, Health, Weapon }
 public enum SoundType { HealthPickup, WeaponPickup, BottlePickup }
 
 public enum Controller { Normal = 0, DSOPArcade = 10 }
+
+public enum WeaponMode { All, CigarOnly }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public WeaponMode weaponMode = WeaponMode.All;
     public bool isGameOver;
     public Player WinningPlayer;
     public GameObject PlayerPrefab;
@@ -247,13 +248,24 @@ public class LevelManager : MonoBehaviour
 
             var spawnPoint = WeaponSpawnPoints.GetNextObject();
 
-            if (i == rndInt)
+            //Refactor
+            switch (weaponMode)
             {
-                weaponPickup.weaponType = WeaponType.Cigar;
-            }
-            else
-            {
-                weaponPickup.weaponType = GetRandomEnum<WeaponType>(2);
+                case WeaponMode.All:
+                    if (i == rndInt)
+                    {
+                        weaponPickup.weaponType = WeaponType.Cigar;
+                    }
+                    else
+                    {
+                        weaponPickup.weaponType = GetRandomEnum<WeaponType>(2);
+                    }
+                    break;
+                case WeaponMode.CigarOnly:
+                    weaponPickup.weaponType = WeaponType.Cigar;
+                    break;
+                default:
+                    break;
             }
 
             weaponPickup.gameObject.transform.position = spawnPoint.transform.position;
