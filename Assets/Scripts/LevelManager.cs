@@ -235,6 +235,10 @@ public class LevelManager : MonoBehaviour
     private void LoadWeapon(int numberOfWeapons)
     {
         weaponPickups = new GameObject[numberOfWeapons];
+
+        System.Random rnd = new System.Random();
+        int rndInt = rnd.Next(0, numberOfWeapons);
+
         for (int i = 0; i < numberOfWeapons; i++)
         {
             weaponPickups[i] = Instantiate(WeaponPickupPrefab, new Vector3(i * 2, 1, i), Quaternion.identity);
@@ -243,7 +247,15 @@ public class LevelManager : MonoBehaviour
 
             var spawnPoint = WeaponSpawnPoints.GetNextObject();
 
-            weaponPickup.weaponType = GetRandomEnum<WeaponType>(1);
+            if (i == rndInt)
+            {
+                weaponPickup.weaponType = WeaponType.Cigar;
+            }
+            else
+            {
+                weaponPickup.weaponType = GetRandomEnum<WeaponType>(2);
+            }
+
             weaponPickup.gameObject.transform.position = spawnPoint.transform.position;
             weaponPickup.gameObject.transform.position += Vector3.up * 0.3f;
 

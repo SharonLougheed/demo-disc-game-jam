@@ -21,6 +21,6 @@ MonoBehaviour:
   BoneDamage: 15
   BoneReach: 1.4
   BoneStrikes: 10
-  CigarDamage: 30
+  CigarDamage: 1000
   CigarReach: 10
   CigarFlings: 1

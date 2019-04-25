@@ -2,7 +2,7 @@
 
 public enum HealthSize { Small = 0, Medium, Large, Full }
 
-public enum WeaponType { BareFisted, Bottle, Bone, Cigar }
+public enum WeaponType { BareFisted, Cigar, Bottle, Bone }
 
 public enum SpawnType { Player, Health, Weapon }
 
