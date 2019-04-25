@@ -3759,6 +3759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd965bf400ec72498b3bbd88ed2ef7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponMode: 0
   isGameOver: 0
   WinningPlayer: {fileID: 0}
   PlayerPrefab: {fileID: 2250085108596385965, guid: a09f757f4b524b64cb2f338e2e2fef92,
