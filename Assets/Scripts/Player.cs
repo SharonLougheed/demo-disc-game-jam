@@ -40,6 +40,13 @@ public class Player : MonoBehaviour
         rightHand.players = playerRenderer.allPlayers;
     }
 
+    private void Update()
+    {
+        if (playerNumber == 2)
+        {
+            Debug.Log("Player Pos: " + transform.position + " | Frame: " + Time.frameCount);
+        }
+    }
     public void SetLives()
     {
         Lives = defaults.StartLives;
@@ -141,8 +148,8 @@ public class Player : MonoBehaviour
 
         var levelManager = FindObjectOfType<LevelManager>();
         var spawnPoint = levelManager.NextPlayerSpawnPoint();
-        transform.position = spawnPoint.transform.position;
-        transform.rotation = spawnPoint.transform.rotation;
+        var playerController = GetComponent<PlayerController>();
+        playerController.SetNewPositionRotation(spawnPoint.transform.position, spawnPoint.transform.rotation);
 
         SetHealth();
         Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);

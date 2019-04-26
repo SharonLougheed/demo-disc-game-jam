@@ -90,4 +90,12 @@ public class PlayerController : MonoBehaviour
             gameObject.transform.Rotate(new Vector3(0f, rotationAmount));
         }
     }
+
+    public void SetNewPositionRotation(Vector3 newPosition, Quaternion newRotation)
+    {
+        CharController.enabled = false;
+        transform.position = newPosition;
+        transform.rotation = newRotation;
+        CharController.enabled = true;
+    }
 }
