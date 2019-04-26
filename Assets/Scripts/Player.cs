@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
         {
             playerNumber = value;
             SetHealth();
+            SetLives();
         }
     }
 
@@ -37,6 +38,11 @@ public class Player : MonoBehaviour
         //Not set yet, but they're all referencing the same thing
         leftHand.players = playerRenderer.allPlayers;
         rightHand.players = playerRenderer.allPlayers;
+    }
+
+    public void SetLives()
+    {
+        Lives = defaults.StartLives;
     }
 
     public void SetHealth()
@@ -138,7 +144,7 @@ public class Player : MonoBehaviour
         transform.position = spawnPoint.transform.position;
         transform.rotation = spawnPoint.transform.rotation;
 
-        health.Value = defaults.StartHealth;
+        SetHealth();
         Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
     }
 }
