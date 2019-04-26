@@ -70,6 +70,8 @@ public class LevelManager : MonoBehaviour
         LoadWeapon(NumberOfWeapons);
     }
 
+    public GameObject NextPlayerSpawnPoint() => PlayerSpawnPoints.GetNextObject();
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

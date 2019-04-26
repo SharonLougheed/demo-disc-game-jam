@@ -414,6 +414,7 @@ MonoBehaviour:
   HealthData: {fileID: 11400000, guid: e6135153a1388fa4188f28ac7bb38e82, type: 2}
   health: {fileID: 5423555260779540634}
   IsAlive: 1
+  Lives: 5
   leftHand: {fileID: 2250085108887142821}
   rightHand: {fileID: 2250085109946021413}
   playerRenderer: {fileID: 711626558351126199}
@@ -568,6 +569,7 @@ MonoBehaviour:
   StrikeCount: 0
   FlingCount: 0
   userInterface: {fileID: 0}
+  players: []
 --- !u!82 &2760516749197796093
 AudioSource:
   m_ObjectHideFlags: 0
@@ -781,6 +783,7 @@ MonoBehaviour:
   StrikeCount: 0
   FlingCount: 0
   userInterface: {fileID: 0}
+  players: []
 --- !u!82 &8444562713011705052
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,25 +10,22 @@ public class TempWin : MonoBehaviour
     public GameObject GameOverCanvas;
     public Text GameOverText;
     public Camera cam;
-    private LevelManager lm;
+    private LevelManager levelManager;
 
-    // Start is called before the first frame update
     void Awake()
     {
         //Temp win overlay
         GameOverCanvas.SetActive(false);
-        lm = FindObjectOfType<LevelManager>();
-
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lm.isGameOver)
+        if (levelManager.isGameOver)
         {
-            GameOver(lm.WinningPlayer);
+            GameOver(levelManager.WinningPlayer);
         }
-
     }
 
     private void GameOver(Player lastPlayer)

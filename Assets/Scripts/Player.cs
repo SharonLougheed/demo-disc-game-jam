@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
         set
         {
             playerNumber = value;
-			SetHealth();
+            SetHealth();
         }
     }
 
@@ -20,24 +20,24 @@ public class Player : MonoBehaviour
     public IntHealthDict HealthData;
     public Health health;
     public bool IsAlive;
+    public int Lives;
 
     public Puncher leftHand;
     public Puncher rightHand;
-	public PlayerRenderer playerRenderer;
-	public UserInterface userInterface;
-	public GameObject dropOnDeathPrefab;
+    public PlayerRenderer playerRenderer;
+    public UserInterface userInterface;
+    public GameObject dropOnDeathPrefab;
 
     private Color originalColor;
 
-
-	public void Awake()
+    public void Awake()
     {
         originalColor = GetComponent<Renderer>().material.color;
 
-		//Not set yet, but they're all referencing the same thing
-		leftHand.players = playerRenderer.allPlayers;
-		rightHand.players = playerRenderer.allPlayers;
-	}
+        //Not set yet, but they're all referencing the same thing
+        leftHand.players = playerRenderer.allPlayers;
+        rightHand.players = playerRenderer.allPlayers;
+    }
 
     public void SetHealth()
     {
@@ -46,56 +46,62 @@ public class Player : MonoBehaviour
         health.MaxValue = defaults.MaxHealth;
         health.MinValue = defaults.MinHealth;
         health.Value = defaults.StartHealth;
-	}
+    }
 
-	public void GiveHeath(int amount)
-	{
-		health.Increase(amount);
-		userInterface.healthText.text = "Health: " + health.Value;
-	}
+    public void GiveHeath(int amount)
+    {
+        health.Increase(amount);
+        userInterface.healthText.text = "Health: " + health.Value;
+    }
 
     public void TakeDamage(int amount)
     {
         health.Decrease(amount);
-		StartCoroutine(FlashPlayer());
+        StartCoroutine(FlashPlayer());
 
         // Rock camera back
 
         Debug.Log("Player " + PlayerNumber + " has health: " + HealthData.Entry[PlayerNumber].Value);
 
         if (health.Value <= defaults.MinHealth)
-		{
-
-			userInterface.healthText.text = "x_x";
-			Kill();
+        {
+            Lives--;
+            if (Lives > 0)
+            {
+                Respawn();
+            }
+            else
+            {
+                Kill();
+            }
         }
-		else
-		{
-			userInterface.healthText.text = "Health: " + health.Value;
-		}
+        else
+        {
+            userInterface.healthText.text = "Health: " + health.Value;
+        }
     }
 
-	public void SetUserInterface()
-	{
-		userInterface.healthText.text = "Health: " + health.Value;
-		leftHand.userInterface = userInterface;
-		rightHand.userInterface = userInterface;
-	}
-
-	public IEnumerator FlashPlayer()
+    public void SetUserInterface()
     {
-		if (playerRenderer == null)
-		{
-			GetComponent<Renderer>().material.color = Color.magenta;
+        userInterface.healthText.text = "Health: " + health.Value;
+        leftHand.userInterface = userInterface;
+        rightHand.userInterface = userInterface;
+    }
 
-			yield return new WaitForSecondsRealtime(0.1f);
+    public IEnumerator FlashPlayer()
+    {
+        if (playerRenderer == null)
+        {
+            GetComponent<Renderer>().material.color = Color.magenta;
 
-			GetComponent<Renderer>().material.color = originalColor;
-		}
-		else
-		{
-			playerRenderer.FlashPlayer();
-		}
+            yield return new WaitForSecondsRealtime(0.1f);
+
+            GetComponent<Renderer>().material.color = originalColor;
+        }
+        else
+        {
+            playerRenderer.FlashPlayer();
+        }
     }
 
     public void Kill()
@@ -103,16 +109,36 @@ public class Player : MonoBehaviour
         // Take away all health here in case of insta-death
         health.Value = health.MinValue;
         IsAlive = false;
+        userInterface.healthText.text = "x_x";
 
-		if(dropOnDeathPrefab != null)
-		{
-			GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
-			drop.transform.position = transform.position;
-			drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
-		}
+        //if (dropOnDeathPrefab != null)
+        //{
+        //    GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
+        //    drop.transform.position = transform.position;
+        //    drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
+        //}
 
-		// Destroy for now : We will want to leave the corpses
-		Destroy(gameObject);
-        gameObject.SetActive(false);
+        // Destroy for now : We will want to leave the corpses
+        Destroy(gameObject);
+        //gameObject.SetActive(false);
+    }
+
+    private void Respawn()
+    {
+
+        if (dropOnDeathPrefab != null)
+        {
+            GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
+            drop.transform.position = transform.position;
+            drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
+        }
+
+        var levelManager = FindObjectOfType<LevelManager>();
+        var spawnPoint = levelManager.NextPlayerSpawnPoint();
+        transform.position = spawnPoint.transform.position;
+        transform.rotation = spawnPoint.transform.rotation;
+
+        health.Value = defaults.StartHealth;
+        Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
     }
 }

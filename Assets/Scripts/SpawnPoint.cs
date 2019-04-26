@@ -9,7 +9,7 @@ public class SpawnPoint : MonoBehaviour
     public float GroundLevel = 0.5f;
     public SpawnType spawnType = SpawnType.Player;
 
-    private void Update()
+    private void Awake()
     {
         if (transform.position.y != GroundLevel)
         {
