@@ -193,7 +193,7 @@ public class LevelManager : MonoBehaviour
             RectTransform rt = userInterfaces[i].GetComponent<RectTransform>();
             rt.offsetMin = Vector2.zero;
             rt.offsetMax = Vector2.zero;
-            rt.localScale = new Vector3(rectCollection.Rects[i].width, rectCollection.Rects[i].height, 1f);
+            //rt.localScale = new Vector3(rectCollection.Rects[i].width, rectCollection.Rects[i].height, 1f);
             rt.anchorMin = new Vector2(rectCollection.Rects[i].xMin, rectCollection.Rects[i].yMin);
             rt.anchorMax = new Vector2(rectCollection.Rects[i].xMax, rectCollection.Rects[i].yMax);
             Player p = players[i].GetComponent<Player>();
