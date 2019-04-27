@@ -45,8 +45,17 @@ public class LevelManager : MonoBehaviour
     public GameObject[] userInterfaces;
     public GameObject uiPrefab;
 
+	public bool lowResolution = false;
+	public GameObject mainCameraForLowRes;
+	public GameObject lowResTexture;
+
     private void Awake()
     {
+		if(mainCameraForLowRes != null && lowResTexture != null)
+		{
+			mainCameraForLowRes.SetActive(lowResolution);
+			lowResTexture.SetActive(lowResolution);
+		}
         isGameOver = false;
         switch (NumberOfPlayers)
         {
@@ -168,7 +177,7 @@ public class LevelManager : MonoBehaviour
             //Turn on the view layer for this player
             var camera = players[i].GetComponentInChildren<Camera>();
             camera.cullingMask = -1; //Show Everything
-                                     //Hide other player views
+			//Hide other player views
             for (int j = 0; j < players.Length; j++)
             {
                 //If not this player
@@ -178,6 +187,11 @@ public class LevelManager : MonoBehaviour
                     camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Player" + (j + 1) + "View"));
                 }
             }
+			//If not low resolution, don't send through a render texture
+			if (!lowResolution)
+			{
+				camera.targetTexture = null;
+			}
 
             pRenderer.Setup(); //Stuff it woulda called in Start
         }
