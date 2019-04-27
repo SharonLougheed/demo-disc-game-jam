@@ -563,6 +563,13 @@ MonoBehaviour:
   side: 1
   playerHitClip: {fileID: 8300000, guid: f15ba63c4245aa14eb6356c37850a4ef, type: 3}
   objectHitClip: {fileID: 8300000, guid: 4ded8f82e55f54344bbf7109fced1a24, type: 3}
+  sfxPunch1: {fileID: 8300000, guid: f15ba63c4245aa14eb6356c37850a4ef, type: 3}
+  sfxPunch2: {fileID: 8300000, guid: 143f8f97a0e8c734ab31ddeaadf65b96, type: 3}
+  sfxPunch3: {fileID: 8300000, guid: 6c2c5f5591c9c2f409b98935e2ce2f41, type: 3}
+  sfxSqueak: {fileID: 8300000, guid: b87a4b431e3e6df4e94699f769b2629b, type: 3}
+  sfxStab1: {fileID: 8300000, guid: 53eb239692872794296b5f7358e2b6a9, type: 3}
+  sfxStab2: {fileID: 8300000, guid: 972232b3b99317d49886b3ec5b2fceff, type: 3}
+  sfxFlick: {fileID: 8300000, guid: 981d07035943cc54f861fa1ccc2d49be, type: 3}
   weaponType: 0
   cigar: {fileID: 0}
   cigarPrefab: {fileID: 0}
@@ -776,6 +783,13 @@ MonoBehaviour:
   side: 2
   playerHitClip: {fileID: 8300000, guid: 143f8f97a0e8c734ab31ddeaadf65b96, type: 3}
   objectHitClip: {fileID: 8300000, guid: d7cbdb53e741022439573b75c3926f25, type: 3}
+  sfxPunch1: {fileID: 8300000, guid: f15ba63c4245aa14eb6356c37850a4ef, type: 3}
+  sfxPunch2: {fileID: 8300000, guid: 143f8f97a0e8c734ab31ddeaadf65b96, type: 3}
+  sfxPunch3: {fileID: 8300000, guid: 6c2c5f5591c9c2f409b98935e2ce2f41, type: 3}
+  sfxSqueak: {fileID: 8300000, guid: b87a4b431e3e6df4e94699f769b2629b, type: 3}
+  sfxStab1: {fileID: 8300000, guid: 53eb239692872794296b5f7358e2b6a9, type: 3}
+  sfxStab2: {fileID: 8300000, guid: 972232b3b99317d49886b3ec5b2fceff, type: 3}
+  sfxFlick: {fileID: 8300000, guid: 981d07035943cc54f861fa1ccc2d49be, type: 3}
   weaponType: 0
   cigar: {fileID: 0}
   cigarPrefab: {fileID: 7188691559683149111, guid: ba8cee5c06c3930498dc367341dd177d,

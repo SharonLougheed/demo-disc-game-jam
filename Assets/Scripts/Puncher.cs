@@ -18,6 +18,17 @@ public class Puncher : MonoBehaviour
     private float startTime;
     private float punchLength;
 
+    public AudioClip sfxPunch1;
+    public AudioClip sfxPunch2;
+    public AudioClip sfxPunch3;
+
+    public AudioClip sfxSqueak;
+
+    public AudioClip sfxStab1;
+    public AudioClip sfxStab2;
+
+    public AudioClip sfxFlick;
+
     public WeaponType weaponType = WeaponType.BareFisted;
     public GameObject cigar;
     public GameObject cigarPrefab;
@@ -121,7 +132,50 @@ public class Puncher : MonoBehaviour
                 Player player = other.gameObject.GetComponent<Player>();
                 DamagePlayer(player);
                 var hitSound = GetComponent<AudioSource>();
+
                 hitSound.clip = playerHitClip;
+
+                switch (weaponType)
+                {
+                    case WeaponType.BareFisted:
+                        switch(UnityEngine.Random.Range(0,3))
+                        {
+                            case 0:
+                                hitSound.clip = sfxPunch1;
+                                break;
+
+                            case 1:
+                                hitSound.clip = sfxPunch2;
+                                break;
+
+                            case 2:
+                                hitSound.clip = sfxPunch3;
+                                break;
+                        }
+                        break;
+
+                    case WeaponType.Bone:
+                        hitSound.clip = sfxSqueak;
+                        break;
+
+                    case WeaponType.Bottle:
+                        switch (UnityEngine.Random.Range(0, 3))
+                        {
+                            case 0:
+                                hitSound.clip = sfxStab1;
+                                break;
+
+                            case 1:
+                                hitSound.clip = sfxStab1;
+                                break;
+
+                            case 2:
+                                hitSound.clip = sfxStab2;
+                                break;
+                        }
+                        break;
+                }
+
                 hitSound.Play();
             }
             else
@@ -177,6 +231,8 @@ public class Puncher : MonoBehaviour
                 FlingCount = 0;
                 PickupWeapon(WeaponType.BareFisted);
             }
+
+            GetComponent<AudioSource>().PlayOneShot(sfxFlick);
         }
     }
 }
