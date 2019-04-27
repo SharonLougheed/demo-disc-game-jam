@@ -7404,7 +7404,7 @@ MonoBehaviour:
   uiPrefab: {fileID: 6976110962416767938, guid: 30f4e1850296cb343a45d726227f2720,
     type: 3}
   lowResolution: 1
-  mainCameraForLowRes: {fileID: 516271003}
+  mainCameraForLowRes: {fileID: 1026908942}
   lowResTexture: {fileID: 1614768716}
 --- !u!4 &516271005
 Transform:
