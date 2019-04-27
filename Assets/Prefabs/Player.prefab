@@ -778,7 +778,7 @@ MonoBehaviour:
   objectHitClip: {fileID: 8300000, guid: d7cbdb53e741022439573b75c3926f25, type: 3}
   weaponType: 0
   cigar: {fileID: 0}
-  cigarPrefab: {fileID: 7188691559683149111, guid: 0c8f8019c51d2284192d3baa87d77677,
+  cigarPrefab: {fileID: 7188691559683149111, guid: ba8cee5c06c3930498dc367341dd177d,
     type: 3}
   StrikeCount: 0
   FlingCount: 0
