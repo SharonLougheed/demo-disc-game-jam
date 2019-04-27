@@ -125,7 +125,6 @@ public class Puncher : MonoBehaviour
     {
         if (isPunching && !isRecovering)
         {
-            UseStrike();
             if (other.gameObject.tag.Equals("Player")
                 & !gameObject.transform.parent.gameObject.Equals(other.gameObject))
             {
@@ -184,6 +183,8 @@ public class Puncher : MonoBehaviour
                 hitSound.clip = objectHitClip;
                 hitSound.Play();
             }
+
+            UseStrike();
         }
     }
 
