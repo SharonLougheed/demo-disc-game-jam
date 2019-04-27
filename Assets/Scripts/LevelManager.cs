@@ -262,6 +262,8 @@ public class LevelManager : MonoBehaviour
 
             var weaponPickup = weaponPickups[i].GetComponent<WeaponPickup>();
 
+            GameObject lilPuffPuff = weaponPickup.transform.FindChild("SpriteRenderer").FindChild("LilPuffPuff").gameObject;
+
             var spawnPoint = WeaponSpawnPoints.GetNextObject();
 
             //Refactor
@@ -271,14 +273,17 @@ public class LevelManager : MonoBehaviour
                     if (i == rndInt)
                     {
                         weaponPickup.weaponType = WeaponType.Cigar;
+                        lilPuffPuff.SetActive(true);
                     }
                     else
                     {
                         weaponPickup.weaponType = GetRandomEnum<WeaponType>(2);
+                        lilPuffPuff.SetActive(false);
                     }
                     break;
                 case WeaponMode.CigarOnly:
                     weaponPickup.weaponType = WeaponType.Cigar;
+                    lilPuffPuff.SetActive(true);
                     break;
                 default:
                     break;
