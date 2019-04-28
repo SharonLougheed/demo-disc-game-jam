@@ -142,6 +142,7 @@ public class LevelManager : MonoBehaviour
 
         SetupPlayerRenderers();
         SetupUserInterfaces();
+		SetupEnvironmentSpriteRotators();
     }
 
     private void SetupPlayerRenderers()
@@ -215,8 +216,16 @@ public class LevelManager : MonoBehaviour
             p.SetUserInterface();
         }
     }
+	private void SetupEnvironmentSpriteRotators()
+	{
+		SpriteRotator[] environmentSpriteRotators = FindObjectsOfType<SpriteRotator>();
+		for (int i = 0; i < environmentSpriteRotators.Length; i++)
+		{
+			environmentSpriteRotators[i].allPlayers = players;
+		}
+	}
 
-    private void LoadHealth(int numberOfHealths)
+	private void LoadHealth(int numberOfHealths)
     {
         healthPickups = new GameObject[numberOfHealths];
         for (int i = 0; i < numberOfHealths; i++)
