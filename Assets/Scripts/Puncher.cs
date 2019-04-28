@@ -126,7 +126,7 @@ public class Puncher : MonoBehaviour
         if (isPunching && !isRecovering)
         {
             if (other.gameObject.tag.Equals("Player")
-                & !gameObject.transform.parent.gameObject.Equals(other.gameObject))
+                && !gameObject.transform.parent.gameObject.Equals(other.gameObject))
             {
                 Player player = other.gameObject.GetComponent<Player>();
                 if (player.IsAlive)
@@ -180,7 +180,12 @@ public class Puncher : MonoBehaviour
                     hitSound.Play();
                 }
             }
-            else
+            else if(other.gameObject.tag.Equals("BOOMHOOCH"))
+            {
+                BoomHoochActivate killSwitch = other.gameObject.GetComponent<BoomHoochActivate>();
+                killSwitch.GoBoomBoom();
+            }
+           else
             {
                 var hitSound = GetComponent<AudioSource>();
                 hitSound.clip = objectHitClip;

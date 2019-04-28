@@ -25,5 +25,11 @@ public class Cigar : MonoBehaviour
             this.gameObject.SetActive(false);
             Destroy(this);
         }
+
+        if (other.gameObject.tag.Equals("BOOMHOOCH"))
+        {
+            BoomHoochActivate killSwitch = other.gameObject.GetComponent<BoomHoochActivate>();
+            killSwitch.GoBoomBoom();
+        }
     }
 }
