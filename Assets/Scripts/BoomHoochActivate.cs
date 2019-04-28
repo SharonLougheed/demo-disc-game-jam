@@ -7,10 +7,26 @@ public class BoomHoochActivate : MonoBehaviour
     public GameObject boomer;
     public GameObject sploder;
     public GameObject concusser;
+    public GameObject bubbler;
+
+    private GameObject dupe;
 
     public void GoBoomBoom()
     {
         StartCoroutine(Splode());
+    }
+
+    public void PrepToBlow()
+    {
+        StopCoroutine(Splode());
+
+        boomer.SetActive(false);
+        sploder.SetActive(false);
+        concusser.SetActive(false);
+        bubbler.SetActive(false);
+
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<BoxCollider>().enabled = true;
     }
 
     IEnumerator Splode()
@@ -29,6 +45,13 @@ public class BoomHoochActivate : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         concusser.SetActive(false);
+
+        yield return new WaitForSeconds(32f);
+
+        bubbler.SetActive(true);
+        
+        dupe = Instantiate(Resources.Load<GameObject>("Prefabs/BOOMHOOCH"), transform.parent.transform);
+        dupe.transform.SetPositionAndRotation(transform.position, transform.rotation);
 
         yield return new WaitForSeconds(4.5f);
 
