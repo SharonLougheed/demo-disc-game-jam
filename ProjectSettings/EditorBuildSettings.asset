@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Scene-Ben.unity
     guid: 01c270559b6ad0b4daf44f5a00f8cd52
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene-JoelLvl.unity
     guid: b2d3f2847cd578d45b69cf2d681d3a5f
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: e021aac9b135ea84ba147c87441d76bd
   m_configObjects: {}

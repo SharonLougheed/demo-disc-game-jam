@@ -35,8 +35,8 @@ public class Puncher : MonoBehaviour
     public int StrikeCount = 0;
     public int FlingCount = 0;
 
-	public UserInterface userInterface;
-	public GameObject[] players; //Set for cigar by player, probably a better way, but too tired
+    public UserInterface userInterface;
+    public GameObject[] players; //Set for cigar by player, probably a better way, but too tired
 
     private void Update()
     {
@@ -85,7 +85,7 @@ public class Puncher : MonoBehaviour
                 case WeaponType.Cigar:
                     //endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.CigarReach);
                     cigar = Instantiate(cigarPrefab, transform.position, transform.rotation);
-					cigar.GetComponentInChildren<SpriteRotator>().allPlayers = players;
+                    cigar.GetComponentInChildren<SpriteRotator>().allPlayers = players;
                     UseFling();
                     break;
                 default:
@@ -118,7 +118,7 @@ public class Puncher : MonoBehaviour
                 break;
         }
 
-		userInterface.ChangeWeaponImage(weaponType);
+        userInterface.ChangeWeaponImage(weaponType);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,53 +129,56 @@ public class Puncher : MonoBehaviour
                 & !gameObject.transform.parent.gameObject.Equals(other.gameObject))
             {
                 Player player = other.gameObject.GetComponent<Player>();
-                DamagePlayer(player);
-                var hitSound = GetComponent<AudioSource>();
-
-                hitSound.clip = playerHitClip;
-
-                switch (weaponType)
+                if (player.IsAlive)
                 {
-                    case WeaponType.BareFisted:
-                        switch(UnityEngine.Random.Range(0,3))
-                        {
-                            case 0:
-                                hitSound.clip = sfxPunch1;
-                                break;
+                    DamagePlayer(player);
+                    var hitSound = GetComponent<AudioSource>();
 
-                            case 1:
-                                hitSound.clip = sfxPunch2;
-                                break;
+                    hitSound.clip = playerHitClip;
 
-                            case 2:
-                                hitSound.clip = sfxPunch3;
-                                break;
-                        }
-                        break;
+                    switch (weaponType)
+                    {
+                        case WeaponType.BareFisted:
+                            switch (UnityEngine.Random.Range(0, 3))
+                            {
+                                case 0:
+                                    hitSound.clip = sfxPunch1;
+                                    break;
 
-                    case WeaponType.Bone:
-                        hitSound.clip = sfxSqueak;
-                        break;
+                                case 1:
+                                    hitSound.clip = sfxPunch2;
+                                    break;
 
-                    case WeaponType.Bottle:
-                        switch (UnityEngine.Random.Range(0, 3))
-                        {
-                            case 0:
-                                hitSound.clip = sfxStab1;
-                                break;
+                                case 2:
+                                    hitSound.clip = sfxPunch3;
+                                    break;
+                            }
+                            break;
 
-                            case 1:
-                                hitSound.clip = sfxStab1;
-                                break;
+                        case WeaponType.Bone:
+                            hitSound.clip = sfxSqueak;
+                            break;
 
-                            case 2:
-                                hitSound.clip = sfxStab2;
-                                break;
-                        }
-                        break;
+                        case WeaponType.Bottle:
+                            switch (UnityEngine.Random.Range(0, 3))
+                            {
+                                case 0:
+                                    hitSound.clip = sfxStab1;
+                                    break;
+
+                                case 1:
+                                    hitSound.clip = sfxStab1;
+                                    break;
+
+                                case 2:
+                                    hitSound.clip = sfxStab2;
+                                    break;
+                            }
+                            break;
+                    }
+
+                    hitSound.Play();
                 }
-
-                hitSound.Play();
             }
             else
             {

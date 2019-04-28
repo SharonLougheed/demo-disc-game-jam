@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public PlayerRenderer playerRenderer;
     public UserInterface userInterface;
     public GameObject dropOnDeathPrefab;
+    public float degreeOfDeath = 60f;
 
     private Color originalColor;
 
@@ -124,27 +125,46 @@ public class Player : MonoBehaviour
         IsAlive = false;
         userInterface.healthText.text = "x_x";
 
-        //if (dropOnDeathPrefab != null)
-        //{
-        //    GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
-        //    drop.transform.position = transform.position;
-        //    drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
-        //}
+        DropASteamer();
 
-        // Destroy for now : We will want to leave the corpses
-        Destroy(gameObject);
-        //gameObject.SetActive(false);
+
+        DisableSprite();
+        DisableControls();
+        DisableHands();
+
+
+
+        //Destroy(gameObject);
+    }
+
+    private void DisableHands()
+    {
+        var hands = gameObject.GetComponentsInChildren<Puncher>();
+        foreach (var hand in hands)
+        {
+            hand.enabled = false;
+            hand.gameObject.SetActive(false);
+        }
+    }
+
+    private void DisableControls()
+    {
+        // Lerp me, please.
+        this.transform.Rotate(new Vector3(0, 0, 1), degreeOfDeath);
+        PlayerController controller = gameObject.GetComponent<PlayerController>();
+        controller.ControllerActive = false;
+    }
+
+    private void DisableSprite()
+    {
+        // Need to disable the player sprite
+        SpriteRenderer spriteRender = gameObject.GetComponentInChildren<SpriteRenderer>();
+        spriteRender.enabled = false;
     }
 
     private void Respawn()
     {
-
-        if (dropOnDeathPrefab != null)
-        {
-            GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
-            drop.transform.position = transform.position;
-            drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
-        }
+        DropASteamer();
 
         var levelManager = FindObjectOfType<LevelManager>();
         var spawnPoint = levelManager.NextPlayerSpawnPoint();
@@ -154,5 +174,15 @@ public class Player : MonoBehaviour
         SetHealth();
 		userInterface.healthText.text = "Health: " + health.Value;
 		Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
+    }
+
+    private void DropASteamer()
+    {
+        if (dropOnDeathPrefab != null)
+        {
+            GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
+            drop.transform.position = transform.position;
+            drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
+        }
     }
 }

@@ -262,7 +262,7 @@ public class LevelManager : MonoBehaviour
 
             var weaponPickup = weaponPickups[i].GetComponent<WeaponPickup>();
 
-            GameObject lilPuffPuff = weaponPickup.transform.FindChild("SpriteRenderer").FindChild("LilPuffPuff").gameObject;
+            GameObject lilPuffPuff = weaponPickup.transform.Find("SpriteRenderer").Find("LilPuffPuff").gameObject;
 
             var spawnPoint = WeaponSpawnPoints.GetNextObject();
 
