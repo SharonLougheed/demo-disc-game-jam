@@ -6,9 +6,6 @@ public class Cigar : MonoBehaviour
 {
     public float speed;
     public PlayerStats stats;
-    private void Start()
-    {
-    }
 
     void Update()
     {
