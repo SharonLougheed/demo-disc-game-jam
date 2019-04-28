@@ -134,54 +134,18 @@ public class Puncher : MonoBehaviour
                     DamagePlayer(player);
                     var hitSound = GetComponent<AudioSource>();
 
-                    hitSound.clip = playerHitClip;
-
-                    switch (weaponType)
-                    {
-                        case WeaponType.BareFisted:
-                            switch (UnityEngine.Random.Range(0, 3))
-                            {
-                                case 0:
-                                    hitSound.clip = sfxPunch1;
-                                    break;
-
-                                case 1:
-                                    hitSound.clip = sfxPunch2;
-                                    break;
-
-                                case 2:
-                                    hitSound.clip = sfxPunch3;
-                                    break;
-                            }
-                            break;
-
-                        case WeaponType.Bone:
-                            hitSound.clip = sfxSqueak;
-                            break;
-
-                        case WeaponType.Bottle:
-                            switch (UnityEngine.Random.Range(0, 3))
-                            {
-                                case 0:
-                                    hitSound.clip = sfxStab1;
-                                    break;
-
-                                case 1:
-                                    hitSound.clip = sfxStab1;
-                                    break;
-
-                                case 2:
-                                    hitSound.clip = sfxStab2;
-                                    break;
-                            }
-                            break;
-                    }
+                    hitSound.clip = PickSound();
 
                     hitSound.Play();
                 }
             }
             else if(other.gameObject.tag.Equals("BOOMHOOCH"))
             {
+                var hitSound = GetComponent<AudioSource>();
+
+                hitSound.clip = objectHitClip;
+                hitSound.Play();
+
                 BoomHoochActivate killSwitch = other.gameObject.GetComponent<BoomHoochActivate>();
                 killSwitch.GoBoomBoom();
             }
@@ -194,6 +158,53 @@ public class Puncher : MonoBehaviour
 
             UseStrike();
         }
+    }
+
+    private AudioClip PickSound()
+    {
+        var clipChoice = playerHitClip;
+        switch (weaponType)
+        {
+            case WeaponType.BareFisted:
+                switch (UnityEngine.Random.Range(0, 3))
+                {
+                    case 0:
+                        clipChoice = sfxPunch1;
+                        break;
+
+                    case 1:
+                        clipChoice = sfxPunch2;
+                        break;
+
+                    case 2:
+                        clipChoice = sfxPunch3;
+                        break;
+                }
+                break;
+
+            case WeaponType.Bone:
+                clipChoice = sfxSqueak;
+                break;
+
+            case WeaponType.Bottle:
+                switch (UnityEngine.Random.Range(0, 3))
+                {
+                    case 0:
+                        clipChoice = sfxStab1;
+                        break;
+
+                    case 1:
+                        clipChoice = sfxStab1;
+                        break;
+
+                    case 2:
+                        clipChoice = sfxStab2;
+                        break;
+                }
+                break;
+        }
+
+        return clipChoice;
     }
 
     private void DamagePlayer(Player player)

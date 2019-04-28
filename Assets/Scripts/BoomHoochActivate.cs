@@ -15,6 +15,10 @@ public class BoomHoochActivate : MonoBehaviour
 
     IEnumerator Splode()
     {
+        GetComponent<AudioSource>().Play();
+
+        yield return new WaitForSeconds(.4f);
+
         boomer.SetActive(true);
         sploder.SetActive(true);
         concusser.SetActive(true);
