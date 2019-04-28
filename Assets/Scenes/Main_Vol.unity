@@ -1196,7 +1196,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -1212,6 +1212,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -2437,7 +2452,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -2453,6 +2468,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -7695,7 +7725,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -7711,6 +7741,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -13085,7 +13130,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -13101,6 +13146,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -16764,7 +16824,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -16780,6 +16840,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -19631,7 +19706,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -19647,6 +19722,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -20958,7 +21048,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -20974,6 +21064,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -24864,7 +24969,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -24880,6 +24985,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -30175,7 +30295,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -30191,6 +30311,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -33204,7 +33339,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114806, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.858
+      value: -30.1
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114806, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -33259,7 +33394,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -33275,6 +33410,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -35466,7 +35616,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -35482,6 +35632,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -37259,7 +37424,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -37275,6 +37440,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -37887,7 +38067,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -37903,6 +38083,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
@@ -41630,7 +41825,7 @@ PrefabInstance:
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
       propertyPath: slices
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
         type: 3}
@@ -41646,6 +41841,21 @@ PrefabInstance:
         type: 3}
       propertyPath: meshContainer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114729, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135769658728114765, guid: e07b4b275dfe8c847ad06b0e18e91178,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07b4b275dfe8c847ad06b0e18e91178, type: 3}
