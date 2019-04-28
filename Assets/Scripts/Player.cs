@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public PlayerRenderer playerRenderer;
     public UserInterface userInterface;
     public GameObject dropOnDeathPrefab;
+    public float degreeOfDeath = 60f;
 
     private Color originalColor;
 
@@ -126,7 +127,39 @@ public class Player : MonoBehaviour
 
         DropASteamer();
 
-        Destroy(gameObject);
+
+        DisableSprite();
+        DisableControls();
+        DisableHands();
+
+
+
+        //Destroy(gameObject);
+    }
+
+    private void DisableHands()
+    {
+        var hands = gameObject.GetComponentsInChildren<Puncher>();
+        foreach (var hand in hands)
+        {
+            hand.enabled = false;
+            hand.gameObject.SetActive(false);
+        }
+    }
+
+    private void DisableControls()
+    {
+        // Lerp me, please.
+        this.transform.Rotate(new Vector3(0, 0, 1), degreeOfDeath);
+        PlayerController controller = gameObject.GetComponent<PlayerController>();
+        controller.ControllerActive = false;
+    }
+
+    private void DisableSprite()
+    {
+        // Need to disable the player sprite
+        SpriteRenderer spriteRender = gameObject.GetComponentInChildren<SpriteRenderer>();
+        spriteRender.enabled = false;
     }
 
     private void Respawn()

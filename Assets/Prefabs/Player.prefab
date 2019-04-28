@@ -421,6 +421,7 @@ MonoBehaviour:
   userInterface: {fileID: 0}
   dropOnDeathPrefab: {fileID: 6923741345491490360, guid: f282e6626ba15f0458ceff36f532cef4,
     type: 3}
+  degreeOfDeath: 75
 --- !u!114 &5423555260779540634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +471,7 @@ GameObject:
   - component: {fileID: 2760516749197796093}
   m_Layer: 0
   m_Name: LeftHand
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -690,7 +691,7 @@ GameObject:
   - component: {fileID: 8444562713011705052}
   m_Layer: 0
   m_Name: RightHand
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -15,4 +15,4 @@ MonoBehaviour:
   StartHealth: 100
   MaxHealth: 150
   MinHealth: 0
-  StartLives: 4
+  StartLives: 2
