@@ -7,6 +7,9 @@ public class Cigar : MonoBehaviour
     public float speed;
     public PlayerStats stats;
 
+    public GameObject concusser;
+    public GameObject cigarImage;
+
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
@@ -22,8 +25,7 @@ public class Cigar : MonoBehaviour
 
         if(!other.gameObject.tag.Equals("Tables"))
         {
-            this.gameObject.SetActive(false);
-            Destroy(this);
+            StartCoroutine(Immolate());
         }
 
         if (other.gameObject.tag.Equals("BOOMHOOCH"))
@@ -31,5 +33,17 @@ public class Cigar : MonoBehaviour
             BoomHoochActivate killSwitch = other.gameObject.GetComponent<BoomHoochActivate>();
             killSwitch.GoBoomBoom();
         }
+    }
+
+    IEnumerator Immolate()
+    {
+        concusser.SetActive(true);
+        cigarImage.SetActive(false);
+
+        yield return new WaitForSeconds(1.5f);
+
+        Destroy(this);
+
+        yield return null;
     }
 }

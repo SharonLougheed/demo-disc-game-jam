@@ -12,9 +12,8 @@ public class BoomHoochConcuss : MonoBehaviour
             player.TakeDamage(20);
         }
 
-        if (other.gameObject.tag.Equals("BOOMHOOCH") && !gameObject.transform.parent.gameObject.Equals(other.gameObject))
+        if (other.gameObject.tag.Equals("BOOMHOOCH"))
         {
-            Destroy(other.gameObject);
             BoomHoochActivate killSwitch = other.gameObject.GetComponent<BoomHoochActivate>();
             killSwitch.GoBoomBoom();
         }
