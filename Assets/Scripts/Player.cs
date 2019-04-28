@@ -124,27 +124,14 @@ public class Player : MonoBehaviour
         IsAlive = false;
         userInterface.healthText.text = "x_x";
 
-        //if (dropOnDeathPrefab != null)
-        //{
-        //    GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
-        //    drop.transform.position = transform.position;
-        //    drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
-        //}
+        DropASteamer();
 
-        // Destroy for now : We will want to leave the corpses
         Destroy(gameObject);
-        //gameObject.SetActive(false);
     }
 
     private void Respawn()
     {
-
-        if (dropOnDeathPrefab != null)
-        {
-            GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
-            drop.transform.position = transform.position;
-            drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
-        }
+        DropASteamer();
 
         var levelManager = FindObjectOfType<LevelManager>();
         var spawnPoint = levelManager.NextPlayerSpawnPoint();
@@ -153,5 +140,15 @@ public class Player : MonoBehaviour
 
         SetHealth();
         Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
+    }
+
+    private void DropASteamer()
+    {
+        if (dropOnDeathPrefab != null)
+        {
+            GameObject drop = GameObject.Instantiate(dropOnDeathPrefab);
+            drop.transform.position = transform.position;
+            drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
+        }
     }
 }
