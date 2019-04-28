@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         health.MaxValue = defaults.MaxHealth;
         health.MinValue = defaults.MinHealth;
         health.Value = defaults.StartHealth;
-    }
+	}
 
     public void GiveHeath(int amount)
     {
@@ -152,6 +152,7 @@ public class Player : MonoBehaviour
         playerController.SetNewPositionRotation(spawnPoint.transform.position, spawnPoint.transform.rotation);
 
         SetHealth();
-        Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
+		userInterface.healthText.text = "Health: " + health.Value;
+		Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
     }
 }
