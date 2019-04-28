@@ -27,12 +27,6 @@ public class Cigar : MonoBehaviour
         {
             StartCoroutine(Immolate());
         }
-
-        if (other.gameObject.tag.Equals("BOOMHOOCH"))
-        {
-            BoomHoochActivate killSwitch = other.gameObject.GetComponent<BoomHoochActivate>();
-            killSwitch.GoBoomBoom();
-        }
     }
 
     IEnumerator Immolate()
@@ -42,7 +36,7 @@ public class Cigar : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        Destroy(this);
+        Destroy(this.gameObject);
 
         yield return null;
     }
