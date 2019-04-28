@@ -21,17 +21,12 @@ public class Cigar : MonoBehaviour
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.TakeDamage(stats.CigarDamage);
-            var hitSound = GetComponent<AudioSource>();
-            //hitSound.clip = playerHitClip;
-            //hitSound.Play();
         }
-        else
+
+        if(!other.gameObject.tag.Equals("Tables"))
         {
-            var hitSound = GetComponent<AudioSource>();
-            //hitSound.clip = objectHitClip;
-            //hitSound.Play();
+            this.gameObject.SetActive(false);
+            Destroy(this);
         }
-        this.gameObject.SetActive(false);
-        Destroy(this);
     }
 }

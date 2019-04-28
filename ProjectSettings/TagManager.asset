@@ -7,6 +7,9 @@ TagManager:
   - PlayerCamera
   - WeaponSpawn
   - HealthSpawn
+  - POO
+  - Star
+  - Tables
   layers:
   - Default
   - TransparentFX
