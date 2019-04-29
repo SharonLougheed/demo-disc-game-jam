@@ -149,7 +149,16 @@ public class Puncher : MonoBehaviour
                 BoomHoochActivate killSwitch = other.gameObject.GetComponent<BoomHoochActivate>();
                 killSwitch.GoBoomBoom();
             }
-           else
+            else if (other.gameObject.tag.Equals("JUKE BOX"))
+            {
+                var hitSound = GetComponent<AudioSource>();
+
+                hitSound.clip = objectHitClip;
+                hitSound.Play();
+
+                other.gameObject.GetComponent<JukeBox>().SmashJuke();
+            }
+            else
             {
                 var hitSound = GetComponent<AudioSource>();
                 hitSound.clip = objectHitClip;
