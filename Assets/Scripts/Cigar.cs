@@ -17,13 +17,14 @@ public class Cigar : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.tag.Equals("Player")
+                && !gameObject.transform.parent.gameObject.Equals(other.gameObject))
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.TakeDamage(stats.CigarDamage);
         }
 
-        if(!other.gameObject.tag.Equals("Tables"))
+        if (!other.gameObject.tag.Equals("Tables"))
         {
             StartCoroutine(Immolate());
         }
