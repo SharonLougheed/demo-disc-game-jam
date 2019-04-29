@@ -40,6 +40,7 @@ public class TempWin : MonoBehaviour
     private IEnumerator RestartGame(int seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("SplashScreen");
     }
 }
