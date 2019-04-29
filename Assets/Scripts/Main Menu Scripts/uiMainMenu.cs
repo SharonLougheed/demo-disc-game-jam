@@ -15,7 +15,8 @@ public class uiMainMenu : MonoBehaviour
 	[SerializeField] string ToMainMenu;
 	[SerializeField] string ToTutorial;
 	[SerializeField] string ToCredits;
-	
+
+    private bool isStartingGame = false;
 
 	public void MenuActivated ()
 	{
@@ -30,7 +31,12 @@ public class uiMainMenu : MonoBehaviour
 
 	public void PlayGame ()
     {
-        StartCoroutine(BeginGame());
+        if (!isStartingGame)
+        {
+            isStartingGame = true;
+
+            StartCoroutine(BeginGame());
+        }
 	}
 
 	public void Tutorial ()
@@ -43,9 +49,14 @@ public class uiMainMenu : MonoBehaviour
     {
         GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
         SceneManager.LoadScene(ToCredits);
-	}
+    }
 
-	public void QuitGame ()
+    public void LowResToggle()
+    {
+        GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes = GameObject.Find("Low Res Toggle").GetComponent<Toggle>().isOn;
+    }
+
+    public void QuitGame ()
 	{
 		Application.Quit();
 	}

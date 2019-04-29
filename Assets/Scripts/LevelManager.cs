@@ -51,6 +51,11 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        if(GameObject.Find("GameResolution"))
+        {
+            lowResolution = GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes;
+        }
+
 		if(mainCameraForLowRes != null && lowResTexture != null)
 		{
 			mainCameraForLowRes.SetActive(lowResolution);

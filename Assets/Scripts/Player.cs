@@ -65,13 +65,15 @@ public class Player : MonoBehaviour
     public void GiveHeath(int amount)
     {
         health.Increase(amount);
-        userInterface.healthText.text = "Health: " + health.Value;
+		userInterface.StartFlashScreen(Color.green);
+		userInterface.healthText.text = ""+health.Value;
     }
 
     public void TakeDamage(int amount)
     {
         health.Decrease(amount);
-        StartCoroutine(FlashPlayer());
+		userInterface.StartFlashScreen(Color.red);
+		StartCoroutine(FlashPlayer());
 
         // Rock camera back
 
@@ -80,7 +82,8 @@ public class Player : MonoBehaviour
         if (health.Value <= defaults.MinHealth)
         {
             Lives--;
-            if (Lives > 0)
+			userInterface.lifePaws[Lives].SetActive(false); //Not ideal, but works in a pinch
+			if (Lives > 0)
             {
                 StartCoroutine(Respawn());
             }
@@ -91,14 +94,14 @@ public class Player : MonoBehaviour
         }
         else
         {
-            userInterface.healthText.text = "Health: " + health.Value;
-        }
+            userInterface.healthText.text = "" + health.Value;
+		}
     }
 
     public void SetUserInterface()
     {
-        userInterface.healthText.text = "Health: " + health.Value;
-        leftHand.userInterface = userInterface;
+        userInterface.healthText.text = "" + health.Value;
+		leftHand.userInterface = userInterface;
         rightHand.userInterface = userInterface;
     }
 
@@ -114,7 +117,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            playerRenderer.FlashPlayer();
+            playerRenderer.StartFlashPlayer();
         }
     }
 
@@ -208,8 +211,8 @@ public class Player : MonoBehaviour
         playerController.SetNewPositionRotation(spawnPoint.transform.position, spawnPoint.transform.rotation);
 
         SetHealth();
-        userInterface.healthText.text = "Health: " + health.Value;
-        Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
+        userInterface.healthText.text = "" + health.Value;
+		Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
 
         EnablePlayer();
         EnableHands();
