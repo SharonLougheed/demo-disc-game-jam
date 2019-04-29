@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BoomHoochActivate : MonoBehaviour
 {
+    public bool isBoom;
+
     public GameObject boomer;
     public GameObject sploder;
     public GameObject concusser;
@@ -13,21 +15,45 @@ public class BoomHoochActivate : MonoBehaviour
 
     public void GoBoomBoom()
     {
-        StartCoroutine(Splode());
-        StartCoroutine(FlashBoomHooch());
+        if (isBoom)
+        {
+            StartCoroutine(Splode());
+            StartCoroutine(FlashBoomHooch());
+        }
+
+        else
+        {
+            StartCoroutine(FallApart());
+        }
     }
 
-    public void PrepToBlow()
+    IEnumerator FallApart()
     {
-        StopCoroutine(Splode());
+        GetComponent<AudioSource>().Play();
 
-        boomer.SetActive(false);
-        sploder.SetActive(false);
+        yield return new WaitForSeconds(.05f);
+
+        boomer.SetActive(true);
+        sploder.SetActive(true);
+        concusser.SetActive(true);
+
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
+
+        yield return new WaitForSeconds(1.5f);
+
         concusser.SetActive(false);
-        bubbler.SetActive(false);
 
-        GetComponent<MeshRenderer>().enabled = true;
-        GetComponent<BoxCollider>().enabled = true;
+        yield return new WaitForSeconds(32f);
+
+        bubbler.SetActive(true);
+
+        dupe = Instantiate(Resources.Load<GameObject>("Prefabs/CRATEHOOCH"), transform.parent.transform);
+        dupe.transform.SetPositionAndRotation(transform.position, transform.rotation);
+
+        yield return new WaitForSeconds(4.5f);
+
+        Destroy(gameObject);
     }
 
     IEnumerator Splode()

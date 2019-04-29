@@ -53,6 +53,7 @@ public class Puncher : MonoBehaviour
         }
         else if (isRecovering)
         {
+			userInterface.ChangePaws(side, false, weaponType);
             float travel = (Time.time - startTime) * stats.PunchSpeed;
             float remainingTravel = travel / punchLength;
             transform.localPosition = Vector3.Lerp(endPosition, startPosition, remainingTravel);
@@ -69,7 +70,8 @@ public class Puncher : MonoBehaviour
         if (!isPunching)
         {
             isPunching = true;
-            startTime = Time.time;
+			userInterface.ChangePaws(side, true, weaponType);
+			startTime = Time.time;
             startPosition = transform.localPosition;
             switch (weaponType)
             {
@@ -149,7 +151,16 @@ public class Puncher : MonoBehaviour
                 BoomHoochActivate killSwitch = other.gameObject.GetComponent<BoomHoochActivate>();
                 killSwitch.GoBoomBoom();
             }
-           else
+            else if (other.gameObject.tag.Equals("JUKE BOX"))
+            {
+                var hitSound = GetComponent<AudioSource>();
+
+                hitSound.clip = objectHitClip;
+                hitSound.Play();
+
+                other.gameObject.GetComponent<JukeBox>().SmashJuke();
+            }
+            else
             {
                 var hitSound = GetComponent<AudioSource>();
                 hitSound.clip = objectHitClip;

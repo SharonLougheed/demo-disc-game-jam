@@ -9679,6 +9679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b2040b7f1d264439d9abaef2916c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoom: 1
   boomer: {fileID: 7822386057654111614}
   sploder: {fileID: 569143945569325592}
   concusser: {fileID: 1805161457543857105}

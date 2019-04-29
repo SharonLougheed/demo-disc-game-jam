@@ -17,6 +17,7 @@ public class PlayerRenderer : MonoBehaviour
 	private PlayerRenderer[] playerRenderers; //To change direction for this player
 	private Animator[] animators; //To change direction for other players
 	private Direction[] directionEachPlayerSees; //For efficiency, if hasn't changed
+	private bool viewObjectsDisabled = false;
 
 	enum Direction { NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST }
 
@@ -97,6 +98,10 @@ public class PlayerRenderer : MonoBehaviour
 	//Changes the animation in the viewObject corresponding to that player
 	void ChangeDirectionalSprite(int otherPlayerNum, float rotation)
 	{
+		if (viewObjectsDisabled)
+		{
+			return;
+		}
 		//This is the direction relative to this player
 		Direction relativeDirection = DegreesToDirection(rotation);
 		//Then rotate the corresponding sprite renderer/animator to face that player
@@ -226,6 +231,29 @@ public class PlayerRenderer : MonoBehaviour
 			if (i != playerNumber)
 			{
 				respectiveViewObjects[i].GetComponent<SpriteRenderer>().color = colorToApplyToSprites;
+			}
+		}
+	}
+
+	public void DisableViewObjects()
+	{
+		viewObjectsDisabled = true;
+		for (int i = 0; i < allPlayers.Length; i++)
+		{
+			if (i != playerNumber)
+			{
+				respectiveViewObjects[i].SetActive(false);
+			}
+		}
+	}
+	public void EnableViewObjects()
+	{
+		viewObjectsDisabled = false;
+		for (int i = 0; i < allPlayers.Length; i++)
+		{
+			if (i != playerNumber)
+			{
+				respectiveViewObjects[i].SetActive(true);
 			}
 		}
 	}
