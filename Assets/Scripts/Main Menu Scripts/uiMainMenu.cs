@@ -16,22 +16,10 @@ public class uiMainMenu : MonoBehaviour
 	[SerializeField] string ToTutorial;
 	[SerializeField] string ToCredits;
 	
-	public Button[] Buttons;
 
 	public void MenuActivated ()
 	{
-		MainMenu.SetActive (false);
-	}
-	
-	public void Credits ()
-	{
-		ToCredits.SetActive (true);
-		
-	}
-	
-	public void Destination (string scenename)
-	{
-		
+		//MainMenu.SetActive (false);
 	}
 	
 	public void MainMenu ()
