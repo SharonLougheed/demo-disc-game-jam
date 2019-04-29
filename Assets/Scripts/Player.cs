@@ -139,6 +139,7 @@ public class Player : MonoBehaviour
              hand.enabled = false;
              hand.gameObject.SetActive(false);
          }*/
+
         leftHand.gameObject.SetActive(false);
         rightHand.gameObject.SetActive(false);
     }
@@ -151,9 +152,12 @@ public class Player : MonoBehaviour
             hand.enabled = true;
             hand.gameObject.SetActive(true);
         }*/
+
         leftHand.gameObject.SetActive(true);
         rightHand.gameObject.SetActive(true);
     }
+
+    /* Deprecated for DisablePlayer() and EnablePlayer()
 
     private void DisableControls()
     {
@@ -169,6 +173,8 @@ public class Player : MonoBehaviour
         SpriteRenderer spriteRender = gameObject.GetComponentInChildren<SpriteRenderer>();
         spriteRender.enabled = false;
     }
+
+    */
 
     IEnumerator Respawn()
     {
