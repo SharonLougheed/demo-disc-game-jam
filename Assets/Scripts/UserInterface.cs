@@ -10,6 +10,7 @@ public class UserInterface : MonoBehaviour
 	public Sprite bottle, bone, cigar;
 	public GameObject leftIdleFist, leftPunchingFist;
 	public GameObject rightIdleFist, rightPunchingFist, rightBottle, rightBone, rightCigar;
+	public GameObject darknessPanel;
 
 	private GameObject currentLeftFist;
 	private GameObject currentRightFist;

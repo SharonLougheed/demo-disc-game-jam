@@ -230,7 +230,8 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<CharacterController>().enabled = false;
-        playerRenderer.gameObject.SetActive(false);
+		userInterface.darknessPanel.SetActive(true);
+		playerRenderer.DisableViewObjects();
     }
 
     private void EnablePlayer()
@@ -239,6 +240,7 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = true;
         GetComponent<PlayerController>().enabled = true;
         GetComponent<CharacterController>().enabled = true;
-        playerRenderer.gameObject.SetActive(true);
-    }
+		userInterface.darknessPanel.SetActive(false);
+		playerRenderer.EnableViewObjects();
+	}
 }
