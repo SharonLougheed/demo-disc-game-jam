@@ -51,9 +51,9 @@ public class uiMainMenu : MonoBehaviour
         SceneManager.LoadScene(ToCredits);
     }
 
-    public void LowResCheck()
+    public void LowResToggle()
     {
-        GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes = GameObject.Find("Low Res Check").GetComponent<Toggle>().isOn;
+        GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes = GameObject.Find("Low Res Toggle").GetComponent<Toggle>().isOn;
     }
 
     public void QuitGame ()

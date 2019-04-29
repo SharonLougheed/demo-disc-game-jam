@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1731dda2a6212de4ba4e46d786e6e011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLowRes: 1
+  isLowRes: 0
 --- !u!4 &1200164002
 Transform:
   m_ObjectHideFlags: 0
@@ -1842,7 +1842,7 @@ GameObject:
   - component: {fileID: 1980613028}
   - component: {fileID: 1980613029}
   m_Layer: 5
-  m_Name: Low Res Check
+  m_Name: Low Res Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1889,7 +1889,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.039215688, g: 0.12156863, b: 0.05882353, a: 1}
+    m_NormalColor: {r: 0.14509805, g: 0.047058824, b: 0.047058824, a: 1}
     m_HighlightedColor: {r: 0.7058824, g: 0.49803922, b: 0.2784314, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1913,7 +1913,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 583940749}
-        m_MethodName: LowResCheck
+        m_MethodName: LowResToggle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1925,7 +1925,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &2034848056
 GameObject:
   m_ObjectHideFlags: 0
