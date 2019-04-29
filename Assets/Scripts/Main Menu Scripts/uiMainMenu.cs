@@ -14,14 +14,19 @@ public class uiMainMenu : MonoBehaviour
 	[SerializeField] string ToGame;
 	[SerializeField] string ToMainMenu;
 	[SerializeField] string ToTutorial;
+	[SerializeField] string ToCredits;
 	
 	public Button[] Buttons;
 
 	public void MenuActivated ()
 	{
-		Menu.SetActive (true);
-		//firstbutton.Select ();
-		//firstbutton.OnSelect (null);
+		MainMenu.SetActive (false);
+	}
+	
+	public void Credits ()
+	{
+		ToCredits.SetActive (true);
+		
 	}
 	
 	public void Destination (string scenename)
@@ -36,13 +41,17 @@ public class uiMainMenu : MonoBehaviour
 
 	public void PlayGame ()
 	{
-		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		SceneManager.LoadScene(ToGame);
 	}
 
 	public void Tutorial ()
 	{
 		SceneManager.LoadScene(ToTutorial);
+	}
+	
+	public void Credits ()
+	{
+		SceneManager.LoadScene(ToCredits);
 	}
 
 	public void QuitGame ()
