@@ -129,6 +129,11 @@ public class Player : MonoBehaviour
 
         DisablePlayer();
         DisableHands();
+        DimView();
+    }
+
+    private void DimView()
+    {
     }
 
     private void DisableHands()
