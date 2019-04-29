@@ -18590,6 +18590,11 @@ PrefabInstance:
       propertyPath: boomBox
       value: 
       objectReference: {fileID: 113506630}
+    - target: {fileID: 6905223668234303852, guid: e48aa5c9f428a214bb1e5303c77e51fe,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e48aa5c9f428a214bb1e5303c77e51fe, type: 3}
 --- !u!4 &818557970 stripped
@@ -49854,5 +49859,10 @@ PrefabInstance:
       propertyPath: boomBox
       value: 
       objectReference: {fileID: 113506630}
+    - target: {fileID: 6905223668234303852, guid: e48aa5c9f428a214bb1e5303c77e51fe,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e48aa5c9f428a214bb1e5303c77e51fe, type: 3}

@@ -213,25 +213,44 @@ public class PlayerRenderer : MonoBehaviour
 		}
 	}
 
-	//Based on function from Player script
-	public IEnumerator FlashPlayer()
+	public void StartFlashPlayer()
 	{
-		for (int i = 0; i < allPlayers.Length; i++)
+		StartCoroutine(FlashPlayer(Color.red));
+	}
+
+	//Based on function from Player script
+	IEnumerator FlashPlayer(Color colorToChange)
+	{
+		float deltaT = 0.1f;
+		float t = 0f;
+		while(t <= 1.0f)
 		{
-			if (i != playerNumber)
+			Color lerpedColor = Color.Lerp(colorToApplyToSprites, colorToChange, t);
+			for (int i = 0; i < allPlayers.Length; i++)
 			{
-				respectiveViewObjects[i].GetComponent<SpriteRenderer>().color = Color.magenta;
+				if (i != playerNumber)
+				{
+					respectiveViewObjects[i].GetComponent<SpriteRenderer>().color = lerpedColor;
+				}
 			}
+			t += deltaT;
+			yield return new WaitForFixedUpdate();
 		}
 
-		yield return new WaitForSecondsRealtime(0.1f);
-
-		for (int i = 0; i < allPlayers.Length; i++)
+		//yield return new WaitForSecondsRealtime(0.1f); //Wait between colors
+		t = 0f;
+		while (t <= 1.0f)
 		{
-			if (i != playerNumber)
+			Color lerpedColor = Color.Lerp(colorToChange, colorToApplyToSprites, t);
+			for (int i = 0; i < allPlayers.Length; i++)
 			{
-				respectiveViewObjects[i].GetComponent<SpriteRenderer>().color = colorToApplyToSprites;
+				if (i != playerNumber)
+				{
+					respectiveViewObjects[i].GetComponent<SpriteRenderer>().color = lerpedColor;
+				}
 			}
+			t += deltaT;
+			yield return new WaitForFixedUpdate();
 		}
 	}
 
