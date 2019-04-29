@@ -14,6 +14,7 @@ public class BoomHoochActivate : MonoBehaviour
     public void GoBoomBoom()
     {
         StartCoroutine(Splode());
+        StartCoroutine(FlashBoomHooch());
     }
 
     public void PrepToBlow()
@@ -56,5 +57,21 @@ public class BoomHoochActivate : MonoBehaviour
         yield return new WaitForSeconds(4.5f);
 
         Destroy(gameObject);
+    }
+
+    public IEnumerator FlashBoomHooch()
+    {
+        var myMaterial = GetComponent<Renderer>().material;
+
+        while (true)
+        {
+            myMaterial.EnableKeyword("_EMISSION");
+
+            yield return new WaitForSecondsRealtime(0.1f);
+            
+            myMaterial.DisableKeyword("_EMISSION");
+
+            yield return new WaitForSeconds(.1f);
+        }
     }
 }
