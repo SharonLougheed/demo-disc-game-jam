@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         health.MaxValue = defaults.MaxHealth;
         health.MinValue = defaults.MinHealth;
         health.Value = defaults.StartHealth;
-	}
+    }
 
     public void GiveHeath(int amount)
     {
@@ -173,7 +173,6 @@ public class Player : MonoBehaviour
     IEnumerator Respawn()
     {
         health.Value = health.MinValue;
-        IsAlive = false;
 
         DropASteamer();
 
@@ -198,8 +197,8 @@ public class Player : MonoBehaviour
         playerController.SetNewPositionRotation(spawnPoint.transform.position, spawnPoint.transform.rotation);
 
         SetHealth();
-		userInterface.healthText.text = "Health: " + health.Value;
-		Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
+        userInterface.healthText.text = "Health: " + health.Value;
+        Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
 
         EnablePlayer();
         EnableHands();
@@ -230,7 +229,7 @@ public class Player : MonoBehaviour
 
     private void EnablePlayer()
     {
-        GetComponent<MeshRenderer>().enabled = true;
+        //GetComponent<MeshRenderer>().enabled = true;
         GetComponent<CapsuleCollider>().enabled = true;
         GetComponent<PlayerController>().enabled = true;
         GetComponent<CharacterController>().enabled = true;
