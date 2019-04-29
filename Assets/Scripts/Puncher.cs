@@ -53,7 +53,7 @@ public class Puncher : MonoBehaviour
         }
         else if (isRecovering)
         {
-			userInterface.ChangePaws(side, false, weaponType);
+            userInterface.ChangePaws(side, false, weaponType);
             float travel = (Time.time - startTime) * stats.PunchSpeed;
             float remainingTravel = travel / punchLength;
             transform.localPosition = Vector3.Lerp(endPosition, startPosition, remainingTravel);
@@ -70,8 +70,8 @@ public class Puncher : MonoBehaviour
         if (!isPunching)
         {
             isPunching = true;
-			userInterface.ChangePaws(side, true, weaponType);
-			startTime = Time.time;
+            userInterface.ChangePaws(side, true, weaponType);
+            startTime = Time.time;
             startPosition = transform.localPosition;
             switch (weaponType)
             {
@@ -88,6 +88,7 @@ public class Puncher : MonoBehaviour
                     //endPosition = new Vector3(startPosition.x, startPosition.y, startPosition.z + stats.CigarReach);
                     cigar = Instantiate(cigarPrefab, transform.position, transform.rotation);
                     cigar.GetComponentInChildren<SpriteRotator>().allPlayers = players;
+                    cigar.GetComponent<Cigar>().ThrowingPlayer = gameObject.GetComponentInParent<Player>();
                     UseFling();
                     break;
                 default:
@@ -100,10 +101,10 @@ public class Puncher : MonoBehaviour
     public void PickupWeapon(WeaponType newWeapon)
     {
         weaponType = newWeapon;
-		userInterface.StartFlashScreen(Color.yellow);
+        userInterface.StartFlashScreen(Color.yellow);
 
-		//ChangeSprite Here
-		switch (weaponType)
+        //ChangeSprite Here
+        switch (weaponType)
         {
             case WeaponType.BareFisted:
                 StrikeCount = 0;
@@ -142,7 +143,7 @@ public class Puncher : MonoBehaviour
                     hitSound.Play();
                 }
             }
-            else if(other.gameObject.tag.Equals("BOOMHOOCH"))
+            else if (other.gameObject.tag.Equals("BOOMHOOCH"))
             {
                 var hitSound = GetComponent<AudioSource>();
 
@@ -168,7 +169,11 @@ public class Puncher : MonoBehaviour
                 hitSound.Play();
             }
 
-            UseStrike();
+
+            if (!gameObject.transform.parent.gameObject.Equals(other.gameObject))
+            {
+                UseStrike();
+            }
         }
     }
 
