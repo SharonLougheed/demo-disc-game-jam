@@ -11408,6 +11408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 443245421}
   - component: {fileID: 443245420}
+  - component: {fileID: 443245422}
   m_Layer: 0
   m_Name: humancards
   m_TagString: Untagged
@@ -11452,7 +11453,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d73cf5e3841b6134cb356db13c230913, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7d248cb317d40d49be99b472f4cf89a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -11477,6 +11478,25 @@ Transform:
   m_Father: {fileID: 1471961114}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &443245422
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443245419}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a68d7bb72cab234f81b1b5129e2dbc4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &447321941
 GameObject:
   m_ObjectHideFlags: 0

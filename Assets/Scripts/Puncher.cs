@@ -101,6 +101,7 @@ public class Puncher : MonoBehaviour
     {
         weaponType = newWeapon;
 		userInterface.StartFlashScreen(Color.yellow);
+		userInterface.ChangePaws(Side.Right, false, newWeapon);
 
 		//ChangeSprite Here
 		switch (weaponType)

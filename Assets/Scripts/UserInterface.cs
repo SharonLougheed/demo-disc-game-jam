@@ -13,7 +13,7 @@ public class UserInterface : MonoBehaviour
 	public Image weaponImage;
 	public Sprite bottle, bone, cigar;
 	public GameObject leftIdleFist, leftPunchingFist;
-	public GameObject rightIdleFist, rightPunchingFist, rightBottle, rightBone, rightCigar;
+	public GameObject rightIdleFist, rightPunchingFist, rightIdleBottle, rightIdleBone, rightIdleCigar, rightPunchingBottle, rightPunchingBone, rightPunchingCigar;
 	public GameObject darknessPanel;
 	public GameObject flashPanel;
 
@@ -76,13 +76,13 @@ public class UserInterface : MonoBehaviour
 						currentRightFist = rightPunchingFist;
 						break;
 					case WeaponType.Bottle:
-						currentRightFist = rightBottle;
+						currentRightFist = rightPunchingBottle;
 						break;
 					case WeaponType.Bone:
-						currentRightFist = rightBone;
+						currentRightFist = rightPunchingBone;
 						break;
 					case WeaponType.Cigar:
-						currentRightFist = rightCigar;
+						currentRightFist = rightPunchingCigar;
 						break;
 					default:
 						break;
@@ -90,7 +90,23 @@ public class UserInterface : MonoBehaviour
 			}
 			else
 			{
-				currentRightFist = rightIdleFist;
+				switch (weaponType)
+				{
+					case WeaponType.BareFisted:
+						currentRightFist = rightIdleFist;
+						break;
+					case WeaponType.Bottle:
+						currentRightFist = rightIdleBottle;
+						break;
+					case WeaponType.Bone:
+						currentRightFist = rightIdleBone;
+						break;
+					case WeaponType.Cigar:
+						currentRightFist = rightIdleCigar;
+						break;
+					default:
+						break;
+				}
 			}
 			currentRightFist.SetActive(true);
 		}
@@ -124,6 +140,4 @@ public class UserInterface : MonoBehaviour
 		}
 		flashPanel.GetComponent<Image>().color = Color.clear;
 	}
-
-
 }
