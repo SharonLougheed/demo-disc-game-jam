@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
             Lives--;
             if (Lives > 0)
             {
-                Respawn();
+                StartCoroutine(Respawn());
             }
             else
             {
@@ -127,24 +127,32 @@ public class Player : MonoBehaviour
 
         DropASteamer();
 
-
-        DisableSprite();
-        DisableControls();
+        DisablePlayer();
         DisableHands();
-
-
-
-        //Destroy(gameObject);
     }
 
     private void DisableHands()
     {
-        var hands = gameObject.GetComponentsInChildren<Puncher>();
+        /* var hands = gameObject.GetComponentsInChildren<Puncher>();
+         foreach (var hand in hands)
+         {
+             hand.enabled = false;
+             hand.gameObject.SetActive(false);
+         }*/
+        leftHand.gameObject.SetActive(false);
+        rightHand.gameObject.SetActive(false);
+    }
+
+    private void EnableHands()
+    {
+        /*var hands = gameObject.GetComponentsInChildren<Puncher>();
         foreach (var hand in hands)
         {
-            hand.enabled = false;
-            hand.gameObject.SetActive(false);
-        }
+            hand.enabled = true;
+            hand.gameObject.SetActive(true);
+        }*/
+        leftHand.gameObject.SetActive(true);
+        rightHand.gameObject.SetActive(true);
     }
 
     private void DisableControls()
@@ -162,9 +170,27 @@ public class Player : MonoBehaviour
         spriteRender.enabled = false;
     }
 
-    private void Respawn()
+    IEnumerator Respawn()
     {
+        health.Value = health.MinValue;
+        IsAlive = false;
+
         DropASteamer();
+
+        DisablePlayer();
+        DisableHands();
+
+        userInterface.healthText.text = "x_x  Respawn in 3";
+
+        yield return new WaitForSeconds(1f);
+
+        userInterface.healthText.text = "x_x  Respawn in 2";
+
+        yield return new WaitForSeconds(1f);
+
+        userInterface.healthText.text = "x_x  Respawn in 1";
+
+        yield return new WaitForSeconds(1.2f);
 
         var levelManager = FindObjectOfType<LevelManager>();
         var spawnPoint = levelManager.NextPlayerSpawnPoint();
@@ -174,6 +200,11 @@ public class Player : MonoBehaviour
         SetHealth();
 		userInterface.healthText.text = "Health: " + health.Value;
 		Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
+
+        EnablePlayer();
+        EnableHands();
+
+        yield return null;
     }
 
     private void DropASteamer()
@@ -184,5 +215,25 @@ public class Player : MonoBehaviour
             drop.transform.position = transform.position;
             drop.GetComponentInChildren<SpriteRotator>().allPlayers = playerRenderer.allPlayers;
         }
+    }
+
+    private void DisablePlayer()
+    {
+        transform.Rotate(new Vector3(0, 0, 1), degreeOfDeath);
+
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<PlayerController>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
+        playerRenderer.gameObject.SetActive(false);
+    }
+
+    private void EnablePlayer()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
+        GetComponent<PlayerController>().enabled = true;
+        GetComponent<CharacterController>().enabled = true;
+        playerRenderer.gameObject.SetActive(true);
     }
 }
