@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckPunches()
     {
+        int controllerNumber = GetControllerNumber();
         var player = GetComponent<Player>();
         if (Input.GetButtonDown("Left" + GetControllerNumber()))
         {
