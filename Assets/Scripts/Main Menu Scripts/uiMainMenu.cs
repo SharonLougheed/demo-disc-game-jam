@@ -64,6 +64,7 @@ public class uiMainMenu : MonoBehaviour
     IEnumerator BeginGame()
     {
         GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayStartSound();
+        GameObject.Find("Loading Graphic").GetComponent<Image>().enabled = true;
 
         yield return new WaitForSeconds(2.1f);
 
