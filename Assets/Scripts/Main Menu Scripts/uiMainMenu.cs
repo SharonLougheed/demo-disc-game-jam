@@ -49,9 +49,14 @@ public class uiMainMenu : MonoBehaviour
     {
         GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
         SceneManager.LoadScene(ToCredits);
-	}
+    }
 
-	public void QuitGame ()
+    public void LowResCheck()
+    {
+        GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes = GameObject.Find("Low Res Check").GetComponent<Toggle>().isOn;
+    }
+
+    public void QuitGame ()
 	{
 		Application.Quit();
 	}
