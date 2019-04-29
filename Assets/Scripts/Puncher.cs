@@ -101,7 +101,12 @@ public class Puncher : MonoBehaviour
     public void PickupWeapon(WeaponType newWeapon)
     {
         weaponType = newWeapon;
+<<<<<<< HEAD
         userInterface.StartFlashScreen(Color.yellow);
+=======
+		userInterface.StartFlashScreen(Color.yellow);
+		userInterface.ChangePaws(Side.Right, false, newWeapon);
+>>>>>>> bc807f32aeeedf79fc7b8331ec0165e8ea0c61b1
 
         //ChangeSprite Here
         switch (weaponType)
