@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -59,7 +60,8 @@ public class Player : MonoBehaviour
     {
         health.Increase(amount);
         userInterface.StartFlashScreen(Color.green);
-        userInterface.healthText.text = "" + health.Value;
+        userInterface.healthText.text = "Health: " + health.Value;
+        userInterface.healthSlider.value = health.Value;
     }
 
     public void TakeDamage(int amount)
@@ -87,13 +89,24 @@ public class Player : MonoBehaviour
         }
         else
         {
-            userInterface.healthText.text = "" + health.Value;
+            userInterface.healthText.text = "Health: " + health.Value;
+            userInterface.healthSlider.value = health.Value;
         }
     }
 
     public void SetUserInterface()
     {
-        userInterface.healthText.text = "" + health.Value;
+        userInterface.healthText.text = "Health: " + health.Value;
+        userInterface.healthSlider.minValue = defaults.MinHealth;
+        userInterface.healthSlider.maxValue = defaults.MaxHealth;
+        userInterface.healthSlider.value = health.Value;
+        userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
+        foreach (GameObject lifePaw in userInterface.lifePaws)
+        {
+            lifePaw.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+            userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
+        }
+
         leftHand.userInterface = userInterface;
         rightHand.userInterface = userInterface;
     }
@@ -204,7 +217,9 @@ public class Player : MonoBehaviour
         playerController.SetNewPositionRotation(spawnPoint.transform.position, spawnPoint.transform.rotation);
 
         SetHealth();
-        userInterface.healthText.text = "" + health.Value;
+
+        userInterface.healthText.text = "Health: " + health.Value;
+        userInterface.healthSlider.value = health.Value;
         Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
 
         EnablePlayer();

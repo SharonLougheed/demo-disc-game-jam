@@ -124,6 +124,4 @@ public class UserInterface : MonoBehaviour
 		}
 		flashPanel.GetComponent<Image>().color = Color.clear;
 	}
-
-
 }
