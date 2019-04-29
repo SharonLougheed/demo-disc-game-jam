@@ -100,9 +100,10 @@ public class Puncher : MonoBehaviour
     public void PickupWeapon(WeaponType newWeapon)
     {
         weaponType = newWeapon;
+		userInterface.StartFlashScreen(Color.yellow);
 
-        //ChangeSprite Here
-        switch (weaponType)
+		//ChangeSprite Here
+		switch (weaponType)
         {
             case WeaponType.BareFisted:
                 StrikeCount = 0;
