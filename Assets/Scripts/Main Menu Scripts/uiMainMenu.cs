@@ -23,27 +23,40 @@ public class uiMainMenu : MonoBehaviour
 	}
 	
 	public void MainMenu ()
-	{
-		SceneManager.LoadScene(ToMainMenu);
+    {
+        GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
+        SceneManager.LoadScene(ToMainMenu);
 	}
 
 	public void PlayGame ()
-	{
-		SceneManager.LoadScene(ToGame);
+    {
+        StartCoroutine(BeginGame());
 	}
 
 	public void Tutorial ()
 	{
+        GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
 		SceneManager.LoadScene(ToTutorial);
 	}
 	
 	public void Credits ()
-	{
-		SceneManager.LoadScene(ToCredits);
+    {
+        GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
+        SceneManager.LoadScene(ToCredits);
 	}
 
 	public void QuitGame ()
 	{
 		Application.Quit();
 	}
+
+    IEnumerator BeginGame()
+    {
+        GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayStartSound();
+
+        yield return new WaitForSeconds(2.1f);
+
+        SceneManager.LoadScene(ToGame);
+        yield return null;
+    }
 }
