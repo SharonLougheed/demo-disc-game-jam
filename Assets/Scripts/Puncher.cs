@@ -53,6 +53,7 @@ public class Puncher : MonoBehaviour
         }
         else if (isRecovering)
         {
+			userInterface.ChangePaws(side, false, weaponType);
             float travel = (Time.time - startTime) * stats.PunchSpeed;
             float remainingTravel = travel / punchLength;
             transform.localPosition = Vector3.Lerp(endPosition, startPosition, remainingTravel);
@@ -69,7 +70,8 @@ public class Puncher : MonoBehaviour
         if (!isPunching)
         {
             isPunching = true;
-            startTime = Time.time;
+			userInterface.ChangePaws(side, true, weaponType);
+			startTime = Time.time;
             startPosition = transform.localPosition;
             switch (weaponType)
             {
