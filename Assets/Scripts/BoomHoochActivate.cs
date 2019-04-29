@@ -31,7 +31,7 @@ public class BoomHoochActivate : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
 
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.05f);
 
         boomer.SetActive(true);
         sploder.SetActive(true);
