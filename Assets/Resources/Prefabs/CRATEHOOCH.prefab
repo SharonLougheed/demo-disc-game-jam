@@ -4966,7 +4966,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4.3
+      scalar: 1.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5663,7 +5663,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 83.15
+      scalar: 22.3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -9551,7 +9551,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.3
+  m_Radius: 0.84
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1956383490807645380
 GameObject:
@@ -9569,7 +9569,7 @@ GameObject:
   - component: {fileID: 515652301296122351}
   - component: {fileID: 1442116385866047217}
   m_Layer: 0
-  m_Name: BOOMHOOCH
+  m_Name: CRATEHOOCH
   m_TagString: BOOMHOOCH
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9634,7 +9634,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f0972e02632ad344e9f5ac73afa1ec4e, type: 2}
+  - {fileID: 2100000, guid: 8214648e717753e48b47bc127c58dc54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9679,7 +9679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b2040b7f1d264439d9abaef2916c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoom: 1
+  isBoom: 0
   boomer: {fileID: 7822386057654111614}
   sploder: {fileID: 569143945569325592}
   concusser: {fileID: 1805161457543857105}
@@ -9696,7 +9696,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ecb47c880bef0334882fb62bc0b52687, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.076
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9825,8 +9825,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e95b64b64925b2e45bf42da5b1f4ef14, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.86
+  m_Pitch: 1.65
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -9917,7 +9917,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7822386057654111614}
   serializedVersion: 6
-  lengthInSec: 0.462
+  lengthInSec: 0.78
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9992,7 +9992,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.46
+      scalar: 0.8
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10045,7 +10045,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.13
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10161,7 +10161,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.26
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10477,13 +10477,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1
+    maxNumParticles: 884
     size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -0.35
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -10535,8 +10535,8 @@ ParticleSystem:
         m_RotationOrder: 4
   ShapeModule:
     serializedVersion: 6
-    enabled: 0
-    type: 19
+    enabled: 1
+    type: 0
     angle: 0
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -10623,7 +10623,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.61
       mode: 0
       spread: 0
       speed:
@@ -10742,7 +10742,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 93.06
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -11239,7 +11239,7 @@ ParticleSystem:
   UVModule:
     enabled: 1
     mode: 1
-    timeMode: 2
+    timeMode: 0
     fps: 15.2
     frameOverTime:
       serializedVersion: 2
@@ -11356,13 +11356,10 @@ ParticleSystem:
     uvChannelMask: -1
     randomRow: 0
     sprites:
-    - sprite: {fileID: 21300000, guid: 4ebe8d97e629d3142b53413926734e7b, type: 3}
-    - sprite: {fileID: 21300002, guid: 4ebe8d97e629d3142b53413926734e7b, type: 3}
-    - sprite: {fileID: 21300004, guid: 4ebe8d97e629d3142b53413926734e7b, type: 3}
-    - sprite: {fileID: 21300006, guid: 4ebe8d97e629d3142b53413926734e7b, type: 3}
-    - sprite: {fileID: 21300008, guid: 4ebe8d97e629d3142b53413926734e7b, type: 3}
-    - sprite: {fileID: 21300010, guid: 4ebe8d97e629d3142b53413926734e7b, type: 3}
-    - sprite: {fileID: 21300012, guid: 4ebe8d97e629d3142b53413926734e7b, type: 3}
+    - sprite: {fileID: 21300000, guid: 73ac9e3ef08de42438b583bfe84f5fba, type: 3}
+    - sprite: {fileID: 21300002, guid: 73ac9e3ef08de42438b583bfe84f5fba, type: 3}
+    - sprite: {fileID: 21300004, guid: 73ac9e3ef08de42438b583bfe84f5fba, type: 3}
+    - sprite: {fileID: 21300006, guid: 73ac9e3ef08de42438b583bfe84f5fba, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -14537,7 +14534,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fa36dfb1787c9445acc35474f9bec5a, type: 2}
+  - {fileID: 2100000, guid: 6f31728b8296683418f1160205d773bb, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -14561,7 +14558,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 0.14
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
