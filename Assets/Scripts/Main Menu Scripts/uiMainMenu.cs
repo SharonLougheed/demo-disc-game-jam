@@ -15,7 +15,8 @@ public class uiMainMenu : MonoBehaviour
 	[SerializeField] string ToMainMenu;
 	[SerializeField] string ToTutorial;
 	[SerializeField] string ToCredits;
-	
+
+    private bool isStartingGame = false;
 
 	public void MenuActivated ()
 	{
@@ -30,7 +31,12 @@ public class uiMainMenu : MonoBehaviour
 
 	public void PlayGame ()
     {
-        StartCoroutine(BeginGame());
+        if (!isStartingGame)
+        {
+            isStartingGame = true;
+
+            StartCoroutine(BeginGame());
+        }
 	}
 
 	public void Tutorial ()
