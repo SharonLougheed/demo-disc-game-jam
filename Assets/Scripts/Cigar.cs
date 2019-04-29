@@ -6,6 +6,7 @@ public class Cigar : MonoBehaviour
 {
     public float speed;
     public PlayerStats stats;
+    public Player ThrowingPlayer;
 
     public GameObject concusser;
     public GameObject cigarImage;
@@ -17,13 +18,14 @@ public class Cigar : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.tag.Equals("Player")
+                && !ThrowingPlayer.Equals(other.GetComponent<Player>()))
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.TakeDamage(stats.CigarDamage);
         }
 
-        if(!other.gameObject.tag.Equals("Tables"))
+        if (!other.gameObject.tag.Equals("Tables"))
         {
             StartCoroutine(Immolate());
         }

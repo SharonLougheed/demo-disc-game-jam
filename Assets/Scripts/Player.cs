@@ -37,18 +37,11 @@ public class Player : MonoBehaviour
     {
         originalColor = GetComponent<Renderer>().material.color;
 
-		//Not set yet, but they're all referencing the same thing
-		leftHand.players = playerRenderer.allPlayers;
+        //Not set yet, but they're all referencing the same thing
+        leftHand.players = playerRenderer.allPlayers;
         rightHand.players = playerRenderer.allPlayers;
     }
 
-    private void Update()
-    {
-        if (playerNumber == 2)
-        {
-            Debug.Log("Player Pos: " + transform.position + " | Frame: " + Time.frameCount);
-        }
-    }
     public void SetLives()
     {
         Lives = defaults.StartLives;
@@ -61,21 +54,21 @@ public class Player : MonoBehaviour
         health.MaxValue = defaults.MaxHealth;
         health.MinValue = defaults.MinHealth;
         health.Value = defaults.StartHealth;
-	}
+    }
 
     public void GiveHeath(int amount)
     {
         health.Increase(amount);
-		userInterface.StartFlashScreen(Color.green);
-		userInterface.healthText.text = "Health: "+health.Value;
-		userInterface.healthSlider.value = health.Value;
-	}
+        userInterface.StartFlashScreen(Color.green);
+        userInterface.healthText.text = "Health: " + health.Value;
+        userInterface.healthSlider.value = health.Value;
+    }
 
     public void TakeDamage(int amount)
     {
         health.Decrease(amount);
-		userInterface.StartFlashScreen(Color.red);
-		StartCoroutine(FlashPlayer());
+        userInterface.StartFlashScreen(Color.red);
+        StartCoroutine(FlashPlayer());
 
         // Rock camera back
 
@@ -84,8 +77,8 @@ public class Player : MonoBehaviour
         if (health.Value <= defaults.MinHealth)
         {
             Lives--;
-			userInterface.lifePaws[Lives].SetActive(false); //Not ideal, but works in a pinch
-			if (Lives > 0)
+            userInterface.lifePaws[Lives].SetActive(false); //Not ideal, but works in a pinch
+            if (Lives > 0)
             {
                 StartCoroutine(Respawn());
             }
@@ -97,24 +90,24 @@ public class Player : MonoBehaviour
         else
         {
             userInterface.healthText.text = "Health: " + health.Value;
-			userInterface.healthSlider.value = health.Value;
-		}
+            userInterface.healthSlider.value = health.Value;
+        }
     }
 
     public void SetUserInterface()
     {
         userInterface.healthText.text = "Health: " + health.Value;
-		userInterface.healthSlider.minValue = defaults.MinHealth;
-		userInterface.healthSlider.maxValue = defaults.MaxHealth;
-		userInterface.healthSlider.value = health.Value;
-		userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
-		foreach (GameObject lifePaw in userInterface.lifePaws)
-		{
-			lifePaw.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-			userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
-		}
+        userInterface.healthSlider.minValue = defaults.MinHealth;
+        userInterface.healthSlider.maxValue = defaults.MaxHealth;
+        userInterface.healthSlider.value = health.Value;
+        userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
+        foreach (GameObject lifePaw in userInterface.lifePaws)
+        {
+            lifePaw.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+            userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
+        }
 
-		leftHand.userInterface = userInterface;
+        leftHand.userInterface = userInterface;
         rightHand.userInterface = userInterface;
     }
 
@@ -145,6 +138,11 @@ public class Player : MonoBehaviour
 
         DisablePlayer();
         DisableHands();
+        DimView();
+    }
+
+    private void DimView()
+    {
     }
 
     private void DisableHands()
@@ -219,9 +217,10 @@ public class Player : MonoBehaviour
         playerController.SetNewPositionRotation(spawnPoint.transform.position, spawnPoint.transform.rotation);
 
         SetHealth();
+
         userInterface.healthText.text = "Health: " + health.Value;
-		userInterface.healthSlider.value = health.Value;
-		Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
+        userInterface.healthSlider.value = health.Value;
+        Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
 
         EnablePlayer();
         EnableHands();
@@ -247,8 +246,8 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<CharacterController>().enabled = false;
-		userInterface.darknessPanel.SetActive(true);
-		playerRenderer.DisableViewObjects();
+        userInterface.darknessPanel.SetActive(true);
+        playerRenderer.DisableViewObjects();
     }
 
     private void EnablePlayer()
@@ -257,7 +256,7 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = true;
         GetComponent<PlayerController>().enabled = true;
         GetComponent<CharacterController>().enabled = true;
-		userInterface.darknessPanel.SetActive(false);
-		playerRenderer.EnableViewObjects();
-	}
+        userInterface.darknessPanel.SetActive(false);
+        playerRenderer.EnableViewObjects();
+    }
 }
