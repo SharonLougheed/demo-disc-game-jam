@@ -53,6 +53,7 @@ public class uiMainMenu : MonoBehaviour
 
     public void LowResToggle()
     {
+        GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
         GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes = GameObject.Find("Low Res Toggle").GetComponent<Toggle>().isOn;
     }
 
@@ -65,6 +66,7 @@ public class uiMainMenu : MonoBehaviour
     {
         GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayStartSound();
         GameObject.Find("Loading Graphic").GetComponent<Image>().enabled = true;
+        GameObject.Find("Loading Graphic").GetComponent<Animator>().enabled = true;
 
         yield return new WaitForSeconds(2.1f);
 

@@ -169,6 +169,9 @@ public class Player : MonoBehaviour
 
         leftHand.gameObject.SetActive(true);
         rightHand.gameObject.SetActive(true);
+
+        leftHand.GetComponent<BoxCollider>().enabled = false;
+        rightHand.GetComponent<BoxCollider>().enabled = false;
     }
 
     /* Deprecated for DisablePlayer() and EnablePlayer()
