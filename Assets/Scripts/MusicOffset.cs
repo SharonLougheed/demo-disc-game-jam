@@ -33,7 +33,7 @@ public class MusicOffset : MonoBehaviour
 
     public void ChangeTracks()
     {
-        if(!isChanging)
+        if (!isChanging)
         {
             StartCoroutine(CrossFade());
         }
@@ -47,7 +47,7 @@ public class MusicOffset : MonoBehaviour
         trackOne.Play();
         trackOne.time = Random.Range(0.0f, 120.0f);
 
-        for(int k = 0; k <= 20; k++)
+        for (int k = 0; k <= 20; k++)
         {
             trackOne.volume = (float)k * volumeIncrement;
 
