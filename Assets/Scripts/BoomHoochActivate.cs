@@ -13,17 +13,23 @@ public class BoomHoochActivate : MonoBehaviour
 
     private GameObject dupe;
 
+    private bool isActive = false;
+
     public void GoBoomBoom()
     {
-        if (isBoom)
+        if (!isActive)
         {
-            StartCoroutine(Splode());
-            StartCoroutine(FlashBoomHooch());
-        }
+            isActive = true;
+            if (isBoom)
+            {
+                StartCoroutine(Splode());
+                StartCoroutine(FlashBoomHooch());
+            }
 
-        else
-        {
-            StartCoroutine(FallApart());
+            else
+            {
+                StartCoroutine(FallApart());
+            }
         }
     }
 
