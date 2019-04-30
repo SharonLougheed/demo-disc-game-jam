@@ -49,6 +49,8 @@ public class Puncher : MonoBehaviour
             {
                 isRecovering = true;
                 startTime = Time.time;
+
+                GetComponent<BoxCollider>().enabled = false;
             }
         }
         else if (isRecovering)
@@ -70,6 +72,9 @@ public class Puncher : MonoBehaviour
         if (!isPunching)
         {
             isPunching = true;
+
+            GetComponent<BoxCollider>().enabled = true;
+
             userInterface.ChangePaws(side, true, weaponType);
             startTime = Time.time;
             startPosition = transform.localPosition;
