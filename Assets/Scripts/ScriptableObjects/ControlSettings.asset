@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67a2320a94650245a8cac3ec8d487f4, type: 3}
   m_Name: ControlSettings
   m_EditorClassIdentifier: 
-  ControllerGroup: 20
+  ControllerGroup: 0
   RotationSpeed: 100
   MovementSpeed: 8
