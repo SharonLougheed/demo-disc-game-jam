@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    public WeaponMode weaponMode = WeaponMode.All;
+    public LevelSettings levelSettings;
+
+    public WeaponMode weaponMode;
     public bool isGameOver;
     public Player WinningPlayer;
     public GameObject PlayerPrefab;
@@ -45,22 +47,23 @@ public class LevelManager : MonoBehaviour
     public GameObject[] userInterfaces;
     public GameObject uiPrefab;
 
-	public bool lowResolution = false;
-	public GameObject mainCameraForLowRes;
-	public GameObject lowResTexture;
+    public bool lowResolution = false;
+    public GameObject mainCameraForLowRes;
+    public GameObject lowResTexture;
 
     private void Awake()
     {
-        if(GameObject.Find("GameResolution"))
+        LoadSettings();
+        if (GameObject.Find("GameResolution"))
         {
             lowResolution = GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes;
         }
 
-		if(mainCameraForLowRes != null && lowResTexture != null)
-		{
-			mainCameraForLowRes.SetActive(lowResolution);
-			lowResTexture.SetActive(lowResolution);
-		}
+        if (mainCameraForLowRes != null && lowResTexture != null)
+        {
+            mainCameraForLowRes.SetActive(lowResolution);
+            lowResTexture.SetActive(lowResolution);
+        }
         isGameOver = false;
         switch (NumberOfPlayers)
         {
@@ -82,6 +85,12 @@ public class LevelManager : MonoBehaviour
         LoadPlayers(NumberOfPlayers);
         LoadHealth(NumberOfHealths);
         LoadWeapon(NumberOfWeapons);
+    }
+
+    private void LoadSettings()
+    {
+        NumberOfPlayers = levelSettings.PlayerCount;
+        weaponMode = levelSettings.LevelWeaponMode;
     }
 
     public GameObject NextPlayerSpawnPoint() => PlayerSpawnPoints.GetNextObject();
@@ -132,6 +141,7 @@ public class LevelManager : MonoBehaviour
 
             var player = players[i].GetComponent<Player>();
             player.PlayerNumber = i + 1;
+            player.SetLives(levelSettings.Lives);
 
             var controller = players[i].GetComponent<PlayerController>();
             controller.ControllerNumber = i + 1;
@@ -147,7 +157,7 @@ public class LevelManager : MonoBehaviour
 
         SetupPlayerRenderers();
         SetupUserInterfaces();
-		SetupEnvironmentSpriteRotators();
+        SetupEnvironmentSpriteRotators();
     }
 
     private void SetupPlayerRenderers()
@@ -183,7 +193,7 @@ public class LevelManager : MonoBehaviour
             //Turn on the view layer for this player
             var camera = players[i].GetComponentInChildren<Camera>();
             camera.cullingMask = -1; //Show Everything
-			//Hide other player views
+                                     //Hide other player views
             for (int j = 0; j < players.Length; j++)
             {
                 //If not this player
@@ -193,11 +203,11 @@ public class LevelManager : MonoBehaviour
                     camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Player" + (j + 1) + "View"));
                 }
             }
-			//If not low resolution, don't send through a render texture
-			if (!lowResolution)
-			{
-				camera.targetTexture = null;
-			}
+            //If not low resolution, don't send through a render texture
+            if (!lowResolution)
+            {
+                camera.targetTexture = null;
+            }
 
             pRenderer.Setup(); //Stuff it woulda called in Start
         }
@@ -221,16 +231,17 @@ public class LevelManager : MonoBehaviour
             p.SetUserInterface();
         }
     }
-	private void SetupEnvironmentSpriteRotators()
-	{
-		SpriteRotator[] environmentSpriteRotators = FindObjectsOfType<SpriteRotator>();
-		for (int i = 0; i < environmentSpriteRotators.Length; i++)
-		{
-			environmentSpriteRotators[i].allPlayers = players;
-		}
-	}
 
-	private void LoadHealth(int numberOfHealths)
+    private void SetupEnvironmentSpriteRotators()
+    {
+        SpriteRotator[] environmentSpriteRotators = FindObjectsOfType<SpriteRotator>();
+        for (int i = 0; i < environmentSpriteRotators.Length; i++)
+        {
+            environmentSpriteRotators[i].allPlayers = players;
+        }
+    }
+
+    private void LoadHealth(int numberOfHealths)
     {
         healthPickups = new GameObject[numberOfHealths];
         for (int i = 0; i < numberOfHealths; i++)

@@ -9,27 +9,27 @@ using UnityEngine.SceneManagement;
 public class uiMainMenu : MonoBehaviour
 {
 
-	[SerializeField] GameObject Menu;
-	//[SerializeField] GameObject firstbutton;
-	[SerializeField] string ToGame;
-	[SerializeField] string ToMainMenu;
-	[SerializeField] string ToTutorial;
-	[SerializeField] string ToCredits;
+    [SerializeField] GameObject Menu;
+    //[SerializeField] GameObject firstbutton;
+    [SerializeField] string ToGame;
+    [SerializeField] string ToMainMenu;
+    [SerializeField] string ToTutorial;
+    [SerializeField] string ToCredits;
 
     private bool isStartingGame = false;
 
-	public void MenuActivated ()
-	{
-		//MainMenu.SetActive (false);
-	}
-	
-	public void MainMenu ()
+    public void MenuActivated()
+    {
+        //MainMenu.SetActive (false);
+    }
+
+    public void MainMenu()
     {
         GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
         SceneManager.LoadScene(ToMainMenu);
-	}
+    }
 
-	public void PlayGame ()
+    public void PlayGame()
     {
         if (!isStartingGame)
         {
@@ -37,15 +37,15 @@ public class uiMainMenu : MonoBehaviour
 
             StartCoroutine(BeginGame());
         }
-	}
+    }
 
-	public void Tutorial ()
-	{
+    public void Tutorial()
+    {
         GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
-		SceneManager.LoadScene(ToTutorial);
-	}
-	
-	public void Credits ()
+        SceneManager.LoadScene(ToTutorial);
+    }
+
+    public void Credits()
     {
         GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
         SceneManager.LoadScene(ToCredits);
@@ -57,10 +57,10 @@ public class uiMainMenu : MonoBehaviour
         GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes = GameObject.Find("Low Res Toggle").GetComponent<Toggle>().isOn;
     }
 
-    public void QuitGame ()
-	{
-		Application.Quit();
-	}
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
     IEnumerator BeginGame()
     {

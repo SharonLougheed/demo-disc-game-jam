@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
         {
             playerNumber = value;
             SetHealth();
-            SetLives();
         }
     }
 
@@ -40,6 +39,11 @@ public class Player : MonoBehaviour
         //Not set yet, but they're all referencing the same thing
         leftHand.players = playerRenderer.allPlayers;
         rightHand.players = playerRenderer.allPlayers;
+    }
+
+    public void SetLives(int count)
+    {
+        Lives = count;
     }
 
     public void SetLives()

@@ -13222,6 +13222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd965bf400ec72498b3bbd88ed2ef7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: 44c254eec0ed65d4589691d4e59b227b, type: 2}
   weaponMode: 0
   isGameOver: 0
   WinningPlayer: {fileID: 0}
