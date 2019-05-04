@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     public LevelSettings levelSettings;
 
-    public WeaponMode weaponMode;
+    public WeaponMode LevelWeaponMode;
     public bool isGameOver;
     public Player WinningPlayer;
     public GameObject PlayerPrefab;
@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     public int NumberOfPlayers;
     public int NumberOfHealths;
     public int NumberOfWeapons;
+    public int PlayerLivesCount;
 
     private RectCollection rectCollection;
     public RectCollection FourWaySplit;
@@ -90,7 +91,8 @@ public class LevelManager : MonoBehaviour
     private void LoadSettings()
     {
         NumberOfPlayers = levelSettings.PlayerCount;
-        weaponMode = levelSettings.LevelWeaponMode;
+        LevelWeaponMode = levelSettings.LevelWeaponMode;
+        PlayerLivesCount = levelSettings.Lives;
     }
 
     public GameObject NextPlayerSpawnPoint() => PlayerSpawnPoints.GetNextObject();
@@ -141,7 +143,7 @@ public class LevelManager : MonoBehaviour
 
             var player = players[i].GetComponent<Player>();
             player.PlayerNumber = i + 1;
-            player.SetLives(levelSettings.Lives);
+            player.SetLives(PlayerLivesCount);
 
             var controller = players[i].GetComponent<PlayerController>();
             controller.ControllerNumber = i + 1;
@@ -226,6 +228,13 @@ public class LevelManager : MonoBehaviour
             //rt.localScale = new Vector3(rectCollection.Rects[i].width, rectCollection.Rects[i].height, 1f);
             rt.anchorMin = new Vector2(rectCollection.Rects[i].xMin, rectCollection.Rects[i].yMin);
             rt.anchorMax = new Vector2(rectCollection.Rects[i].xMax, rectCollection.Rects[i].yMax);
+
+            RectTransform overlay = (RectTransform)userInterfaces[i].transform.Find("Overlay");
+            if (NumberOfPlayers == 2)
+            {
+                overlay.transform.localScale = new Vector3(overlay.transform.localScale.x * 2, overlay.transform.localScale.y, overlay.transform.localScale.z);
+            }
+
             Player p = players[i].GetComponent<Player>();
             p.userInterface = userInterfaces[i].GetComponent<UserInterface>();
             p.SetUserInterface();
@@ -292,7 +301,7 @@ public class LevelManager : MonoBehaviour
             var spawnPoint = WeaponSpawnPoints.GetNextObject();
 
             //Refactor
-            switch (weaponMode)
+            switch (LevelWeaponMode)
             {
                 case WeaponMode.All:
                     if (i == rndInt)
