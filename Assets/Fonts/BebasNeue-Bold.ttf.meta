@@ -11,9 +11,10 @@ TrueTypeFontImporter:
   fontName: Bebas Neue
   fontNames:
   - Bebas Neue
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 783bebfef23cd1a49a705c1be29e72be, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 1
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
