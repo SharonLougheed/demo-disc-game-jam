@@ -149,6 +149,11 @@ public class Player : MonoBehaviour
     {
     }
 
+    internal void SetLives(object playerLivesCount)
+    {
+        throw new NotImplementedException();
+    }
+
     private void DisableHands()
     {
         /* var hands = gameObject.GetComponentsInChildren<Puncher>();
