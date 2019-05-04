@@ -803,7 +803,7 @@ RectTransform:
   m_GameObject: {fileID: 753595188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 583940748}
   m_RootOrder: 1
@@ -811,7 +811,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 240.47}
-  m_SizeDelta: {x: 1800, y: 1998}
+  m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &753595190
 MonoBehaviour:
@@ -833,7 +833,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 50286f4aad7171d4d8bed3d68368657f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4301d5152df6b504ca9f6c085545a2b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1427,8 +1427,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279637781
-  m_fontColor: {r: 0.08235294, g: 0.09019608, b: 0.08627451, a: 1}
+    rgba: 4279966497
+  m_fontColor: {r: 0.12941177, g: 0.105882354, b: 0.105882354, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3019608, g: 0.31764707, b: 0.40784317, a: 1}
+  m_Color: {r: 0.12941177, g: 0.105882354, b: 0.105882354, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1662,8 +1662,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279637781
-  m_fontColor: {r: 0.08235294, g: 0.09019608, b: 0.08627451, a: 1}
+    rgba: 4279966497
+  m_fontColor: {r: 0.12941177, g: 0.105882354, b: 0.105882354, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2074,8 +2074,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279637781
-  m_fontColor: {r: 0.08235294, g: 0.09019608, b: 0.08627451, a: 1}
+    rgba: 4279966497
+  m_fontColor: {r: 0.12941177, g: 0.105882354, b: 0.105882354, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
