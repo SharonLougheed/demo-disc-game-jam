@@ -43,6 +43,8 @@ public class MainMenu : MonoBehaviour
 
         yield return new WaitForSeconds(2.1f);
 
+        GameObject.Find("BlackOut").GetComponent<Image>().enabled = true;
+
         SceneManager.LoadScene(ToGame);
         yield return null;
     }

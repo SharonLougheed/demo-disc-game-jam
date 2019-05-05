@@ -66,18 +66,7 @@ public class LevelManager : MonoBehaviour
             lowResTexture.SetActive(lowResolution);
         }
         isGameOver = false;
-        switch (NumberOfPlayers)
-        {
-            case 1:
-                rectCollection = NoSplit;
-                break;
-            case 2:
-                rectCollection = TwoWaySplit;
-                break;
-            default:
-                rectCollection = FourWaySplit;
-                break;
-        }
+
 
         PlayerSpawnPoints.LoadGameObjects();
         HealthSpawnPoints.LoadGameObjects();
@@ -93,6 +82,19 @@ public class LevelManager : MonoBehaviour
         NumberOfPlayers = levelSettings.PlayerCount;
         LevelWeaponMode = levelSettings.LevelWeaponMode;
         PlayerLivesCount = levelSettings.Lives;
+
+        switch (NumberOfPlayers)
+        {
+            case 1:
+                rectCollection = NoSplit;
+                break;
+            case 2:
+                rectCollection = TwoWaySplit;
+                break;
+            default:
+                rectCollection = FourWaySplit;
+                break;
+        }
     }
 
     public GameObject NextPlayerSpawnPoint() => PlayerSpawnPoints.GetNextObject();
@@ -232,7 +234,9 @@ public class LevelManager : MonoBehaviour
             RectTransform overlay = (RectTransform)userInterfaces[i].transform.Find("Overlay");
             if (NumberOfPlayers == 2)
             {
-                overlay.transform.localScale = new Vector3(overlay.transform.localScale.x * 2, overlay.transform.localScale.y, overlay.transform.localScale.z);
+                overlay.transform.localScale = new Vector3(overlay.transform.localScale.x * 2,
+                                                            overlay.transform.localScale.y,
+                                                            overlay.transform.localScale.z);
             }
 
             Player p = players[i].GetComponent<Player>();
