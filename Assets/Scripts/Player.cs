@@ -108,10 +108,22 @@ public class Player : MonoBehaviour
         foreach (GameObject lifePaw in userInterface.lifePaws)
         {
             lifePaw.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-            userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
         }
 
-        leftHand.userInterface = userInterface;
+		//'An Excellent Bit Of Code'
+		userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
+		userInterface.leftIdleFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.leftPunchingFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.rightIdleFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.rightPunchingFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.rightIdleBottle.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.rightIdleBone.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.rightIdleCigar.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.rightPunchingBottle.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.rightPunchingBone.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+		userInterface.rightPunchingCigar.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+
+		leftHand.userInterface = userInterface;
         rightHand.userInterface = userInterface;
 
     }
