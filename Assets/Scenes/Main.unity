@@ -13223,7 +13223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSettings: {fileID: 11400000, guid: 44c254eec0ed65d4589691d4e59b227b, type: 2}
-  weaponMode: 0
+  LevelWeaponMode: 0
   isGameOver: 0
   WinningPlayer: {fileID: 0}
   PlayerPrefab: {fileID: 2250085108596385965, guid: a09f757f4b524b64cb2f338e2e2fef92,
@@ -13235,6 +13235,7 @@ MonoBehaviour:
   NumberOfPlayers: 4
   NumberOfHealths: 4
   NumberOfWeapons: 9
+  PlayerLivesCount: 0
   FourWaySplit: {fileID: 11400000, guid: 26f413375cae5574a88fdd1ad749d47c, type: 2}
   TwoWaySplit: {fileID: 11400000, guid: 545f93eaae00f274a8c190e2fb1d75d8, type: 2}
   NoSplit: {fileID: 11400000, guid: 77a5664825017304dbbf1c42eaddfa7c, type: 2}
@@ -45215,8 +45216,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 22, y: -7.1}
+  m_SizeDelta: {x: 320, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1680784555
 MonoBehaviour:
@@ -45239,8 +45240,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 17ec059f7c7ccf441925b0e818796c39, type: 3}
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -45249,7 +45250,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &1680784556
