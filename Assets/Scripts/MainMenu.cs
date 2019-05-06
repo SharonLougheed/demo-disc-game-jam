@@ -29,6 +29,11 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void SetWeaponMode(int modeIndex) => settings.LevelWeaponMode = (WeaponMode)modeIndex;
 
     public void SetLives(int livesIndex) => settings.Lives = 5 - livesIndex;
