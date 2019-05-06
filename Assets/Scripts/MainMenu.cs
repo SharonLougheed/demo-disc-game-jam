@@ -18,6 +18,17 @@ public class MainMenu : MonoBehaviour
         settings.Lives = 3;
     }
 
+    public void LowResToggle()
+    {
+        GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
+        GameObject.Find("GameResolution").GetComponent<GameResolution>().isLowRes = GameObject.Find("Low Res Toggle").GetComponent<Toggle>().isOn;
+    }
+
+    public void PlayOptionSound()
+    {
+        GameObject.Find("SplashTheme").GetComponent<SplashTheme>().PlayOptionSound();
+    }
+
     public void PlayGame()
     {
         Debug.Log("New Play Game fired");
