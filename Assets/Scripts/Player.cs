@@ -169,32 +169,32 @@ public class Player : MonoBehaviour
 
     private void DisableHands()
     {
-        /* var hands = gameObject.GetComponentsInChildren<Puncher>();
+		/* var hands = gameObject.GetComponentsInChildren<Puncher>();
          foreach (var hand in hands)
          {
              hand.enabled = false;
              hand.gameObject.SetActive(false);
          }*/
 
-        leftHand.gameObject.SetActive(false);
+		leftHand.gameObject.SetActive(false);
         rightHand.gameObject.SetActive(false);
-    }
+	}
 
     private void EnableHands()
     {
-        /*var hands = gameObject.GetComponentsInChildren<Puncher>();
+		/*var hands = gameObject.GetComponentsInChildren<Puncher>();
         foreach (var hand in hands)
         {
             hand.enabled = true;
             hand.gameObject.SetActive(true);
         }*/
 
-        leftHand.gameObject.SetActive(true);
+		leftHand.gameObject.SetActive(true);
         rightHand.gameObject.SetActive(true);
 
         leftHand.GetComponent<BoxCollider>().enabled = false;
         rightHand.GetComponent<BoxCollider>().enabled = false;
-    }
+	}
 
     /* Deprecated for DisablePlayer() and EnablePlayer()
 
@@ -271,7 +271,11 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<CharacterController>().enabled = false;
-        userInterface.darknessPanel.SetActive(true);
+		if (userInterface.pawsAnimator != null)
+		{
+			userInterface.pawsAnimator.enabled = false;
+		}
+		userInterface.darknessPanel.SetActive(true);
         playerRenderer.DisableViewObjects();
     }
 
@@ -281,7 +285,11 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = true;
         GetComponent<PlayerController>().enabled = true;
         GetComponent<CharacterController>().enabled = true;
-        userInterface.darknessPanel.SetActive(false);
+		if (userInterface.pawsAnimator != null)
+		{
+			userInterface.pawsAnimator.enabled = true;
+		}
+		userInterface.darknessPanel.SetActive(false);
         playerRenderer.EnableViewObjects();
     }
 }

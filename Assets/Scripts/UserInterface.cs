@@ -16,6 +16,7 @@ public class UserInterface : MonoBehaviour
     public GameObject rightIdleFist, rightPunchingFist, rightIdleBottle, rightIdleBone, rightIdleCigar, rightPunchingBottle, rightPunchingBone, rightPunchingCigar;
     public GameObject darknessPanel;
     public GameObject flashPanel;
+	public Animator pawsAnimator;
 
     private GameObject currentLeftFist;
     private GameObject currentRightFist;
