@@ -178,6 +178,14 @@ public class LevelManager : MonoBehaviour
             pRenderer.playerNumber = player.PlayerNumber;
             pRenderer.allPlayers = players; //This is why players is public, faster than passing in copies
 
+			//Disable unused view objects / sprite renderers
+			if(players.Length < 4)
+			{
+				for (int j = players.Length; j < 4; j++)
+				{
+					pRenderer.respectiveViewObjects[j].gameObject.SetActive(false);
+				}
+			}
 
             //Set color
             if (playerColors != null)
