@@ -144,6 +144,50 @@ public class PlayerRenderer : MonoBehaviour
 		animators[otherPlayerNum].SetInteger("Direction", dirNum);
 	}
 
+	public void ChangeWeaponSprite(WeaponType weaponType)
+	{
+		int weaponNum = 0; //BareFisted
+		switch (weaponType)
+		{
+			case WeaponType.Bone:
+				weaponNum = 1;
+				break;
+			case WeaponType.Bottle:
+				weaponNum = 2;
+				break;
+			case WeaponType.Cigar:
+				weaponNum = 3;
+				break;
+		}
+
+		for (int i = 0; i < allPlayers.Length; i++)
+		{
+			if (i != playerNumber && allPlayers[i] != null)
+			{
+				animators[i].SetInteger("Weapon", weaponNum);
+			}
+		}
+	}
+
+
+	public void ChangePunchSprite(Side side, bool punching)
+	{
+		for (int i = 0; i < allPlayers.Length; i++)
+		{
+			if (i != playerNumber && allPlayers[i] != null)
+			{
+				if (side == Side.Left)
+				{
+					animators[i].SetBool("LeftPunch", punching);
+				}
+				else
+				{
+					animators[i].SetBool("RightPunch", punching);
+				}
+			}
+		}
+	}
+
 	//Converts angle in degrees to Direction enum
 	private Direction DegreesToDirection(float angle)
 	{

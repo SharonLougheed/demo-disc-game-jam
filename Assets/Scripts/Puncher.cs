@@ -37,6 +37,7 @@ public class Puncher : MonoBehaviour
 
     public UserInterface userInterface;
     public GameObject[] players; //Set for cigar by player, probably a better way, but too tired
+	public Player owner; //Set by player. Needed some way to know what weapon they have. Again too tired to organize this better.
 
     private void Update()
     {
@@ -56,7 +57,8 @@ public class Puncher : MonoBehaviour
         else if (isRecovering)
         {
             userInterface.ChangePaws(side, false, weaponType);
-            float travel = (Time.time - startTime) * stats.PunchSpeed;
+			owner.playerRenderer.ChangePunchSprite(side, false);
+			float travel = (Time.time - startTime) * stats.PunchSpeed;
             float remainingTravel = travel / punchLength;
             transform.localPosition = Vector3.Lerp(endPosition, startPosition, remainingTravel);
             if (transform.localPosition == startPosition)
@@ -76,7 +78,8 @@ public class Puncher : MonoBehaviour
             GetComponent<BoxCollider>().enabled = true;
 
             userInterface.ChangePaws(side, true, weaponType);
-            startTime = Time.time;
+			owner.playerRenderer.ChangePunchSprite(side, true);
+			startTime = Time.time;
             startPosition = transform.localPosition;
             switch (weaponType)
             {
@@ -108,9 +111,10 @@ public class Puncher : MonoBehaviour
         weaponType = newWeapon;
 		userInterface.StartFlashScreen(Color.yellow);
 		userInterface.ChangePaws(Side.Right, false, newWeapon);
+		owner.playerRenderer.ChangeWeaponSprite(newWeapon);
 
-        //ChangeSprite Here
-        switch (weaponType)
+		//ChangeSprite Here
+		switch (weaponType)
         {
             case WeaponType.BareFisted:
                 StrikeCount = 0;

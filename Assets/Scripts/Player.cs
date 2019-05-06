@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
     {
         originalColor = GetComponent<Renderer>().material.color;
 
+		//Needed some way for the player to know what weapon they have
+		leftHand.owner = this;
+		rightHand.owner = this;
+
         //Not set yet, but they're all referencing the same thing
         leftHand.players = playerRenderer.allPlayers;
         rightHand.players = playerRenderer.allPlayers;
