@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
 
         leftHand.userInterface = userInterface;
         rightHand.userInterface = userInterface;
+
     }
 
     public IEnumerator FlashPlayer()
