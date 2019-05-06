@@ -773,6 +773,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 583940749}
+        m_MethodName: PlayOptionSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: TMPro.TMP_Dropdown+DropdownEvent, Unity.TextMeshPro, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &104638456
@@ -2557,7 +2568,7 @@ GameObject:
   - component: {fileID: 412087952}
   - component: {fileID: 412087951}
   m_Layer: 5
-  m_Name: Pick Ups Text
+  m_Name: Pickups Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2602,13 +2613,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Cigar - Bomb
+  m_text: 'Cigar - Projectile
 
-    bottle - melee
+    Toy Bone - melee
 
-    bone - melee
+    Pooch Hooch - melee
 
-    treat - health'
+    Treat - Health'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a5e5ff9435777a41ac61b480e868453, type: 2}
   m_sharedMaterial: {fileID: 21444702493075514, guid: 3a5e5ff9435777a41ac61b480e868453,
@@ -2678,10 +2689,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 412087951}
-    characterCount: 55
+    characterCount: 70
     spriteCount: 0
-    spaceCount: 11
-    wordCount: 12
+    spaceCount: 13
+    wordCount: 14
     linkCount: 0
     lineCount: 4
     pageCount: 1
@@ -3612,8 +3623,8 @@ RectTransform:
   - {fileID: 1403631501}
   - {fileID: 517714575}
   - {fileID: 2096432024}
-  - {fileID: 2025325016}
   - {fileID: 1406423742}
+  - {fileID: 2025325016}
   - {fileID: 2035567179}
   - {fileID: 763770310}
   - {fileID: 1181784347}
@@ -4195,7 +4206,7 @@ GameObject:
   - component: {fileID: 685893616}
   - component: {fileID: 685893615}
   m_Layer: 5
-  m_Name: Design Names
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4240,19 +4251,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'ho-seh esquivel
+  m_text: 'Button 1 (X) - L. Paw
 
-    joel heires
+    Button 2 (A) - R. Paw
 
-    brianna taeuber
+    Button 3 (LB) - Strafe
 
-    sharon lougheed
 
-    ben adams
-
-    daniel shae
-
-    daniel s'
+    D-Pad/Stick - Move'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a5e5ff9435777a41ac61b480e868453, type: 2}
   m_sharedMaterial: {fileID: 21444702493075514, guid: 3a5e5ff9435777a41ac61b480e868453,
@@ -4322,12 +4328,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 685893615}
-    characterCount: 90
+    characterCount: 86
     spriteCount: 0
-    spaceCount: 13
-    wordCount: 14
+    spaceCount: 20
+    wordCount: 21
     linkCount: 0
-    lineCount: 7
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -5202,7 +5208,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: controllers
+  m_text: Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a5e5ff9435777a41ac61b480e868453, type: 2}
   m_sharedMaterial: {fileID: 21444702493075514, guid: 3a5e5ff9435777a41ac61b480e868453,
@@ -5272,7 +5278,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 891084028}
-    characterCount: 11
+    characterCount: 8
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -6581,7 +6587,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: rules
+  m_text: Victory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a5e5ff9435777a41ac61b480e868453, type: 2}
   m_sharedMaterial: {fileID: 21444702493075514, guid: 3a5e5ff9435777a41ac61b480e868453,
@@ -6651,7 +6657,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1148599000}
-    characterCount: 5
+    characterCount: 7
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -8505,7 +8511,7 @@ RectTransform:
   - {fileID: 1104167908}
   - {fileID: 1262547921}
   m_Father: {fileID: 583940748}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9267,15 +9273,15 @@ MonoBehaviour:
 
     joel heires
 
-    brianna taeuber
-
     sharon lougheed
 
     ben adams
 
     daniel shae
 
-    daniel s'
+    brianna taeuber
+
+    daniel stanfill'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a5e5ff9435777a41ac61b480e868453, type: 2}
   m_sharedMaterial: {fileID: 21444702493075514, guid: 3a5e5ff9435777a41ac61b480e868453,
@@ -9345,7 +9351,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1604016006}
-    characterCount: 90
+    characterCount: 97
     spriteCount: 0
     spaceCount: 13
     wordCount: 14
@@ -9389,7 +9395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1631501840}
   m_Layer: 5
-  m_Name: Pick Ups
+  m_Name: Pickups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9413,7 +9419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -409.84222}
+  m_AnchoredPosition: {x: 0, y: -384}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1649414334
@@ -10475,7 +10481,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Programing
+  m_text: Programming
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a5e5ff9435777a41ac61b480e868453, type: 2}
   m_sharedMaterial: {fileID: 21444702493075514, guid: 3a5e5ff9435777a41ac61b480e868453,
@@ -10504,8 +10510,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 68
+  m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10545,7 +10551,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1937924611}
-    characterCount: 10
+    characterCount: 11
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -10591,7 +10597,7 @@ GameObject:
   - component: {fileID: 1979056772}
   - component: {fileID: 1979056771}
   m_Layer: 5
-  m_Name: Pick Ups Title
+  m_Name: Pickups Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10636,7 +10642,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Pick Ups
+  m_text: Pickups
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a5e5ff9435777a41ac61b480e868453, type: 2}
   m_sharedMaterial: {fileID: 21444702493075514, guid: 3a5e5ff9435777a41ac61b480e868453,
@@ -10706,10 +10712,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1979056771}
-    characterCount: 8
+    characterCount: 7
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -10966,7 +10972,7 @@ RectTransform:
   - {fileID: 882712360}
   - {fileID: 2071158805}
   m_Father: {fileID: 583940748}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11662,6 +11668,17 @@ MonoBehaviour:
       - m_Target: {fileID: 583940749}
         m_MethodName: SetWeaponMode
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 583940749}
+        m_MethodName: PlayOptionSound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
