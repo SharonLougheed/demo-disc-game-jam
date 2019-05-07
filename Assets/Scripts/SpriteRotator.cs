@@ -27,13 +27,13 @@ public class SpriteRotator : MonoBehaviour
 	void Update()
     {
 		//Quick fix, this should probably happen when object is being spawned, not here
-		if (allPlayers == null)
+		if (!checkOnce)
 		{
-			return;
-		}
-		else
-		{
-			if (!checkOnce)
+			if (allPlayers == null)
+			{
+				return;
+			}
+			else
 			{
 				checkOnce = true;
 				//Disable unused view objects / sprite renderers
