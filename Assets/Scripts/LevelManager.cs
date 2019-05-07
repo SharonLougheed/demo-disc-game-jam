@@ -259,8 +259,16 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < environmentSpriteRotators.Length; i++)
         {
             environmentSpriteRotators[i].allPlayers = players;
-        }
-    }
+			//Disable unused view objects / sprite renderers
+			if (players.Length < 4)
+			{
+				for (int j = players.Length; j < 4; j++)
+				{
+					environmentSpriteRotators[i].respectiveViewObjects[j].gameObject.SetActive(false);
+				}
+			}
+		}
+	}
 
     private void LoadHealth(int numberOfHealths)
     {
