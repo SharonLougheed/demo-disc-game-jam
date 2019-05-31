@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LogoBumper.unity
+    guid: 083b3cc2a9137d34496832851a598de9
+  - enabled: 1
     path: Assets/Scenes/SplashScreen.unity
     guid: d1b70ecdea8608642b9fcdeecaecac39
   - enabled: 1
