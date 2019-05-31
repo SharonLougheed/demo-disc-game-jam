@@ -13,6 +13,7 @@ TagManager:
   - Hand
   - BOOMHOOCH
   - JUKE BOX
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

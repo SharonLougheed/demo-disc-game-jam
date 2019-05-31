@@ -36,9 +36,9 @@ public class Player : MonoBehaviour
     {
         originalColor = GetComponent<Renderer>().material.color;
 
-		//Needed some way for the player to know what weapon they have
-		leftHand.owner = this;
-		rightHand.owner = this;
+        //Needed some way for the player to know what weapon they have
+        leftHand.owner = this;
+        rightHand.owner = this;
 
         //Not set yet, but they're all referencing the same thing
         leftHand.players = playerRenderer.allPlayers;
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
 
         // Rock camera back
 
-        Debug.Log("Player " + PlayerNumber + " has health: " + HealthData.Entry[PlayerNumber].Value);
+        //Debug.Log("Player " + PlayerNumber + " has health: " + HealthData.Entry[PlayerNumber].Value);
 
         if (health.Value <= defaults.MinHealth)
         {
@@ -114,20 +114,20 @@ public class Player : MonoBehaviour
             lifePaw.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
         }
 
-		//'An Excellent Bit Of Code'
-		userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
-		userInterface.leftIdleFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.leftPunchingFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.rightIdleFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.rightPunchingFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.rightIdleBottle.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.rightIdleBone.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.rightIdleCigar.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.rightPunchingBottle.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.rightPunchingBone.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
-		userInterface.rightPunchingCigar.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        //'An Excellent Bit Of Code'
+        userInterface.healthSliderBackground.color = playerRenderer.colorToApplyToSprites;
+        userInterface.leftIdleFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.leftPunchingFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.rightIdleFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.rightPunchingFist.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.rightIdleBottle.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.rightIdleBone.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.rightIdleCigar.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.rightPunchingBottle.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.rightPunchingBone.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
+        userInterface.rightPunchingCigar.GetComponent<Image>().color = playerRenderer.colorToApplyToSprites;
 
-		leftHand.userInterface = userInterface;
+        leftHand.userInterface = userInterface;
         rightHand.userInterface = userInterface;
 
     }
@@ -173,32 +173,32 @@ public class Player : MonoBehaviour
 
     private void DisableHands()
     {
-		/* var hands = gameObject.GetComponentsInChildren<Puncher>();
+        /* var hands = gameObject.GetComponentsInChildren<Puncher>();
          foreach (var hand in hands)
          {
              hand.enabled = false;
              hand.gameObject.SetActive(false);
          }*/
 
-		leftHand.gameObject.SetActive(false);
+        leftHand.gameObject.SetActive(false);
         rightHand.gameObject.SetActive(false);
-	}
+    }
 
     private void EnableHands()
     {
-		/*var hands = gameObject.GetComponentsInChildren<Puncher>();
+        /*var hands = gameObject.GetComponentsInChildren<Puncher>();
         foreach (var hand in hands)
         {
             hand.enabled = true;
             hand.gameObject.SetActive(true);
         }*/
 
-		leftHand.gameObject.SetActive(true);
+        leftHand.gameObject.SetActive(true);
         rightHand.gameObject.SetActive(true);
 
         leftHand.GetComponent<BoxCollider>().enabled = false;
         rightHand.GetComponent<BoxCollider>().enabled = false;
-	}
+    }
 
     /* Deprecated for DisablePlayer() and EnablePlayer()
 
@@ -249,7 +249,7 @@ public class Player : MonoBehaviour
 
         userInterface.healthText.text = "Health: " + health.Value;
         userInterface.healthSlider.value = health.Value;
-        Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
+        //Debug.Log("Player " + playerNumber + " new pos is:" + transform.position);
 
         EnablePlayer();
         EnableHands();
@@ -275,11 +275,11 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<PlayerController>().enabled = false;
         GetComponent<CharacterController>().enabled = false;
-		if (userInterface.pawsAnimator != null)
-		{
-			userInterface.pawsAnimator.enabled = false;
-		}
-		userInterface.darknessPanel.SetActive(true);
+        if (userInterface.pawsAnimator != null)
+        {
+            userInterface.pawsAnimator.enabled = false;
+        }
+        userInterface.darknessPanel.SetActive(true);
         playerRenderer.DisableViewObjects();
     }
 
@@ -289,11 +289,11 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider>().enabled = true;
         GetComponent<PlayerController>().enabled = true;
         GetComponent<CharacterController>().enabled = true;
-		if (userInterface.pawsAnimator != null)
-		{
-			userInterface.pawsAnimator.enabled = true;
-		}
-		userInterface.darknessPanel.SetActive(false);
+        if (userInterface.pawsAnimator != null)
+        {
+            userInterface.pawsAnimator.enabled = true;
+        }
+        userInterface.darknessPanel.SetActive(false);
         playerRenderer.EnableViewObjects();
     }
 }

@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
 
     public CharacterController CharController;
 
-
     private void Update()
     {
+        CheckPause();
         if (!ControllerActive)
         {
             return;
@@ -89,6 +89,25 @@ public class PlayerController : MonoBehaviour
                 * (1 + (SpeedUpPercent / 100));
 
             gameObject.transform.Rotate(new Vector3(0f, rotationAmount));
+        }
+    }
+
+    private bool pauseButtonDown = false;
+
+    private void CheckPause()
+    {
+        if (Input.GetAxisRaw("Pause" + GetControllerNumber()) != 0)
+        {
+            if (!pauseButtonDown)
+            {
+                pauseButtonDown = true;
+                Pause pauseMenu = GameObject.FindObjectOfType<Pause>();
+                pauseMenu.TogglePause();
+            }
+        }
+        if (Input.GetAxisRaw("Pause" + GetControllerNumber()) == 0)
+        {
+            pauseButtonDown = false;
         }
     }
 
