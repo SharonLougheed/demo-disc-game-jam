@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ControllerGroup: 20
   RotationSpeed: 100
-  MovementSpeed: 8
+  MovementSpeed: 80

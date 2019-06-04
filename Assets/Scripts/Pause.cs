@@ -15,7 +15,9 @@ public class Pause : MonoBehaviour
 
     public void GoBackToSplashScreen()
     {
+        TogglePause();
         SceneManager.LoadScene(MenuScene);
+        Destroy(gameObject);
     }
 
     public void TogglePause()

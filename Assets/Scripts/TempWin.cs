@@ -34,7 +34,7 @@ public class TempWin : MonoBehaviour
         cam.gameObject.SetActive(true);
         GameOverText.text = "Player " + lastPlayer.PlayerNumber + " Wins!";
 
-        StartCoroutine(RestartGame(6));
+        StartCoroutine(RestartGame(5));
     }
 
     private IEnumerator RestartGame(int seconds)
