@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ControlSettings : ScriptableObject
 {
-    public Controller ControllerGroup;
+    public ControllerType ControllerGroup;
     public float RotationSpeed;
     public float MovementSpeed;
 }

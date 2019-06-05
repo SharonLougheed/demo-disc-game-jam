@@ -69,27 +69,66 @@ public class PlayerController : MonoBehaviour
 
     private void CheckTurnStrafe()
     {
-        if (Input.GetAxis("Strafe" + GetControllerNumber()) > 0)
+        switch (Settings.ControllerGroup)
         {
-            float strafeMovementAmount = Input.GetAxis("Horizontal" + GetControllerNumber())
-                * Settings.MovementSpeed
-                * Time.deltaTime
-                * (1 + (SpeedUpPercent / 100));
-
-            Vector3 moveVector = new Vector3(strafeMovementAmount, 0f, 0f);
-
-            //gameObject.transform.Translate(new Vector3(strafeMovementAmount, 0f, 0f));
-            CharController.Move(transform.TransformDirection(moveVector));
+            case ControllerType.FPS:
+                TurnAndStrafePlayer();
+                break;
+            default:
+                if (Input.GetAxis("Strafe" + GetControllerNumber()) > 0)
+                {
+                    StrafePlayer();
+                }
+                else
+                {
+                    TurnPlayer();
+                }
+                break;
         }
-        else
-        {
-            float rotationAmount = Input.GetAxis("Horizontal" + GetControllerNumber())
-                * Settings.RotationSpeed
-                * Time.deltaTime
-                * (1 + (SpeedUpPercent / 100));
 
-            gameObject.transform.Rotate(new Vector3(0f, rotationAmount));
-        }
+    }
+
+    private void TurnAndStrafePlayer()
+    {
+        float rotationAmount = Input.GetAxis("RightHorizontal" + GetControllerNumber())
+            * Settings.RotationSpeed
+            * Time.deltaTime
+            * (1 + (SpeedUpPercent / 100));
+
+        gameObject.transform.Rotate(new Vector3(0f, rotationAmount));
+
+        float strafeMovementAmount = Input.GetAxis("Horizontal" + GetControllerNumber())
+                        * Settings.MovementSpeed
+                        * Time.deltaTime
+                        * (1 + (SpeedUpPercent / 100));
+
+        Vector3 moveVector = new Vector3(strafeMovementAmount, 0f, 0f);
+
+        //gameObject.transform.Translate(new Vector3(strafeMovementAmount, 0f, 0f));
+        CharController.Move(transform.TransformDirection(moveVector));
+    }
+
+    private void TurnPlayer()
+    {
+        float rotationAmount = Input.GetAxis("Horizontal" + GetControllerNumber())
+            * Settings.RotationSpeed
+            * Time.deltaTime
+            * (1 + (SpeedUpPercent / 100));
+
+        gameObject.transform.Rotate(new Vector3(0f, rotationAmount));
+    }
+
+    private void StrafePlayer()
+    {
+        float strafeMovementAmount = Input.GetAxis("Horizontal" + GetControllerNumber())
+                        * Settings.MovementSpeed
+                        * Time.deltaTime
+                        * (1 + (SpeedUpPercent / 100));
+
+        Vector3 moveVector = new Vector3(strafeMovementAmount, 0f, 0f);
+
+        //gameObject.transform.Translate(new Vector3(strafeMovementAmount, 0f, 0f));
+        CharController.Move(transform.TransformDirection(moveVector));
     }
 
     private bool pauseButtonDown = false;
